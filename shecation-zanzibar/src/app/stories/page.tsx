@@ -33,7 +33,7 @@ export default function StoriesPage() {
         {/* Title over the hero photo */}
         <section className="pt-8 md:pt-12">
           <Container>
-            <Label tone="navy" dot>
+            <Label tone="navy" dot className="md:justify-center">
               {stories.eyebrow}
             </Label>
             <h1 className="display mt-6 mb-8 text-[16vw] uppercase leading-[0.9] tracking-[-0.04em] md:mb-12 md:text-center md:whitespace-nowrap md:text-[12.5vw]">
