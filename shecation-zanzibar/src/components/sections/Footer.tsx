@@ -37,14 +37,13 @@ export function Footer() {
             All rights reserved
           </p>
           <div className="col-span-4 mt-6 flex flex-col gap-1 text-xs text-white/50 md:col-span-4 md:col-start-5 md:mt-0">
-            {/* TODO: link to real Terms / Booking Terms pages */}
-            <Link href="#" className="hover:text-white">
+            <Link href="/terms" className="hover:text-white">
               Terms
             </Link>
             <Link href="/privacy" className="hover:text-white">
               Privacy
             </Link>
-            <Link href="#" className="hover:text-white">
+            <Link href="/booking-terms" className="hover:text-white">
               Booking Terms
             </Link>
           </div>

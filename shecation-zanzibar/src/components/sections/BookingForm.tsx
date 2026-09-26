@@ -188,7 +188,17 @@ export function BookingForm() {
 
           {step === 2 ? (
             <form onSubmit={onTerms} className="flex flex-col gap-6">
-              <Label>Please confirm</Label>
+              <div className="flex flex-wrap items-baseline justify-between gap-4">
+                <Label>Please confirm</Label>
+                <Link
+                  href="/booking-terms"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-sm underline"
+                >
+                  Read the full booking terms
+                </Link>
+              </div>
               <div className="flex flex-col gap-4 border-t border-border pt-6">
                 <Checkbox
                   checked={terms.deposit}
