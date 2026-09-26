@@ -28,3 +28,7 @@ All photos in this folder are from Unsplash (https://unsplash.com/license) and a
 | resort-bungalow.jpg | @joanacabreu (https://unsplash.com/@joanacabreu) | https://unsplash.com/photos/1586347378036-7a8c24975a61 |
 | boat-trip.jpg | @liliess (https://unsplash.com/@liliess) | https://unsplash.com/photos/1683322753580-6bf07759dbfe |
 | grilled-fish.jpg | @e4xtream (https://unsplash.com/@e4xtream) | https://unsplash.com/photos/1783408355383-db6bcee73099 |
+
+## SHE-CATION 3.0 photographs
+
+Photos in `shecation-3/` were supplied by SHE-Reconnects from SHE-CATION 3.0 and are used with the community's permission. © SHE-Reconnects.

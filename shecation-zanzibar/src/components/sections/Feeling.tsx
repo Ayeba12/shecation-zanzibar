@@ -55,7 +55,7 @@ export function Feeling() {
           <div className="col-span-4 order-1 md:order-2 md:col-span-4 md:col-start-5">
             <VideoBlock
               src="/video/shecation.mp4"
-              poster="/images/dhow-sunset.jpg"
+              poster="/images/shecation-3/boat-blue-day.jpg"
               label="SHE-CATION film: women enjoying the trip together"
               className="aspect-[4/5] w-full md:aspect-[9/16]"
             >

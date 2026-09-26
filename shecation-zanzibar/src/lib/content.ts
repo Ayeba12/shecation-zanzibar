@@ -226,10 +226,9 @@ export const finalCta = {
 
 export const socialProof = {
   title: "Women who have been on a SHE-CATION know the feeling.",
-  lead: "Real stories and photos from previous SHE-CATION trips.",
-  // TODO: replace with real testimonials supplied by the client. Do not fabricate reviews.
-  placeholder:
-    "Testimonials and photos from SHE-CATION 3.0 will appear here once supplied.",
+  lead: "Moments from SHE-CATION 3.0, shared by the women who were there.",
+  // TODO: add real testimonials supplied by the client. Do not fabricate reviews.
+  placeholder: "Testimonials from SHE-CATION 3.0 guests will appear here once supplied.",
 };
 
 export const nav = [
@@ -290,41 +289,89 @@ export const keyFigures = [
   { value: "£200", caption: "Deposit to secure your place, balance in instalments" },
 ];
 
-/** Press-style community cards. TODO: replace with real stories and photos from the client. */
+/** Community cards: real photographs from SHE-CATION 3.0, supplied by SHE-Reconnects. */
 export const communityCards = [
   {
-    title: "SHE-CATION 3.0: the highlights",
-    meta: "Community · Photos to come",
-    image: "/images/women-beach.jpg",
-    alt: "Two women enjoying a sunny day at the beach",
+    title: "Blue day on the boat",
+    meta: "SHE-CATION 3.0 · Sailing day",
+    image: "/images/shecation-3/boat-blue-day.jpg",
+    alt: "Eight women in shades of blue posing together on a sailing boat",
+    orientation: "portrait",
+  },
+  {
+    title: "The toast",
+    meta: "SHE-CATION 3.0 · Welcome drinks",
+    image: "/images/shecation-3/the-toast.jpg",
+    alt: "Women in matching printed trousers raising glasses on a sunny terrace",
+    orientation: "landscape",
   },
   {
     title: "SHE-CATION 4.0 goes to Zanzibar",
     meta: `Announcement · ${trip.dates}`,
     block: "4.0",
+    orientation: "landscape",
   },
   {
-    title: "Meet the women behind SHE-Reconnects",
-    meta: "Organisers · Dinma & Bokun",
-    image: "/images/woman-dress.jpg",
-    alt: "Woman in a bright dress standing by the sea",
+    title: "Pyjama night",
+    meta: "SHE-CATION 3.0 · Evening in",
+    image: "/images/shecation-3/pyjama-night-lobby.jpg",
+    alt: "Seven women in matching pink pyjamas laughing in a hotel lobby",
+    orientation: "portrait",
   },
   {
-    title: "Beach days, no agenda",
-    meta: "Community · Photos to come",
-    image: "/images/women-rocks.jpg",
-    alt: "Two women standing on rocks by the ocean",
+    title: "Sunset yoga",
+    meta: "SHE-CATION 3.0 · Slow mornings",
+    image: "/images/shecation-3/sunset-yoga.jpg",
+    alt: "Women sitting on mats under a wooden pergola at sunset",
+    orientation: "landscape",
   },
   {
-    title: "Sisters in the sea",
-    meta: "Community · Photos to come",
-    image: "/images/women-water.jpg",
-    alt: "Two young women laughing in the sea",
+    title: "Laughter on the water",
+    meta: "SHE-CATION 3.0 · Sailing day",
+    image: "/images/shecation-3/laughter-on-the-water.jpg",
+    alt: "Three women in blue and white stripes laughing on a boat",
+    orientation: "portrait",
   },
   {
-    title: "Good food, long tables",
-    meta: "Community · Photos to come",
-    image: "/images/beach-picnic.jpg",
-    alt: "A picnic set up on the beach with food and drinks",
+    title: "White night",
+    meta: "SHE-CATION 3.0 · Dinner",
+    image: "/images/shecation-3/white-night.jpg",
+    alt: "Seven women in white dresses holding paper parasols",
+    orientation: "landscape",
   },
-];
+  {
+    title: "Beach day",
+    meta: "SHE-CATION 3.0 · Sisters",
+    image: "/images/shecation-3/beach-day.jpg",
+    alt: "Four women in sun hats and sunglasses taking a selfie on the beach",
+    orientation: "portrait",
+  },
+  {
+    title: "Sisters on deck",
+    meta: "SHE-CATION 3.0 · Sailing day",
+    image: "/images/shecation-3/sisters-on-deck.jpg",
+    alt: "Three women smiling on the deck of a boat",
+    orientation: "landscape",
+  },
+  {
+    title: "Morning session",
+    meta: "SHE-CATION 3.0 · Connection",
+    image: "/images/shecation-3/terrace-session.jpg",
+    alt: "A woman speaking to a seated group of women on a sunlit terrace",
+    orientation: "landscape",
+  },
+  {
+    title: "Breakfast selfies",
+    meta: "SHE-CATION 3.0 · Good mornings",
+    image: "/images/shecation-3/breakfast-selfie.jpg",
+    alt: "Four women taking a selfie at breakfast",
+    orientation: "portrait",
+  },
+  {
+    title: "Poolside evenings",
+    meta: "SHE-CATION 3.0 · Nights out",
+    image: "/images/shecation-3/poolside-evening.jpg",
+    alt: "Two women in blue dresses beside a lit pool at night",
+    orientation: "portrait",
+  },
+] as const;

@@ -32,8 +32,8 @@ export function KeyFigures() {
 
       <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
         <Image
-          src="/images/resort-bungalow.jpg"
-          alt="Wooden resort bungalow surrounded by palm trees"
+          src="/images/shecation-3/the-toast.jpg"
+          alt="SHE-CATION 3.0 guests in matching printed trousers raising a toast on a sunny terrace"
           fill
           sizes="100vw"
           className="object-cover"
