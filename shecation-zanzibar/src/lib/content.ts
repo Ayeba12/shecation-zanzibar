@@ -503,7 +503,7 @@ export const videoTestimonial = {
  * invite link and bank details before launch. Leave a field empty to hide its row.
  */
 export const payment = {
-  whatsappGroup: "https://chat.whatsapp.com/REPLACE-WITH-GROUP-LINK",
+  whatsappGroup: "https://chat.whatsapp.com/JWJWJO0KQcq0pEps2EmQV1",
   reference: "Your full name",
   uk: {
     label: "UK bank transfer (GBP)",
