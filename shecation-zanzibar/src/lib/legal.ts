@@ -244,6 +244,6 @@ export const bookingTermsSections: PolicySection[] = [
   {
     id: "contact",
     title: "Contact",
-    paragraphs: [`${org}, ${privacyMeta.address}. Email ${email} or WhatsApp ${trip.whatsapp}. Ask for ${trip.organisers}.`],
+    paragraphs: [`${org}, ${privacyMeta.address}. Email ${email} or WhatsApp ${trip.phones.map((p) => `${p.number} (${p.label})`).join(" or ")}. Ask for ${trip.organisers}.`],
   },
 ];

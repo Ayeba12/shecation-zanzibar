@@ -20,7 +20,20 @@ export default function ThankYou() {
           guidance.
         </p>
         <p className="mt-4 text-base text-muted">
-          Questions? Contact {trip.organisers} on {trip.whatsapp}.
+          Questions? WhatsApp {trip.organisers} on{" "}
+          {trip.phones.map((p, i) => (
+            <span key={p.wa}>
+              <a href={`https://wa.me/${p.wa}`} className="underline">
+                {p.number}
+              </a>
+              {i < trip.phones.length - 1 ? " or " : ""}
+            </span>
+          ))}
+          , or email{" "}
+          <a href={`mailto:${trip.email}`} className="underline">
+            {trip.email}
+          </a>
+          .
         </p>
         <div className="mt-10">
           <Button href="/" variant="outline">

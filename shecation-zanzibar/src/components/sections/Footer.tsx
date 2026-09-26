@@ -21,9 +21,24 @@ export function Footer() {
           {/* Big contact (Vaziani / NGLM) */}
           <div className="col-span-4 mt-12 md:col-span-7 md:col-start-5 md:mt-0">
             <Label tone="white">Get in touch</Label>
-            {/* TODO: replace placeholders with confirmed contact details */}
-            <p className="display mt-4 text-xl sm:text-2xl lg:text-3xl">{trip.email}</p>
-            <p className="display mt-2 text-xl sm:text-2xl lg:text-3xl">{trip.whatsapp}</p>
+            <a
+              href={`mailto:${trip.email}`}
+              className="display mt-4 block text-xl hover:text-sky sm:text-2xl lg:text-3xl"
+            >
+              {trip.email}
+            </a>
+            {trip.phones.map((p) => (
+              <a
+                key={p.wa}
+                href={`https://wa.me/${p.wa}`}
+                className="display mt-2 block text-xl hover:text-sky sm:text-2xl lg:text-3xl"
+              >
+                {p.number}
+                <span className="ml-3 align-middle font-body text-xs uppercase tracking-[0.08em] text-white/50">
+                  {p.label}
+                </span>
+              </a>
+            ))}
             <p className="mt-6 text-sm text-white/60">
               Ask for {trip.organisers}. WhatsApp is the fastest way to reach us.
             </p>

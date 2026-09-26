@@ -52,15 +52,23 @@ export function Hosts() {
           <p className="mt-6 text-base">{hosts.lead}</p>
           <p className="mt-4 text-sm text-muted">{hosts.body}</p>
           <div className="mt-8 flex flex-wrap gap-2">
-            {/* TODO: replace with a real wa.me link once the WhatsApp number is confirmed */}
             <Button href="#book" size="sm">
               Secure your spot
             </Button>
-            <Button href="#faq" variant="pill" size="sm">
-              Ask a question
+            <Button href={`https://wa.me/${trip.phones[0].wa}`} variant="pill" size="sm">
+              WhatsApp us
             </Button>
           </div>
-          <p className="mt-4 text-xs text-faint">WhatsApp: {trip.whatsapp}</p>
+          <p className="mt-4 text-xs text-faint">
+            {trip.phones.map((p, i) => (
+              <span key={p.wa}>
+                <a href={`https://wa.me/${p.wa}`} className="hover:text-navy">
+                  {p.number}
+                </a>{" "}
+                ({p.label}){i < trip.phones.length - 1 ? " · " : ""}
+              </span>
+            ))}
+          </p>
         </div>
       </Grid>
 

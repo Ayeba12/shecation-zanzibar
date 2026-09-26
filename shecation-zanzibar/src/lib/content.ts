@@ -16,9 +16,13 @@ export const trip = {
   deposit: "£200",
   depositNote: "non-refundable",
   bookingDeadline: "31 October 2026", // TODO: client approval
-  // TODO: replace with confirmed contact details
-  whatsapp: "[Insert confirmed WhatsApp number]",
-  email: "[Insert confirmed email]",
+  whatsapp: "+44 7587 542609",
+  email: "shereconnects@gmail.com",
+  /** WhatsApp numbers with wa.me digits. */
+  phones: [
+    { label: "UK", number: "+44 7587 542609", wa: "447587542609" },
+    { label: "Nigeria", number: "+234 803 555 3839", wa: "2348035553839" },
+  ],
   organisers: "Dinma or Bokun",
 };
 

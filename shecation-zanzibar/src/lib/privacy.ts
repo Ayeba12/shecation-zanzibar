@@ -12,7 +12,7 @@ export const privacyMeta = {
   lastUpdated: "26 September 2026",
   controller: "SHE-Reconnects", // TODO: legal entity name
   address: "[Insert registered address]", // TODO
-  email: "[Insert confirmed email]", // TODO
+  email: "shereconnects@gmail.com",
 };
 
 export type PolicySection = {
