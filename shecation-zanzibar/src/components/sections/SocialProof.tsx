@@ -22,8 +22,7 @@ export function SocialProof() {
           </h2>
           <p className="mt-4 max-w-prose text-base text-muted">{socialProof.lead}</p>
         </div>
-        {/* TODO: link to a real stories/press page when it exists */}
-        <Button href="#" variant="pill" size="sm">
+        <Button href="/stories" variant="pill" size="sm">
           See all stories
         </Button>
       </div>

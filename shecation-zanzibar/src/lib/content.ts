@@ -239,6 +239,7 @@ export const nav = [
   { label: "Experiences", href: "/#experiences" },
   { label: "Price", href: "/#price" },
   { label: "FAQ", href: "/#faq" },
+  { label: "Stories", href: "/stories" },
 ];
 
 /** Big two-line statement band under the hero (editorial). */
@@ -526,3 +527,74 @@ export const payment = {
     "Dinma or Bokun will confirm your place in the group.",
   ],
 };
+
+/**
+ * /stories page: every SHE-CATION 3.0 photograph, both films and all the testimonials.
+ * SHE-CATION 3.0 was in Greece (never caption these as Zanzibar).
+ */
+export const stories = {
+  eyebrow: "SHE-CATION 3.0 · Greece · 2026",
+  title: "The stories",
+  label: "Stories from SHE-CATION 3.0",
+  intro:
+    "Every SHE-CATION leaves a trail of photographs, voice notes and inside jokes. This is SHE-CATION 3.0, told by the women who were there.",
+  hero: {
+    src: "/images/shecation-3/white-night.jpg",
+    alt: "Seven women in white dresses holding paper parasols",
+    tags: ["White night", "SHE-CATION 3.0"],
+  },
+  photos: [
+    { src: "/images/shecation-3/boat-blue-day.jpg", alt: "Eight women in shades of blue posing together on a sailing boat", title: "Blue day on the boat", tag: "Sailing day" },
+    { src: "/images/shecation-3/the-toast.jpg", alt: "Women in matching printed trousers raising glasses on a sunny terrace", title: "The toast", tag: "Welcome drinks" },
+    { src: "/images/shecation-3/sailing-day.jpg", alt: "Women in blue on a sailing boat", title: "Sailing day", tag: "On the water" },
+    { src: "/images/shecation-3/laughter-on-the-water.jpg", alt: "Three women in blue and white stripes laughing on a boat", title: "Laughter on the water", tag: "Sailing day" },
+    { src: "/images/shecation-3/sisters-on-deck.jpg", alt: "Three women smiling on the deck of a boat", title: "Sisters on deck", tag: "Sailing day" },
+    { src: "/images/shecation-3/on-board.jpg", alt: "The group together on board the boat", title: "All aboard", tag: "Sailing day" },
+    { src: "/images/shecation-3/beach-eight.jpg", alt: "Eight women in white tops and matching printed trousers on a sunny beach", title: "Matching on the shore", tag: "Beach day" },
+    { src: "/images/shecation-3/beach-five.jpg", alt: "Five women in matching printed trousers on the beach", title: "The shore crew", tag: "Beach day" },
+    { src: "/images/shecation-3/beach-day.jpg", alt: "Four women in sun hats and sunglasses taking a selfie on the beach", title: "Beach day", tag: "Sisters" },
+    { src: "/images/shecation-3/sunset-yoga.jpg", alt: "Women sitting on mats under a wooden pergola at sunset", title: "Sunset yoga", tag: "Slow mornings" },
+    { src: "/images/shecation-3/terrace-session.jpg", alt: "A woman speaking to a seated group of women on a sunlit terrace", title: "Morning session", tag: "Connection" },
+    { src: "/images/shecation-3/breakfast-selfie.jpg", alt: "Four women taking a selfie at breakfast", title: "Breakfast selfies", tag: "Good mornings" },
+    { src: "/images/shecation-3/pyjama-night.jpg", alt: "Women in matching pink pyjamas", title: "Pyjama night", tag: "Evening in" },
+    { src: "/images/shecation-3/pyjama-night-lobby.jpg", alt: "Seven women in matching pink pyjamas laughing in a hotel lobby", title: "Pink pyjamas", tag: "Evening in" },
+    { src: "/images/shecation-3/white-night-lobby.jpg", alt: "Six women in white dresses posing in a hotel lobby", title: "All in white", tag: "White night" },
+    { src: "/images/shecation-3/staircase.jpg", alt: "Women in white and gold outfits on a marble staircase", title: "Grand entrance", tag: "White night" },
+    { src: "/images/shecation-3/staircase-2.jpg", alt: "A woman in white on a marble staircase", title: "The staircase", tag: "White night" },
+    { src: "/images/shecation-3/white-night-party.jpg", alt: "Women in white holding glow sticks and a microphone at a party", title: "Glow up", tag: "Party night" },
+    { src: "/images/shecation-3/poolside-evening.jpg", alt: "Two women in blue dresses beside a lit pool at night", title: "Poolside evenings", tag: "Nights out" },
+    { src: "/images/shecation-3/thank-you-envelopes.jpg", alt: "Kraft envelopes with thank-you stickers laid on a bed", title: "A little card", tag: "Little touches" },
+    { src: "/images/shecation-3/thank-you-card.jpg", alt: "A card reading a little card to say a big thank you", title: "A big thank you", tag: "Little touches" },
+    { src: "/images/shecation-3/hosts-dinner.jpg", alt: "Dinma and Bokun in pink fascinators at a dinner table", title: "Dinma and Bokun", tag: "Your hosts" },
+    { src: "/images/shecation-3/hosts-pool.jpg", alt: "Dinma and Bokun by the pool in floral dresses", title: "Poolside with the hosts", tag: "Your hosts" },
+  ],
+  filmsLabel: "On film",
+  filmsIntro:
+    "Photographs tell you what it looked like. These two films tell you what it felt like: the energy, the laughter and the sisterhood.",
+  films: [
+    {
+      kind: "film",
+      src: "/video/shecation.mp4",
+      poster: "/images/shecation-3/boat-blue-day.jpg",
+      label: "SHE-CATION film: women enjoying the trip together",
+      title: "The SHE-CATION film",
+      description: "A minute of SHE-CATION 3.0, from the boat to the white night.",
+    },
+    {
+      kind: "testimonial",
+      src: videoTestimonial.src,
+      poster: videoTestimonial.poster,
+      label: videoTestimonial.label,
+      title: "A guest's story",
+      description: "One SHE-CATION 3.0 guest on what the trip meant to her, in her own words.",
+    },
+  ],
+  saidLabel: "What they said",
+  saidIntro:
+    "Messages sent to the group after everyone got home, quoted exactly as they were written.",
+  saidPhoto: {
+    src: "/images/shecation-3/sisters-on-deck.jpg",
+    alt: "Three women smiling on the deck of a boat",
+    caption: "Told by the women who were there.",
+  },
+} as const;
