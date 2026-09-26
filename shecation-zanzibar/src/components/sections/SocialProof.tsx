@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Label } from "@/components/ui/Label";
+import { Marquee } from "@/components/ui/Marquee";
 import { Section } from "@/components/ui/Section";
 import { communityCards, socialProof } from "@/lib/content";
 
-/** Press-style card grid (NGLM): heading left, "see all" pill right, three cards. */
+/** Press-style cards (NGLM) sliding as a marquee: heading left, "see all" pill right. */
 export function SocialProof() {
   return (
     <Section tone="cream" id="community">
@@ -18,29 +19,35 @@ export function SocialProof() {
         </Button>
       </div>
 
-      <ul className="mt-12 grid gap-8 sm:grid-cols-3 md:mt-16">
-        {communityCards.map((card) => (
-          <li key={card.title}>
+      <Marquee
+        items={communityCards}
+        itemKey={(card) => card.title}
+        label="Community stories"
+        className="-mx-4 mt-12 md:-mx-6 md:mt-16 lg:-mx-8"
+        trackClassName="gap-4 px-4 pb-4 md:gap-6 md:px-6 lg:px-8"
+        render={(card, _i, hidden) => (
+          <article className="w-72 sm:w-80 lg:w-96">
             <div className="relative aspect-[4/3] overflow-hidden bg-navy">
               {"image" in card && card.image ? (
                 <Image
                   src={card.image}
-                  alt={card.alt ?? ""}
+                  alt={hidden ? "" : (card.alt ?? "")}
                   fill
-                  sizes="(min-width: 640px) 33vw, 100vw"
+                  sizes="384px"
+                  loading="eager"
                   className="object-cover"
                 />
               ) : (
                 <div className="grid h-full place-items-center text-white">
-                  <p className="display text-7xl lg:text-8xl">{card.block}</p>
+                  <p className="display text-7xl">{card.block}</p>
                 </div>
               )}
             </div>
             <p className="mt-4 font-display text-base">{card.title}</p>
             <Label className="mt-1">{card.meta}</Label>
-          </li>
-        ))}
-      </ul>
+          </article>
+        )}
+      />
 
       {/* TODO: replace with real testimonials when supplied by client. Do not fabricate reviews. */}
       <p className="mt-12 max-w-prose text-sm text-faint">{socialProof.placeholder}</p>

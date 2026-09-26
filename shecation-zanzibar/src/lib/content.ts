@@ -309,4 +309,22 @@ export const communityCards = [
     image: "/images/woman-dress.jpg",
     alt: "Woman in a bright dress standing by the sea",
   },
+  {
+    title: "Beach days, no agenda",
+    meta: "Community · Photos to come",
+    image: "/images/women-rocks.jpg",
+    alt: "Two women standing on rocks by the ocean",
+  },
+  {
+    title: "Sisters in the sea",
+    meta: "Community · Photos to come",
+    image: "/images/women-water.jpg",
+    alt: "Two young women laughing in the sea",
+  },
+  {
+    title: "Good food, long tables",
+    meta: "Community · Photos to come",
+    image: "/images/beach-picnic.jpg",
+    alt: "A picnic set up on the beach with food and drinks",
+  },
 ];
