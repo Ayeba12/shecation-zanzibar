@@ -109,5 +109,8 @@ export async function POST(req: Request) {
       { status: 502 },
     );
   }
-  return NextResponse.json({ ok: true, email, sheet });
+  // Short, key-free reasons so failures are visible without server log access.
+  const reason = (r: PromiseSettledResult<void>) =>
+    r.status === "rejected" ? String((r.reason as Error)?.message ?? r.reason).slice(0, 240) : undefined;
+  return NextResponse.json({ ok: true, email, sheet, emailError: reason(emailResult), sheetError: reason(sheetResult) });
 }
