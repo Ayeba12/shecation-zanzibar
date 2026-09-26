@@ -77,14 +77,14 @@ export function BookingForm() {
             subject to availability.
           </p>
 
-          <ol className="mt-10 border-t border-border">
+          <ol className="mt-10">
             {steps.map((label, i) => {
               const n = (i + 1) as Step;
               const state = n < step ? "done" : n === step ? "current" : "todo";
               return (
                 <li
                   key={label}
-                  className="grid grid-cols-[3rem_1fr] items-baseline gap-4 border-b border-border py-4"
+                  className="grid grid-cols-[3rem_1fr] items-baseline gap-4 border-b border-border py-4 last:border-b-0"
                   aria-current={state === "current" ? "step" : undefined}
                 >
                   <Label tone={state === "current" ? "pink" : state === "done" ? "turquoise" : "muted"}>
@@ -156,7 +156,7 @@ export function BookingForm() {
                   <option value="OTHER">Other</option>
                 </Select>
               </Field>
-              <div className="flex flex-col gap-4 border-t border-border pt-6">
+              <div className="flex flex-col gap-4 pt-2">
                 <Checkbox
                   name="roomShare"
                   required

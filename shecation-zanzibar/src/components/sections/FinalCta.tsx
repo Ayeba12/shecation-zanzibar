@@ -14,7 +14,7 @@ export function FinalCta() {
           </h2>
         </div>
         <div className="col-span-4 mt-12 md:col-span-3 md:mt-20">
-          <div className="flex flex-col gap-3 border-t border-white/15 pt-4">
+          <div className="flex flex-col gap-3">
             <Label tone="white">{trip.dates}</Label>
             <Label tone="white">
               {trip.price} {trip.priceNote}

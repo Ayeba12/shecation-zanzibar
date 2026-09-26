@@ -79,7 +79,7 @@ export function SocialProof() {
           {testimonials
             .filter((t) => t.featured)
             .map((t) => (
-              <figure key={t.name} className="border-t border-border pt-6">
+              <figure key={t.name}>
                 <blockquote className="display max-w-3xl text-2xl sm:text-3xl lg:text-4xl">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>

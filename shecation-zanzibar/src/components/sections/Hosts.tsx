@@ -126,7 +126,7 @@ export function Hosts() {
 
         <ol className="col-span-4 mt-8 md:col-span-5 md:col-start-4 md:mt-0">
           {touches.items.map((item, i) => (
-            <li key={item} className="border-t border-border py-4 md:py-5">
+            <li key={item} className="border-t border-border py-4 first:border-t-0 first:pt-0 md:py-5">
               <Label>{String(i + 1).padStart(2, "0")}</Label>
               <p className="mt-2 max-w-sm text-base">{item}</p>
             </li>

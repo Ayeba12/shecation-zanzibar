@@ -55,7 +55,7 @@ export function Pricing() {
             </tbody>
           </table>
 
-          <div className="mt-8 flex flex-col gap-6 border-t border-border pt-6 md:flex-row md:items-center md:justify-between">
+          <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <p className="max-w-md text-sm text-muted">{pricing.nigeria}</p>
             <Button href="#book" size="md">
               {pricing.cta}
