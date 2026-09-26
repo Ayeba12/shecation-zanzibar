@@ -30,7 +30,7 @@ export function WhoFor() {
 
         <ol className="col-span-4 mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 md:col-span-8 md:col-start-5 md:mt-0">
           {whoFor.items.map((item, i) => (
-            <li key={item} className="border-t border-navy/15 pt-4">
+            <li key={item} className="border-t border-navy/15 pt-4 first:border-t-0 first:pt-0 sm:[&:nth-child(2)]:border-t-0 sm:[&:nth-child(2)]:pt-0">
               <Label>{String(i + 1).padStart(2, "0")}</Label>
               <p className="mt-4 max-w-xs text-base md:text-lg">{item}</p>
             </li>
