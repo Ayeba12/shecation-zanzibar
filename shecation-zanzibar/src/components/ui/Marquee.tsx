@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 type Props<T> = {
   items: T[];
@@ -8,6 +8,8 @@ type Props<T> = {
   label: string;
   className?: string;
   trackClassName?: string;
+  /** Seconds each card takes to cross; the loop duration scales with the number of items. */
+  secondsPerItem?: number;
 };
 
 /**
@@ -23,13 +25,16 @@ export function Marquee<T>({
   label,
   className = "",
   trackClassName = "",
+  secondsPerItem = 14,
 }: Props<T>) {
+  const duration = `${Math.round(items.length * secondsPerItem)}s`;
   return (
     <div
       className={`group overflow-hidden motion-reduce:overflow-x-auto motion-reduce:[scrollbar-width:none] ${className}`}
     >
       <ul
         aria-label={label}
+        style={{ "--marquee-duration": duration } as CSSProperties}
         className={`flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none ${trackClassName}`}
       >
         {items.map((item, i) => (
