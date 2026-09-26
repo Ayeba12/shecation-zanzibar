@@ -343,8 +343,9 @@ export default function DesignSystem() {
 
           <Block id="cardrow" title="Card row">
             <p className="text-sm text-muted">
-              Horizontally scrolling portrait cards, staggered on desktop, bleeding to the page
-              edges. Name left, type label right, copy below.
+              Marquee of portrait cards, staggered on desktop, bleeding to the page edges. Slides
+              continuously, pauses on hover, and stays still (manually scrollable) for reduced
+              motion. Name left, type label right, copy below.
             </p>
             <ul className="mt-8 flex gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {["Transparent Kayak", "The Rock Restaurant", "Stone Town"].map((name, i) => (

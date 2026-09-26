@@ -69,6 +69,9 @@
   --container-content: 100rem; /* 1600 — edge-to-edge editorial canvas */
   --container-prose: 40rem; /* 640 */
 
+  /* ---- Motion ---- */
+  --animate-marquee: marquee 48s linear infinite;
+
   /* ---- Shadows ---- */
   --shadow-card: 0 1px 2px rgb(24 38 61 / 0.04), 0 8px 24px rgb(24 38 61 / 0.06);
   --shadow-cta: 0 8px 24px rgb(213 46 104 / 0.28);
@@ -136,4 +139,14 @@ p {
   line-height: 0.95;
   letter-spacing: -0.02em;
   text-wrap: balance;
+}
+
+/* Marquee track: slides one full card set to the left, then loops */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
