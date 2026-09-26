@@ -92,7 +92,7 @@ export function SocialProof() {
             {testimonials
               .filter((t) => !t.featured)
               .map((t) => (
-                <li key={t.name} className="border-t border-border pt-5 first:border-t-0 first:pt-0 sm:[&:nth-child(2)]:border-t-0 sm:[&:nth-child(2)]:pt-0">
+                <li key={t.name}>
                   <figure>
                     <blockquote className="text-base">&ldquo;{t.quote}&rdquo;</blockquote>
                     <figcaption className="mt-4">
