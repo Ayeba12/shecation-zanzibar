@@ -507,10 +507,11 @@ export const payment = {
   reference: "Your full name",
   uk: {
     label: "UK bank transfer (GBP)",
-    accountName: "[Account name]",
-    bank: "[Bank name]",
-    sortCode: "[00-00-00]",
-    accountNumber: "[00000000]",
+    accountName: "Mumsaloud Initiative CIC",
+    bank: "Starling Bank",
+    sortCode: "60-83-71",
+    accountNumber: "28693333",
+    note: "The account name will show as Mumsaloud Initiative CIC. Use your full name as the reference so we can match your payment.",
   },
   ng: {
     label: "Nigeria (NGN)",

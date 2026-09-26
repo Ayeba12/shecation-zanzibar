@@ -74,6 +74,7 @@ export function PaymentDetails({
             <Row k="Amount" v={`${trip.deposit} deposit`} />
             <Row k="Reference" v={reference} />
           </dl>
+          {payment.uk.note ? <p className="mt-4 max-w-prose text-sm text-muted">{payment.uk.note}</p> : null}
         </div>
       )}
 
