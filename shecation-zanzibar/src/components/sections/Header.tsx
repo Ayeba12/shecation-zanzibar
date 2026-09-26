@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -9,8 +10,15 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between md:h-20">
         {/* Wordmark + two-line tagline (NGLM) */}
         <Link href="/" className="flex items-center gap-4" aria-label={`${trip.brand} home`}>
-          <span className="flex items-center gap-2">
-            <span aria-hidden="true" className="size-3 rounded-full bg-sunshine" />
+          <span className="flex items-center gap-3">
+            <Image
+              src="/brand/she-reconnects-logo.png"
+              alt=""
+              width={36}
+              height={36}
+              priority
+              className="size-8 md:size-9"
+            />
             <span className="font-display text-lg tracking-tight md:text-xl">{trip.brand}</span>
           </span>
           <span className="hidden max-w-36 text-xs leading-4 text-muted sm:block">
