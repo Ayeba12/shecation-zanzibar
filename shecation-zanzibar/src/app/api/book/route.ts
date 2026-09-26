@@ -4,7 +4,7 @@ import { countryLabels, validateBooking, type BookingRecord } from "@/lib/bookin
 export const runtime = "nodejs";
 
 const NOTIFY_EMAIL = process.env.BOOKING_NOTIFY_EMAIL ?? "shereconnects@gmail.com";
-const FROM_EMAIL = process.env.BOOKING_FROM_EMAIL ?? "SHE-CATION Bookings <onboarding@resend.dev>";
+const FROM_EMAIL = process.env.BOOKING_FROM_EMAIL ?? "SHE-CATION Bookings <bookings@hello.she-reconnects.net>";
 
 /** Email the organisers through Resend's REST API (no SDK needed). */
 async function sendEmail(record: BookingRecord) {

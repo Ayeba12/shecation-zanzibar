@@ -10,14 +10,15 @@ deposit in the group. Nothing is charged online.
 
 ## 1. Email (Resend)
 
-1. Sign up at https://resend.com using **shereconnects@gmail.com**.
+1. Sign in at https://resend.com.
 2. Create an API key (Dashboard > API Keys) and copy it.
 3. Add it to Vercel: Project > Settings > Environment Variables > `RESEND_API_KEY`.
 
-Until a domain is verified in Resend, emails are sent from `onboarding@resend.dev`, which can only
-deliver to the address the Resend account was created with. That is why the account must use the
-Gmail address. To send from `bookings@shereconnects.com` later, verify the domain in Resend and set
-`BOOKING_FROM_EMAIL`.
+The sending domain **hello.she-reconnects.net** is verified in Resend, so emails go out from
+`SHE-CATION Bookings <bookings@hello.she-reconnects.net>` (set in `BOOKING_FROM_EMAIL`) and can be
+delivered to any address, including shereconnects@gmail.com. If the domain ever changes, verify the
+new one in Resend (Domains > Add domain, then add the DNS records it gives you) and update
+`BOOKING_FROM_EMAIL` in Vercel.
 
 ## 2. Google Sheet (Apps Script)
 
