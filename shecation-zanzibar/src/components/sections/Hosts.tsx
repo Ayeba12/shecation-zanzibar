@@ -116,7 +116,7 @@ export function Hosts() {
       </Grid>
 
       {/* Little touches: heading left, numbered list centre, photos right */}
-      <Grid className="mt-20 border-t border-border pt-10 md:mt-32 md:pt-12">
+      <Grid className="mt-20 md:mt-32">
         <div className="col-span-4 md:col-span-3">
           <Label tone="navy" dot>
             {touches.label}
