@@ -58,9 +58,9 @@ async function appendToSheet(record: BookingRecord) {
     body: JSON.stringify({
       secret,
       submittedAt: record.submittedAt,
-      name: record.name,
-      email: record.email,
-      phone: record.phone,
+      name: sheetText(record.name),
+      email: sheetText(record.email),
+      phone: sheetText(record.phone),
       country: record.countryLabel,
       roomShare: "Yes",
       terms: "Yes",
@@ -73,6 +73,11 @@ async function appendToSheet(record: BookingRecord) {
     const snippet = text.startsWith("<") ? "HTML error page (script failed)" : text.slice(0, 120);
     throw new Error(`Sheet ${res.status}: ${snippet}`);
   }
+}
+
+/** Sheets treats values starting with = + - @ as formulas ("+44..." becomes #ERROR!). A leading apostrophe forces text. */
+function sheetText(s: string) {
+  return /^[=+\-@]/.test(s) ? `'${s}` : s;
 }
 
 function escapeHtml(s: string) {
