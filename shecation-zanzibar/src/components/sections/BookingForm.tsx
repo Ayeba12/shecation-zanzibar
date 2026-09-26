@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import { Grid } from "@/components/ui/Container";
 import { Checkbox, Field, Input, Select } from "@/components/ui/Field";
 import { Label } from "@/components/ui/Label";
+import { PaymentDetails } from "@/components/ui/PaymentDetails";
 import { Section } from "@/components/ui/Section";
+import type { BookingPayload } from "@/lib/booking";
 import { trip } from "@/lib/content";
 
 type Step = 1 | 2 | 3;
@@ -18,9 +19,10 @@ type Details = {
   name: string;
   email: string;
   phone: string;
-  country: string;
+  country: "" | BookingPayload["country"];
   roomShare: boolean;
   consent: boolean;
+  website: string; // honeypot
 };
 
 const emptyDetails: Details = {
@@ -30,18 +32,19 @@ const emptyDetails: Details = {
   country: "",
   roomShare: false,
   consent: false,
+  website: "",
 };
 
 /**
- * Booking flow: details -> terms -> deposit -> /thank-you.
- * Payment is stubbed until the client confirms a payment processor.
+ * Booking flow: details -> terms (saved to email + sheet) -> deposit instructions + WhatsApp group.
  * Passport / sensitive travel details are intentionally NOT collected here.
  */
 export function BookingForm() {
-  const router = useRouter();
   const [step, setStep] = useState<Step>(1);
   const [details, setDetails] = useState<Details>(emptyDetails);
   const [terms, setTerms] = useState({ deposit: false, flights: false, sharing: false });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const update = <K extends keyof Details>(key: K, value: Details[K]) =>
     setDetails((d) => ({ ...d, [key]: value }));
@@ -51,18 +54,41 @@ export function BookingForm() {
     setStep(2);
   };
 
-  const onTerms = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStep(3);
-  };
-
-  const onDeposit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // TODO: hand off to secure checkout (processor TBC), then redirect on success.
-    router.push("/thank-you");
-  };
-
   const allTerms = terms.deposit && terms.flights && terms.sharing;
+
+  const onTerms = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!allTerms || details.country === "") return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      const payload: BookingPayload = {
+        name: details.name,
+        email: details.email,
+        phone: details.phone,
+        country: details.country,
+        roomShare: details.roomShare,
+        consent: details.consent,
+        terms,
+        website: details.website,
+      };
+      const res = await fetch("/api/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; errors?: string[] };
+      if (!res.ok || !data.ok) {
+        setError(data.errors?.join(" ") ?? "Something went wrong. Please try again.");
+        return;
+      }
+      setStep(3);
+    } catch {
+      setError("We could not reach the server. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <Section tone="cream" id="book">
@@ -90,11 +116,7 @@ export function BookingForm() {
                   <Label tone={state === "current" ? "pink" : state === "done" ? "turquoise" : "muted"}>
                     {String(n).padStart(2, "0")}
                   </Label>
-                  <span
-                    className={
-                      state === "current" ? "font-display text-lg" : "text-lg text-faint"
-                    }
-                  >
+                  <span className={state === "current" ? "font-display text-lg" : "text-lg text-faint"}>
                     {label}
                   </span>
                 </li>
@@ -105,7 +127,7 @@ export function BookingForm() {
 
         <div className="col-span-4 mt-12 md:col-span-7 md:col-start-6 md:mt-0">
           {step === 1 ? (
-            <form onSubmit={onDetails} className="flex flex-col gap-8">
+            <form onSubmit={onDetails} className="relative flex flex-col gap-8">
               <Field label="Full name" htmlFor="name">
                 <Input
                   id="name"
@@ -146,7 +168,7 @@ export function BookingForm() {
                   name="country"
                   required
                   value={details.country}
-                  onChange={(e) => update("country", e.target.value)}
+                  onChange={(e) => update("country", e.target.value as Details["country"])}
                 >
                   <option value="" disabled>
                     Select a country
@@ -156,6 +178,20 @@ export function BookingForm() {
                   <option value="OTHER">Other</option>
                 </Select>
               </Field>
+              {/* Honeypot: hidden from people, filled by bots */}
+              <div className="absolute -left-[9999px] top-0 h-px w-px overflow-hidden" aria-hidden="true">
+                <label>
+                  Website
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={details.website}
+                    onChange={(e) => update("website", e.target.value)}
+                  />
+                </label>
+              </div>
               <div className="flex flex-col gap-4 pt-2">
                 <Checkbox
                   name="roomShare"
@@ -190,16 +226,11 @@ export function BookingForm() {
             <form onSubmit={onTerms} className="flex flex-col gap-6">
               <div className="flex flex-wrap items-baseline justify-between gap-4">
                 <Label>Please confirm</Label>
-                <Link
-                  href="/booking-terms"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-sm underline"
-                >
+                <Link href="/booking-terms" target="_blank" rel="noopener" className="text-sm underline">
                   Read the full booking terms
                 </Link>
               </div>
-              <div className="flex flex-col gap-4 border-t border-border pt-6">
+              <div className="flex flex-col gap-4 pt-2">
                 <Checkbox
                   checked={terms.deposit}
                   onChange={(e) => setTerms((t) => ({ ...t, deposit: e.target.checked }))}
@@ -216,46 +247,50 @@ export function BookingForm() {
                   label="The package is based on two people sharing a room and is subject to availability."
                 />
               </div>
+              {error ? (
+                <p role="alert" className="max-w-prose border-l-2 border-pink pl-4 text-sm text-navy">
+                  {error} You can also message us on WhatsApp:{" "}
+                  {trip.phones.map((p, i) => (
+                    <span key={p.wa}>
+                      <a href={`https://wa.me/${p.wa}`} className="underline">
+                        {p.number}
+                      </a>
+                      {i < trip.phones.length - 1 ? " or " : ""}
+                    </span>
+                  ))}
+                  .
+                </p>
+              ) : null}
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Button type="button" variant="ghost" size="lg" onClick={() => setStep(1)}>
+                <Button type="button" variant="ghost" size="lg" onClick={() => setStep(1)} disabled={submitting}>
                   Back
                 </Button>
-                <Button type="submit" size="lg" disabled={!allTerms}>
-                  Continue to deposit
+                <Button type="submit" size="lg" disabled={!allTerms || submitting}>
+                  {submitting ? "Saving your booking..." : "Save and continue to deposit"}
                 </Button>
               </div>
+              <p className="text-xs text-faint">
+                Your details are sent to the SHE-Reconnects team when you continue.
+              </p>
             </form>
           ) : null}
 
           {step === 3 ? (
-            <form onSubmit={onDeposit} className="flex flex-col gap-6">
-              <Label>Pay your {trip.deposit} deposit</Label>
-              <div className="border-t border-border pt-6">
-                {details.country === "NG" ? (
-                  <p className="max-w-prose text-base">
-                    Paying from Nigeria? Contact {trip.organisers} for the current exchange rate
-                    before making payment. We will send you the details after you submit.
-                  </p>
-                ) : (
-                  <p className="max-w-prose text-base">
-                    Secure online checkout in GBP. {/* TODO: payment processor TBC */}
-                    <span className="text-muted"> (Checkout integration coming soon.)</span>
-                  </p>
-                )}
+            <div className="flex flex-col gap-6">
+              <div>
+                <Label tone="turquoise" dot>
+                  Details received
+                </Label>
+                <h3 className="mt-3 text-xl md:text-2xl">
+                  Thank you, {details.name.split(" ")[0]}. Now pay your {trip.deposit} deposit.
+                </h3>
               </div>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Button type="button" variant="ghost" size="lg" onClick={() => setStep(2)}>
-                  Back
-                </Button>
-                <Button type="submit" size="lg">
-                  Pay {trip.deposit} deposit
-                </Button>
-              </div>
+              <PaymentDetails country={details.country || "GB"} name={details.name} />
               <p className="text-xs text-faint">
                 We will never ask for passport details in this form. Travel documents are collected
                 later through a secure process.
               </p>
-            </form>
+            </div>
           ) : null}
         </div>
       </Grid>

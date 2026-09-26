@@ -497,3 +497,31 @@ export const videoTestimonial = {
   label: "Video testimonial from a SHE-CATION 3.0 guest",
   caption: "Video testimonial · SHE-CATION 3.0",
 };
+
+/**
+ * Deposit payment step. TODO: replace placeholders with the real WhatsApp group
+ * invite link and bank details before launch. Leave a field empty to hide its row.
+ */
+export const payment = {
+  whatsappGroup: "https://chat.whatsapp.com/REPLACE-WITH-GROUP-LINK",
+  reference: "Your full name",
+  uk: {
+    label: "UK bank transfer (GBP)",
+    accountName: "[Account name]",
+    bank: "[Bank name]",
+    sortCode: "[00-00-00]",
+    accountNumber: "[00000000]",
+  },
+  ng: {
+    label: "Nigeria (NGN)",
+    accountName: "",
+    bank: "",
+    accountNumber: "",
+    note: `Contact ${trip.organisers} in the group for the current exchange rate before you pay.`,
+  },
+  instructions: [
+    "Pay the £200 deposit by bank transfer using your full name as the reference.",
+    "Join the WhatsApp group and post your proof of payment there.",
+    "Dinma or Bokun will confirm your place in the group.",
+  ],
+};

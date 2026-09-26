@@ -78,7 +78,7 @@ export const privacySections: PolicySection[] = [
     bullets: [
       "Travel partners: the resort, airport transfer providers, activity operators, the visa service and the travel insurer, so they can provide the services included in your package.",
       "Payment providers: to process your deposit and instalments securely. For payments from Nigeria, the organisers will confirm the exchange rate and payment route with you directly.",
-      "Communication tools: the email, WhatsApp and messaging services we use to contact you.",
+      "Communication and record-keeping tools: the email service that sends us your booking (Resend), the Google Sheet where bookings are recorded, and the WhatsApp groups and messaging services we use to contact you.",
       "Analytics and advertising tools: such as Google Analytics and Meta (Facebook and Instagram) tools, which help us understand website traffic and campaign performance.",
       "Professional advisers and authorities: accountants, insurers, or public authorities where the law requires it.",
     ],
