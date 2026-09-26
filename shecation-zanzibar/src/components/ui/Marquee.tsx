@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type Props<T> = {
   items: T[];
@@ -34,7 +34,7 @@ export function Marquee<T>({
     >
       <ul
         aria-label={label}
-        style={{ "--marquee-duration": duration } as CSSProperties}
+        style={{ animationDuration: duration }}
         className={`flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none ${trackClassName}`}
       >
         {items.map((item, i) => (
