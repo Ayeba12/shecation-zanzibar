@@ -1,0 +1,9 @@
+# AI tooling kits (local only)
+.agent/
+.agents/
+.claude/skills/
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
