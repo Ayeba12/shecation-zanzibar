@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { Grid } from "@/components/ui/Container";
 import { Label } from "@/components/ui/Label";
 import { Marquee } from "@/components/ui/Marquee";
 import { Section } from "@/components/ui/Section";
-import { communityCards, socialProof } from "@/lib/content";
+import { communityCards, socialProof, testimonials } from "@/lib/content";
 
 /**
  * Community: real SHE-CATION 3.0 photographs sliding as a marquee.
@@ -58,8 +59,42 @@ export function SocialProof() {
         )}
       />
 
-      {/* TODO: real testimonials from SHE-CATION 3.0 guests. Do not fabricate reviews. */}
-      <p className="mt-12 max-w-prose text-sm text-faint">{socialProof.placeholder}</p>
+      {/* Testimonials: real quotes from SHE-CATION 3.0 guests */}
+      <Grid className="mt-16 md:mt-24">
+        <div className="col-span-4 md:col-span-3">
+          <Label tone="navy" dot>
+            What they said
+          </Label>
+        </div>
+        <div className="col-span-4 mt-6 md:col-span-8 md:col-start-5 md:mt-0">
+          {testimonials
+            .filter((t) => t.featured)
+            .map((t) => (
+              <figure key={t.name} className="border-t border-border pt-6">
+                <blockquote className="display max-w-3xl text-2xl sm:text-3xl lg:text-4xl">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-6">
+                  <Label>{t.name} · SHE-CATION 3.0</Label>
+                </figcaption>
+              </figure>
+            ))}
+          <ul className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2">
+            {testimonials
+              .filter((t) => !t.featured)
+              .map((t) => (
+                <li key={t.name} className="border-t border-border pt-5">
+                  <figure>
+                    <blockquote className="text-base">&ldquo;{t.quote}&rdquo;</blockquote>
+                    <figcaption className="mt-4">
+                      <Label>{t.name} · SHE-CATION 3.0</Label>
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </Grid>
     </Section>
   );
 }

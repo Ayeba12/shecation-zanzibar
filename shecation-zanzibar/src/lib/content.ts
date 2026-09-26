@@ -226,9 +226,7 @@ export const finalCta = {
 
 export const socialProof = {
   title: "Women who have been on a SHE-CATION know the feeling.",
-  lead: "Moments from SHE-CATION 3.0, shared by the women who were there.",
-  // TODO: add real testimonials supplied by the client. Do not fabricate reviews.
-  placeholder: "Testimonials from SHE-CATION 3.0 guests will appear here once supplied.",
+  lead: "Moments from SHE-CATION 3.0 in Crete, shared by the women who were there.",
 };
 
 export const nav = [
@@ -395,3 +393,33 @@ export const hosts = {
   imageTall: "/images/shecation-3/hosts-pool.jpg",
   alt: "Dinma and Bokun, the SHE-Reconnects organisers, smiling together",
 };
+
+/** Real testimonials from SHE-CATION 3.0 (Crete, 2026), supplied by SHE-Reconnects. Quoted verbatim. */
+export const testimonials = [
+  {
+    quote:
+      "I’m so grateful for Bokun and Dinma for creating such a space for us to relax, reflect, and truly “chop life”!",
+    name: "Kemi",
+    featured: true,
+  },
+  {
+    quote:
+      "Still glowing from Greece She-cation 2026! Loved meeting you all - what a vibe. Kisses to my amazing soft life gang roomies 💋 The award was so deserving. Going back home rejuvenated, fabulous & flourishing. This crew is special 💛🇬🇷",
+    name: "Christy",
+  },
+  {
+    quote:
+      "Crete was even more special because of the connections, laughter, and meaningful moments we shared together.",
+    name: "Eni",
+  },
+  {
+    quote:
+      "I was so elated. Joyful. Happy. Over the moon by this show of love. It will always be in my memory. Shecationers we are powerful in unity. God bless us all.",
+    name: "Yinka",
+  },
+  {
+    quote:
+      "To My roonies thank you for being such beautiful roomies. The laughter we had in that room is enough to heal all the guests that will check in to that room for the rest of this year 😁",
+    name: "Uwa",
+  },
+];
