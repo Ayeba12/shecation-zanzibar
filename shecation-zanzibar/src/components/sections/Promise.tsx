@@ -13,15 +13,15 @@ export function Promise() {
   return (
     <section id="about" className="relative isolate overflow-hidden bg-navy text-white">
       <Image
-        src="/images/stone-town-market.jpg"
+        src="/images/nungwi-aerial.jpg"
         alt=""
         fill
         sizes="100vw"
-        className="object-cover opacity-40"
+        className="object-cover object-[60%_center] opacity-60"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/30 to-navy/90"
+        className="absolute inset-0 bg-gradient-to-b from-navy/75 via-navy/35 to-navy/90"
       />
 
       <Container className="relative flex min-h-[100svh] flex-col justify-between py-8 md:py-12">
