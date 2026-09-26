@@ -4,38 +4,38 @@ import { Label } from "@/components/ui/Label";
 import { Section } from "@/components/ui/Section";
 import { whoFor } from "@/lib/content";
 
+/**
+ * Who this is for, in the Vaziani "10 reasons" grammar:
+ * heading and photograph on the left, a numbered two-column list on the right.
+ */
 export function WhoFor() {
   return (
     <Section tone="sand" id="who">
       <Grid>
-        <div className="col-span-4 md:col-span-3">
+        <div className="col-span-4 md:col-span-4">
           <Label tone="navy" dot>
             Who this is for
           </Label>
-          <div className="relative mt-8 hidden aspect-[3/4] overflow-hidden md:block">
+          <h2 className="display mt-6 text-3xl sm:text-4xl">{whoFor.title}</h2>
+          <div className="relative mt-10 hidden aspect-[3/4] overflow-hidden md:block md:max-w-sm">
             <Image
               src="/images/shecation-3/staircase-2.jpg"
               alt="SHE-CATION 3.0 guests in white and gold on a marble staircase"
               fill
-              sizes="25vw"
+              sizes="(min-width: 768px) 30vw, 100vw"
               className="object-cover"
             />
           </div>
         </div>
-        <div className="col-span-4 mt-6 md:col-span-8 md:col-start-5 md:mt-0">
-          <h2 className="display text-3xl sm:text-4xl lg:text-5xl">{whoFor.title}</h2>
-          <ol className="mt-12 border-t border-navy/15">
-            {whoFor.items.map((item, i) => (
-              <li
-                key={item}
-                className="grid grid-cols-[3rem_1fr] items-baseline gap-4 border-b border-navy/15 py-5 md:py-6"
-              >
-                <Label>{String(i + 1).padStart(2, "0")}</Label>
-                <p className="text-lg md:text-xl">{item}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
+
+        <ol className="col-span-4 mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 md:col-span-8 md:col-start-5 md:mt-0">
+          {whoFor.items.map((item, i) => (
+            <li key={item} className="border-t border-navy/15 pt-4">
+              <Label>{String(i + 1).padStart(2, "0")}</Label>
+              <p className="mt-4 max-w-xs text-base md:text-lg">{item}</p>
+            </li>
+          ))}
+        </ol>
       </Grid>
     </Section>
   );

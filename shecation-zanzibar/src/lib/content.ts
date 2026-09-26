@@ -422,15 +422,26 @@ export const communityCards = [
 
 /** Your hosts block. Photos: public/images/shecation-3/hosts-dinner.jpg (landscape) and hosts-pool.jpg (portrait). */
 export const hosts = {
-  title: "Meet Dinma and Bokun.",
+  statementLeft: "Meet Dinma and Bokun.",
+  statementRight: "The women behind SHE-Reconnects.",
   lead:
-    "The women behind SHE-Reconnects. They plan every detail, answer every question and travel with you, so all you have to do is show up.",
+    "They plan every detail, answer every question and travel with you, so all you have to do is show up.",
   body:
     "From the first WhatsApp message to the last night in Zanzibar, Dinma and Bokun are your point of contact. Ask them anything about the trip, the payment plan or paying from Nigeria.",
-  caption: "Dinma & Bokun · SHE-Reconnects organisers",
-  imageWide: "/images/shecation-3/hosts-dinner.jpg",
-  imageTall: "/images/shecation-3/hosts-pool.jpg",
-  alt: "Dinma and Bokun, the SHE-Reconnects organisers, smiling together",
+  photos: [
+    {
+      src: "/images/shecation-3/hosts-dinner.jpg",
+      alt: "Dinma and Bokun in pink fascinators at a dinner table",
+      caption: "At the table",
+      meta: "SHE-CATION 3.0",
+    },
+    {
+      src: "/images/shecation-3/hosts-pool.jpg",
+      alt: "Dinma and Bokun by the pool in floral dresses",
+      caption: "Poolside",
+      meta: "SHE-CATION 3.0",
+    },
+  ],
 };
 
 /** Real testimonials from SHE-CATION 3.0 (Crete, 2026), supplied by SHE-Reconnects. Quoted verbatim. */
@@ -463,10 +474,16 @@ export const testimonials = [
   },
 ];
 
-/** Little touches row under the hosts: the thank-you cards left on every bed. */
+/** Little touches: the details guests notice. */
 export const touches = {
   label: "Little touches",
-  text: "A handwritten thank-you card on every bed. It is the small things that make it a SHE-CATION.",
+  lead: "It is the small things that make it a SHE-CATION.",
+  items: [
+    "A handwritten thank-you card on every bed.",
+    "Matching outfits for the group days, from pyjamas to prints.",
+    "Sunset yoga and slow mornings built into the days.",
+    "Two hosts on WhatsApp before, during and after the trip.",
+  ],
   images: [
     { src: "/images/shecation-3/thank-you-envelopes.jpg", alt: "Kraft envelopes with thank-you stickers laid on a bed" },
     { src: "/images/shecation-3/thank-you-card.jpg", alt: "A card reading a little card to say a big thank you" },
