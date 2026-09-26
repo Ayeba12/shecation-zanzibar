@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Container, Grid } from "@/components/ui/Container";
 import { ImageTag } from "@/components/ui/ImageTag";
 import { Label } from "@/components/ui/Label";
-import { cta, hero, heroTags, quote, trip } from "@/lib/content";
+import { cta, hero, heroTags, trip } from "@/lib/content";
 
 const tagPositions = [
   { left: "12%", top: "58%" },
@@ -13,64 +13,47 @@ const tagPositions = [
 ];
 
 /**
- * Hero: centred giant headline with a photograph set into it (NGLM),
- * a quote row with attribution / quote / CTA, then a full-bleed
- * photograph with pinned tags (Vaziani).
+ * Hero (editorial): micro labels in the left rail, headline offset to the
+ * right, intro + CTA below, then a full-bleed photograph with pinned tags.
  */
 export function Hero() {
   return (
     <section className="bg-cream text-navy" id="top">
-      <Container className="pt-10 md:pt-16 lg:pt-20">
-        <Label tone="navy" dot className="justify-center">
-          {trip.name} · {trip.dates}
-        </Label>
-
-        <h1 className="display mx-auto mt-8 max-w-6xl text-center text-5xl uppercase sm:text-6xl lg:text-7xl xl:text-8xl">
-          {hero.titleA}{" "}
-          <span
-            aria-hidden="true"
-            className="relative mx-2 hidden h-[1.6em] w-[1.2em] overflow-hidden align-middle sm:inline-block md:mx-4"
-          >
-            <Image
-              src="/images/women-selfie.jpg"
-              alt=""
-              fill
-              priority
-              sizes="200px"
-              className="object-cover"
-            />
-          </span>{" "}
-          {hero.titleB}
-        </h1>
-
-        {/* Quote row */}
-        <Grid className="mt-12 items-center md:mt-16">
-          <div className="col-span-4 md:col-span-3">
-            <p className="font-display text-base">{quote.by}</p>
-            <Label className="mt-1">{quote.role}</Label>
+      <Container className="pt-8 pb-12 md:pt-16 md:pb-16 lg:pt-20">
+        <Grid>
+          {/* Left rail: tiny meta */}
+          <div className="col-span-4 mb-8 flex flex-col gap-3 md:col-span-3 md:mb-0">
+            <Label tone="navy" dot>
+              {trip.name} · {trip.dates}
+            </Label>
+            <Label>{trip.brand} presents</Label>
           </div>
-          <p className="col-span-4 mt-6 text-center text-base md:col-span-6 md:mt-0 md:text-lg">
-            &ldquo;{quote.text}&rdquo;
-          </p>
-          <div className="col-span-4 mt-6 flex md:col-span-3 md:mt-0 md:justify-end">
-            <Button href="#book" size="md">
-              {cta.primary}
-            </Button>
-          </div>
-        </Grid>
 
-        <Grid className="mt-10 md:mt-14">
-          <p className="col-span-4 text-sm text-navy md:col-span-6 md:col-start-4 md:text-center">
-            {hero.intro}
-          </p>
-          <p className="col-span-4 mt-3 text-xs text-faint md:col-span-6 md:col-start-4 md:text-center">
-            {cta.micro}
-          </p>
+          {/* Headline, offset to the right like an editorial spread */}
+          <div className="col-span-4 md:col-span-9 md:col-start-4">
+            <h1 className="display text-5xl uppercase sm:text-6xl lg:text-7xl xl:text-8xl">
+              {hero.title}
+            </h1>
+          </div>
+
+          <div className="col-span-4 mt-10 md:col-span-5 md:col-start-7 md:mt-16">
+            <p className="text-base text-navy md:text-lg">{hero.intro}</p>
+            <p className="mt-4 text-sm text-muted">{hero.body}</p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button href="#book" size="md">
+                {cta.primary}
+              </Button>
+              <Button href="#included" variant="pill" size="md">
+                What&apos;s included
+              </Button>
+            </div>
+            <p className="mt-4 text-xs text-faint">{cta.micro}</p>
+          </div>
         </Grid>
       </Container>
 
       {/* Full-bleed hero photograph with pinned tags */}
-      <div className="relative mt-12 aspect-[4/5] w-full overflow-hidden sm:aspect-[16/10] md:mt-16 lg:aspect-[21/9]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[16/10] lg:aspect-[21/9]">
         <Image
           src="/images/hero-beach.jpg"
           alt="Wooden boats on turquoise water beside a white sand beach in Zanzibar"
