@@ -6,7 +6,7 @@ import { nav, trip } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="overflow-hidden border-t border-white/10 bg-navy pt-16 text-white md:pt-24">
+    <footer className="overflow-hidden border-t border-white/10 bg-navy pt-16 pb-20 text-white md:pt-24 md:pb-0">
       <Container>
         <Grid>
           {/* Small pill links (Vaziani) */}

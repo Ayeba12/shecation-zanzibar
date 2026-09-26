@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex-1 pb-20 md:pb-0">
+      <main className="flex-1">
         <Hero />
         <KeyFigures />
         <Promise />
