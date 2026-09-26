@@ -129,6 +129,8 @@ export const moments = {
 
 export const feeling = {
   title: "Come for Zanzibar. Leave with more than photos.",
+  aside:
+    "A glimpse of what a SHE-CATION feels like: the energy, the laughter and the sisterhood. This is what you are booking.",
   body1:
     "SHE-CATION has always been about what happens when women step away from the noise and make room for joy, laughter and connection. If you were at SHE-CATION 3.0, you already know the energy. If this is your first one, Zanzibar is a beautiful place to start.",
   body2:

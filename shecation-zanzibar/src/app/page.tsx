@@ -11,7 +11,6 @@ import { Moments } from "@/components/sections/Moments";
 import { Pricing } from "@/components/sections/Pricing";
 import { Promise } from "@/components/sections/Promise";
 import { SocialProof } from "@/components/sections/SocialProof";
-import { Statement } from "@/components/sections/Statement";
 import { StickyCta } from "@/components/sections/StickyCta";
 import { WhoFor } from "@/components/sections/WhoFor";
 
@@ -21,7 +20,6 @@ export default function Home() {
       <Header />
       <main className="flex-1 pb-20 md:pb-0">
         <Hero />
-        <Statement />
         <KeyFigures />
         <Promise />
         <Included />
