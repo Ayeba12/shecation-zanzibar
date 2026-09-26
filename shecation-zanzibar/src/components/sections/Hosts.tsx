@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Grid } from "@/components/ui/Container";
 import { Label } from "@/components/ui/Label";
 import { Section } from "@/components/ui/Section";
-import { hosts, trip } from "@/lib/content";
+import { hosts, touches, trip } from "@/lib/content";
 
 /**
  * Your hosts: trust block for the organisers (brief: "I trust the organisers").
@@ -61,6 +61,29 @@ export function Hosts() {
             </Button>
           </div>
           <p className="mt-4 text-xs text-faint">WhatsApp: {trip.whatsapp}</p>
+        </div>
+      </Grid>
+
+      {/* Little touches */}
+      <Grid className="mt-16 items-end border-t border-border pt-8 md:mt-24">
+        <div className="col-span-4 md:col-span-3">
+          <Label tone="navy" dot>
+            {touches.label}
+          </Label>
+          <p className="mt-4 max-w-xs text-sm text-muted">{touches.text}</p>
+        </div>
+        <div className="col-span-4 mt-6 grid grid-cols-2 gap-4 md:col-span-5 md:col-start-5 md:mt-0 md:gap-6">
+          {touches.images.map((img) => (
+            <div key={img.src} className="relative aspect-square overflow-hidden">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(min-width: 768px) 20vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
         </div>
       </Grid>
     </Section>

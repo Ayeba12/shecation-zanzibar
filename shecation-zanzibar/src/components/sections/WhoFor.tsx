@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Grid } from "@/components/ui/Container";
 import { Label } from "@/components/ui/Label";
 import { Section } from "@/components/ui/Section";
@@ -11,6 +12,15 @@ export function WhoFor() {
           <Label tone="navy" dot>
             Who this is for
           </Label>
+          <div className="relative mt-8 hidden aspect-[3/4] overflow-hidden md:block">
+            <Image
+              src="/images/shecation-3/staircase-2.jpg"
+              alt="SHE-CATION 3.0 guests in white and gold on a marble staircase"
+              fill
+              sizes="25vw"
+              className="object-cover"
+            />
+          </div>
         </div>
         <div className="col-span-4 mt-6 md:col-span-8 md:col-start-5 md:mt-0">
           <h2 className="display text-3xl sm:text-4xl lg:text-5xl">{whoFor.title}</h2>

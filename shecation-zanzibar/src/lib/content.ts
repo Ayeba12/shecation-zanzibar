@@ -379,6 +379,41 @@ export const communityCards = [
     alt: "Two women in blue dresses beside a lit pool at night",
     orientation: "portrait",
   },
+  {
+    title: "Matching on the shore",
+    meta: "SHE-CATION 3.0 · Beach day",
+    image: "/images/shecation-3/beach-eight.jpg",
+    alt: "Eight women in white tops and matching printed trousers on a sunny beach",
+    orientation: "portrait",
+  },
+  {
+    title: "All in white",
+    meta: "SHE-CATION 3.0 · White night",
+    image: "/images/shecation-3/white-night-lobby.jpg",
+    alt: "Six women in white dresses posing in a hotel lobby",
+    orientation: "portrait",
+  },
+  {
+    title: "Grand entrance",
+    meta: "SHE-CATION 3.0 · White night",
+    image: "/images/shecation-3/staircase.jpg",
+    alt: "Women in white and gold outfits on a marble staircase",
+    orientation: "portrait",
+  },
+  {
+    title: "Glow up",
+    meta: "SHE-CATION 3.0 · Party night",
+    image: "/images/shecation-3/white-night-party.jpg",
+    alt: "Women in white holding glow sticks and a microphone at a party",
+    orientation: "portrait",
+  },
+  {
+    title: "The shore crew",
+    meta: "SHE-CATION 3.0 · Beach day",
+    image: "/images/shecation-3/beach-five.jpg",
+    alt: "Five women in matching printed trousers on the beach",
+    orientation: "portrait",
+  },
 ] as const;
 
 /** Your hosts block. Photos: public/images/shecation-3/hosts-dinner.jpg (landscape) and hosts-pool.jpg (portrait). */
@@ -423,3 +458,13 @@ export const testimonials = [
     name: "Uwa",
   },
 ];
+
+/** Little touches row under the hosts: the thank-you cards left on every bed. */
+export const touches = {
+  label: "Little touches",
+  text: "A handwritten thank-you card on every bed. It is the small things that make it a SHE-CATION.",
+  images: [
+    { src: "/images/shecation-3/thank-you-envelopes.jpg", alt: "Kraft envelopes with thank-you stickers laid on a bed" },
+    { src: "/images/shecation-3/thank-you-card.jpg", alt: "A card reading a little card to say a big thank you" },
+  ],
+};
