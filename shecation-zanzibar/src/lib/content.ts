@@ -468,3 +468,11 @@ export const touches = {
     { src: "/images/shecation-3/thank-you-card.jpg", alt: "A card reading a little card to say a big thank you" },
   ],
 };
+
+/** Video testimonial from a SHE-CATION 3.0 guest. TODO: add the guest's name if she is happy to be credited. */
+export const videoTestimonial = {
+  src: "/video/testimonial.mp4",
+  poster: "/images/shecation-3/testimonial-poster.jpg",
+  label: "Video testimonial from a SHE-CATION 3.0 guest",
+  caption: "Video testimonial · SHE-CATION 3.0",
+};

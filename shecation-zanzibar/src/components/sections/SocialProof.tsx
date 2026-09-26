@@ -4,7 +4,8 @@ import { Grid } from "@/components/ui/Container";
 import { Label } from "@/components/ui/Label";
 import { Marquee } from "@/components/ui/Marquee";
 import { Section } from "@/components/ui/Section";
-import { communityCards, socialProof, testimonials } from "@/lib/content";
+import { TestimonialVideo } from "@/components/ui/TestimonialVideo";
+import { communityCards, socialProof, testimonials, videoTestimonial } from "@/lib/content";
 
 /**
  * Community: real SHE-CATION 3.0 photographs sliding as a marquee.
@@ -65,6 +66,14 @@ export function SocialProof() {
           <Label tone="navy" dot>
             What they said
           </Label>
+          {/* Video testimonial in the left rail (full width on phones) */}
+          <TestimonialVideo
+            src={videoTestimonial.src}
+            poster={videoTestimonial.poster}
+            label={videoTestimonial.label}
+            className="mt-6 aspect-[4/5] w-full md:mt-8 md:aspect-[9/16]"
+          />
+          <Label className="mt-3">{videoTestimonial.caption}</Label>
         </div>
         <div className="col-span-4 mt-6 md:col-span-8 md:col-start-5 md:mt-0">
           {testimonials
