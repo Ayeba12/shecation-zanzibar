@@ -216,7 +216,7 @@ export const faq = [
   },
   {
     q: "What is the cancellation policy?",
-    a: "The £200 deposit is non-refundable. [TODO: full cancellation and refund policy to be added before launch.]",
+    a: "The £200 deposit is non-refundable. Instalments you have paid may be refunded depending on when you cancel, and any refund beyond the deposit is subject to the hotel's and other suppliers' refund policies. The full details are in our Refund Policy.",
   },
 ];
 

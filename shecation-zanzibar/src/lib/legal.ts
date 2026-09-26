@@ -170,12 +170,14 @@ export const bookingTermsSections: PolicySection[] = [
     paragraphs: ["If you need to cancel, tell us in writing by email or WhatsApp as soon as possible."],
     bullets: [
       `The ${trip.deposit} deposit is non-refundable in all cases.`,
-      "Cancellation on or before 31 January 2027: instalments already paid are refunded, less the deposit and any costs our partners have already charged us for your place.", // TODO: confirm
-      "Cancellation after 31 January 2027: no refund, as by then the resort, transfers, visa and insurance have been committed.", // TODO: confirm
-      "You may transfer your place to another woman who meets the trip requirements, subject to our written agreement and any name-change costs from our partners.",
+      "Any refund of amounts paid beyond the deposit is subject to the refund and cancellation policies of the hotel and our other third-party suppliers, including transfer companies, activity operators, the visa service and the insurer. We can only refund what those suppliers return to us for your place, and we will show you the breakdown.",
+      "Cancellation on or before 31 January 2027: instalments already paid are refunded, less the deposit and any costs our suppliers do not return.", // TODO: confirm
+      "Cancellation after 31 January 2027: no refund beyond whatever our suppliers return to us, as by then the resort, transfers, visa and insurance have been committed.", // TODO: confirm
+      "You may transfer your place to another woman who meets the trip requirements, subject to our written agreement and any name-change costs from our suppliers.",
     ],
     after: [
       "Travel insurance is included in your package. Depending on the policy terms, some cancellation reasons, such as illness, may be claimable. We will help you with the details.",
+      "The full process, timings and how refunds are paid are set out in our Refund Policy.",
     ],
   },
   {
@@ -245,5 +247,105 @@ export const bookingTermsSections: PolicySection[] = [
     id: "contact",
     title: "Contact",
     paragraphs: [`${org}, ${privacyMeta.address}. Email ${email} or WhatsApp ${trip.phones.map((p) => `${p.number} (${p.label})`).join(" or ")}. Ask for ${trip.organisers}.`],
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Refund policy                                                        */
+/* ------------------------------------------------------------------ */
+
+export const refundMeta = {
+  title: "Refund Policy",
+  lastUpdated: "26 September 2026",
+  intro:
+    "What happens to your money if you cancel, if we cancel, or if plans change. Please read this alongside the Booking Terms.",
+  notice:
+    "The cut-off dates and refund rules below are the recommended terms and are subject to final approval by SHE-Reconnects before launch.",
+};
+
+export const refundSections: PolicySection[] = [
+  {
+    id: "summary",
+    title: "In short",
+    bullets: [
+      `Your ${trip.deposit} deposit is non-refundable in all cases.`,
+      "Instalments you have paid may be refunded depending on when you cancel.",
+      "Any refund beyond the deposit is subject to the refund policies of the hotel and our other third-party suppliers. We can only return what they return to us.",
+      "Refunds are paid to the original payment method within 14 days of us receiving the funds back from our suppliers.",
+    ],
+  },
+  {
+    id: "deposit",
+    title: "The deposit",
+    paragraphs: [
+      `The ${trip.deposit} deposit secures your place and is used immediately to hold the room, transfers and activities for you. It is ${trip.depositNote} in all circumstances, including a change of mind, illness, visa refusal or missed flights. Where your reason is covered by the included travel insurance, we will help you claim.`,
+    ],
+  },
+  {
+    id: "third-parties",
+    title: "Hotel and third-party policies",
+    paragraphs: [
+      "SHE-CATION is delivered with independent suppliers: the resort, airport transfer companies, activity and boat operators, the visa service and the travel insurer. Each has its own cancellation and refund policy, and we pay them on your behalf as the trip is organised.",
+      "Because of this, any refund of amounts paid beyond the deposit is subject to what those suppliers return to us for your place. If a supplier keeps part or all of a payment under its own policy, we cannot refund that part. We will request every refund we are entitled to, pass on everything we recover, and show you a breakdown of what was returned and what was kept.",
+    ],
+  },
+  {
+    id: "if-you-cancel",
+    title: "If you cancel",
+    paragraphs: [
+      "Tell us in writing by email or WhatsApp as soon as you know. The date we receive your message is the cancellation date.",
+    ],
+    bullets: [
+      "On or before 31 January 2027: instalments you have paid are refunded, less the deposit and any amounts our suppliers do not return.", // TODO: confirm
+      "After 31 January 2027: no refund beyond what our suppliers return to us, because the resort, transfers, visa and insurance have been committed by then.", // TODO: confirm
+      "Missed payments: if an instalment is more than 14 days late and no new date has been agreed, we may release your place. Amounts already paid are treated as a cancellation on the date the place is released.", // TODO: confirm
+    ],
+  },
+  {
+    id: "transfer",
+    title: "Transferring your place",
+    paragraphs: [
+      "Rather than cancel, you may transfer your place to another woman who meets the trip requirements, with our written agreement. Any name-change fees from our suppliers are passed on at cost. The new guest accepts the Booking Terms and continues the payment plan.",
+    ],
+  },
+  {
+    id: "if-we-cancel",
+    title: "If we cancel or change the trip",
+    bullets: [
+      "If we cancel the whole trip for reasons within our control, we refund everything you have paid, including the deposit.",
+      "If we cancel because of events outside our control, such as government travel restrictions, natural disaster or the closure of the resort, we refund what we are able to recover from our suppliers and help you claim the rest through the included travel insurance.",
+      "Minor changes to the itinerary, such as swapping an activity or venue for an equivalent, do not entitle you to a refund.",
+    ],
+  },
+  {
+    id: "unused",
+    title: "Unused parts of the trip",
+    paragraphs: [
+      "No refunds are given for parts of the package you choose not to use, arrive late for or leave early from, including meals, transfers and activities.",
+    ],
+  },
+  {
+    id: "how-paid",
+    title: "How refunds are paid",
+    bullets: [
+      "Refunds go back to the original payment method and, where possible, in the currency you paid in.",
+      `Payments made in naira through ${trip.organisers} are refunded in naira at the exchange rate used when you paid, less any bank or transfer charges.`,
+      "We pay refunds within 14 days of receiving the funds back from our suppliers. Supplier refunds can take several weeks; we will keep you updated.",
+      "Card and bank charges applied by third parties are not refundable.",
+    ],
+  },
+  {
+    id: "insurance",
+    title: "Travel insurance claims",
+    paragraphs: [
+      "Travel insurance is included in your package. If your cancellation is for a reason the policy covers, such as illness, you may be able to claim the non-refundable parts, including the deposit. We will provide the documents you need for a claim.",
+    ],
+  },
+  {
+    id: "contact",
+    title: "Questions",
+    paragraphs: [
+      `Email ${email} or WhatsApp ${trip.phones.map((p) => `${p.number} (${p.label})`).join(" or ")}. Ask for ${trip.organisers}.`,
+    ],
   },
 ];

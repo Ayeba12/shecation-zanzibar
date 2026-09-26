@@ -61,6 +61,9 @@ export function Footer() {
             <Link href="/booking-terms" className="hover:text-white">
               Booking Terms
             </Link>
+            <Link href="/refund-policy" className="hover:text-white">
+              Refund Policy
+            </Link>
           </div>
           <p className="col-span-4 mt-6 text-xs text-white/50 md:col-span-3 md:col-start-10 md:mt-0 md:text-right">
             {trip.name} Zanzibar · {trip.dates}
