@@ -67,7 +67,12 @@ async function appendToSheet(record: BookingRecord) {
       deposit: "Pending",
     }),
   });
-  if (!res.ok) throw new Error(`Sheet ${res.status}: ${await res.text()}`);
+  // Apps Script answers 200 even for "forbidden" or an error page, so check the body too.
+  const text = (await res.text()).trim();
+  if (!res.ok || text !== "ok") {
+    const snippet = text.startsWith("<") ? "HTML error page (script failed)" : text.slice(0, 120);
+    throw new Error(`Sheet ${res.status}: ${snippet}`);
+  }
 }
 
 function escapeHtml(s: string) {
