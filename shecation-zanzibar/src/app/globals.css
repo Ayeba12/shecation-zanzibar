@@ -4,6 +4,8 @@
    SHE-CATION 4.0 Zanzibar — Design tokens
    Source: SHE-CATION Brand Colour Guide (Sept 2026)
    Grid: 4pt base / 8pt rhythm. Type: 16px base, 1.25 major third.
+   Editorial direction: large tight display type, 12-col asymmetric
+   layout, hairline dividers, micro uppercase labels, pill buttons.
    ------------------------------------------------------------------ */
 
 @theme {
@@ -21,15 +23,17 @@
   /* ---- Semantic aliases ---- */
   --color-background: var(--color-cream);
   --color-foreground: var(--color-navy);
-  --color-muted: color-mix(in srgb, var(--color-navy) 70%, transparent);
-  --color-border: color-mix(in srgb, var(--color-navy) 12%, transparent);
+  --color-muted: color-mix(in srgb, var(--color-navy) 64%, transparent);
+  --color-faint: color-mix(in srgb, var(--color-navy) 44%, transparent);
+  --color-border: color-mix(in srgb, var(--color-navy) 14%, transparent);
 
   /* ---- Typography ---- */
   --font-display: var(--font-quicksand), ui-rounded, system-ui, sans-serif;
   --font-body: var(--font-spline-sans), system-ui, sans-serif;
 
   /* Typescale: 16px base × 1.25, rounded to the 4pt grid.
-     Line heights sit on the 4pt grid (mostly 8pt). */
+     Line heights sit on the 4pt grid (mostly 8pt).
+     Display sizes (5xl+) use tight leading set per-use (leading-[0.95]). */
   --text-xs: 0.75rem; /* 12 */
   --text-xs--line-height: 1rem; /* 16 */
   --text-sm: 0.875rem; /* 14 — half step for captions/labels */
@@ -50,6 +54,10 @@
   --text-5xl--line-height: 4.5rem; /* 72 */
   --text-6xl: 5rem; /* 80 (76.29) */
   --text-6xl--line-height: 5.5rem; /* 88 */
+  --text-7xl: 6.25rem; /* 100 (95.37) */
+  --text-7xl--line-height: 6.25rem; /* 100 */
+  --text-8xl: 7.75rem; /* 124 (119.2) */
+  --text-8xl--line-height: 7.75rem; /* 124 */
 
   /* ---- Radii (8pt multiples) ---- */
   --radius-sm: 0.5rem; /* 8 */
@@ -58,7 +66,7 @@
   --radius-xl: 2rem; /* 32 */
 
   /* ---- Layout ---- */
-  --container-content: 72rem; /* 1152 */
+  --container-content: 100rem; /* 1600 — edge-to-edge editorial canvas */
   --container-prose: 40rem; /* 640 */
 
   /* ---- Shadows ---- */
@@ -93,7 +101,7 @@ h4,
 .font-display {
   font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
@@ -110,4 +118,22 @@ p {
 ::selection {
   background: var(--color-sky);
   color: var(--color-navy);
+}
+
+/* Micro label: the tiny uppercase meta text used throughout */
+@utility label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Display headline: tight leading for the big editorial type */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }

@@ -1,42 +1,59 @@
 import Image from "next/image";
-import { Section, SectionHeading } from "@/components/ui/Section";
+import { Grid } from "@/components/ui/Container";
+import { Label } from "@/components/ui/Label";
+import { Section } from "@/components/ui/Section";
 import { socialProof } from "@/lib/content";
 
-const gallery = [
-  { src: "/images/women-beach.jpg", alt: "Two women enjoying a sunny day at the beach" },
-  { src: "/images/women-rocks.jpg", alt: "Two women standing on rocks by the ocean" },
-  { src: "/images/dhow-sunset.jpg", alt: "Silhouette of a dhow sailboat at sunset" },
-  { src: "/images/stone-town-market.jpg", alt: "People walking through a Stone Town market" },
+const pair = [
+  {
+    src: "/images/women-beach.jpg",
+    alt: "Two women enjoying a sunny day at the beach",
+    label: "SHE-CATION 3.0",
+  },
+  {
+    src: "/images/women-rocks.jpg",
+    alt: "Two women standing on rocks by the ocean",
+    label: "The community",
+  },
 ];
 
+/** Two large side-by-side photographs with tiny labels, plus a testimonial slot. */
 export function SocialProof() {
   return (
     <Section tone="cream" id="community">
-      <SectionHeading
-        eyebrow="The community"
-        title={socialProof.title}
-        lead={socialProof.lead}
-        align="center"
-      />
+      <Grid>
+        <div className="col-span-4 md:col-span-7 md:col-start-5">
+          <h2 className="display text-3xl sm:text-4xl lg:text-5xl">{socialProof.title}</h2>
+          <p className="mt-6 max-w-prose text-base text-muted">{socialProof.lead}</p>
+        </div>
+      </Grid>
 
       {/* TODO: replace placeholder with real testimonials when supplied by client */}
-      <div className="mx-auto mt-12 max-w-prose rounded-lg border-2 border-dashed border-border p-8 text-center text-base text-muted">
-        {socialProof.placeholder}
-      </div>
+      <Grid className="mt-12 md:mt-16">
+        <div className="col-span-4 md:col-span-3">
+          <Label>Testimonials</Label>
+        </div>
+        <p className="col-span-4 mt-4 max-w-prose text-sm text-faint md:col-span-6 md:col-start-5 md:mt-0">
+          {socialProof.placeholder}
+        </p>
+      </Grid>
 
-      <ul className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
-        {gallery.map((img) => (
-          <li key={img.src} className="relative aspect-square overflow-hidden rounded-lg">
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              sizes="(min-width: 768px) 25vw, 50vw"
-              className="object-cover"
-            />
-          </li>
+      <div className="mt-16 grid gap-4 md:mt-24 md:grid-cols-2 md:gap-6">
+        {pair.map((img) => (
+          <figure key={img.src}>
+            <Label className="mb-4">{img.label}</Label>
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </figure>
         ))}
-      </ul>
+      </div>
     </Section>
   );
 }

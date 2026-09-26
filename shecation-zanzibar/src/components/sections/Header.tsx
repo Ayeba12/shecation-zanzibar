@@ -5,28 +5,27 @@ import { cta, nav, trip } from "@/lib/content";
 
 export function Header() {
   return (
-    <header className="absolute inset-x-0 top-0 z-40 text-white">
+    <header className="bg-cream text-navy">
       <Container className="flex h-16 items-center justify-between md:h-20">
-        <Link href="/" className="flex flex-col leading-none">
-          <span className="font-display text-lg tracking-tight">{trip.brand}</span>
-          <span className="text-xs uppercase tracking-[0.16em] text-white/80">
-            {trip.name} · Zanzibar
+        <Link href="/" className="flex items-center gap-3" aria-label={`${trip.brand} home`}>
+          <span aria-hidden="true" className="size-3 rounded-full bg-sunshine" />
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-base tracking-tight md:text-lg">{trip.brand}</span>
+            <span className="label mt-1 text-faint">
+              {trip.name} · Zanzibar
+            </span>
           </span>
         </Link>
 
-        <nav aria-label="Page sections" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Page sections" className="hidden items-center gap-2 md:flex">
           {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="font-display text-sm text-white/90 transition-colors hover:text-white"
-            >
+            <Button key={item.href} href={item.href} variant="pill" size="xs">
               {item.label}
-            </a>
+            </Button>
           ))}
         </nav>
 
-        <Button href="#book" size="sm" className="hidden md:inline-flex">
+        <Button href="#book" size="xs" className="md:h-10 md:px-5">
           {cta.primary}
         </Button>
       </Container>

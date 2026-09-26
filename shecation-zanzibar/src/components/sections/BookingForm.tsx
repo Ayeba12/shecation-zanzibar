@@ -3,9 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
+import { Grid } from "@/components/ui/Container";
 import { Checkbox, Field, Input, Select } from "@/components/ui/Field";
-import { Section, SectionHeading } from "@/components/ui/Section";
+import { Label } from "@/components/ui/Label";
+import { Section } from "@/components/ui/Section";
 import { trip } from "@/lib/content";
 
 type Step = 1 | 2 | 3;
@@ -64,34 +65,34 @@ export function BookingForm() {
 
   return (
     <Section tone="cream" id="book">
-      <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-        <div className="lg:col-span-2">
-          <SectionHeading
-            eyebrow="Secure your spot"
-            title="Reserve your place on SHE-CATION 4.0."
-            lead={`Three quick steps. Your place is confirmed once your ${trip.deposit} deposit is received, subject to availability.`}
-          />
-          <ol className="mt-8 flex flex-col gap-3">
+      <Grid>
+        <div className="col-span-4 md:col-span-4">
+          <Label tone="navy" dot>
+            Secure your spot
+          </Label>
+          <h2 className="display mt-6 text-3xl sm:text-4xl">Reserve your place on SHE-CATION 4.0.</h2>
+          <p className="mt-6 max-w-sm text-sm text-muted">
+            Three quick steps. Your place is confirmed once your {trip.deposit} deposit is received,
+            subject to availability.
+          </p>
+
+          <ol className="mt-10 border-t border-border">
             {steps.map((label, i) => {
               const n = (i + 1) as Step;
               const state = n < step ? "done" : n === step ? "current" : "todo";
               return (
-                <li key={label} className="flex items-center gap-3 text-base">
+                <li
+                  key={label}
+                  className="grid grid-cols-[3rem_1fr] items-baseline gap-4 border-b border-border py-4"
+                  aria-current={state === "current" ? "step" : undefined}
+                >
+                  <Label tone={state === "current" ? "pink" : state === "done" ? "turquoise" : "muted"}>
+                    {String(n).padStart(2, "0")}
+                  </Label>
                   <span
-                    className={`grid size-8 place-items-center rounded-full font-display text-sm ${
-                      state === "current"
-                        ? "bg-pink text-white"
-                        : state === "done"
-                          ? "bg-turquoise text-navy"
-                          : "bg-sand text-navy"
-                    }`}
-                    aria-hidden="true"
-                  >
-                    {n}
-                  </span>
-                  <span
-                    className={state === "current" ? "font-display" : "text-muted"}
-                    aria-current={state === "current" ? "step" : undefined}
+                    className={
+                      state === "current" ? "font-display text-lg" : "text-lg text-faint"
+                    }
                   >
                     {label}
                   </span>
@@ -101,10 +102,9 @@ export function BookingForm() {
           </ol>
         </div>
 
-        <Card padding="lg" className="lg:col-span-3">
+        <div className="col-span-4 mt-12 md:col-span-7 md:col-start-6 md:mt-0">
           {step === 1 ? (
-            <form onSubmit={onDetails} className="flex flex-col gap-6" noValidate={false}>
-              <h3 className="text-lg">Your details</h3>
+            <form onSubmit={onDetails} className="flex flex-col gap-8">
               <Field label="Full name" htmlFor="name">
                 <Input
                   id="name"
@@ -115,7 +115,7 @@ export function BookingForm() {
                   onChange={(e) => update("name", e.target.value)}
                 />
               </Field>
-              <div className="grid gap-6 sm:grid-cols-2">
+              <div className="grid gap-8 sm:grid-cols-2">
                 <Field label="Email" htmlFor="email">
                   <Input
                     id="email"
@@ -155,29 +155,31 @@ export function BookingForm() {
                   <option value="OTHER">Other</option>
                 </Select>
               </Field>
-              <Checkbox
-                name="roomShare"
-                required
-                checked={details.roomShare}
-                onChange={(e) => update("roomShare", e.target.checked)}
-                label="I understand the package is based on two people sharing a room."
-              />
-              <Checkbox
-                name="consent"
-                required
-                checked={details.consent}
-                onChange={(e) => update("consent", e.target.checked)}
-                label={
-                  <>
-                    I agree to be contacted by {trip.brand} about my booking and accept the{" "}
-                    {/* TODO: link real privacy policy */}
-                    <a href="#" className="text-pink underline">
-                      privacy policy
-                    </a>
-                    .
-                  </>
-                }
-              />
+              <div className="flex flex-col gap-4 border-t border-border pt-6">
+                <Checkbox
+                  name="roomShare"
+                  required
+                  checked={details.roomShare}
+                  onChange={(e) => update("roomShare", e.target.checked)}
+                  label="I understand the package is based on two people sharing a room."
+                />
+                <Checkbox
+                  name="consent"
+                  required
+                  checked={details.consent}
+                  onChange={(e) => update("consent", e.target.checked)}
+                  label={
+                    <>
+                      I agree to be contacted by {trip.brand} about my booking and accept the{" "}
+                      {/* TODO: link real privacy policy */}
+                      <a href="#" className="underline">
+                        privacy policy
+                      </a>
+                      .
+                    </>
+                  }
+                />
+              </div>
               <Button type="submit" size="lg" className="sm:self-start">
                 Continue to trip terms
               </Button>
@@ -186,24 +188,26 @@ export function BookingForm() {
 
           {step === 2 ? (
             <form onSubmit={onTerms} className="flex flex-col gap-6">
-              <h3 className="text-lg">Please confirm</h3>
-              <Checkbox
-                checked={terms.deposit}
-                onChange={(e) => setTerms((t) => ({ ...t, deposit: e.target.checked }))}
-                label={`The ${trip.deposit} deposit is non-refundable.`}
-              />
-              <Checkbox
-                checked={terms.flights}
-                onChange={(e) => setTerms((t) => ({ ...t, flights: e.target.checked }))}
-                label="Flights to Zanzibar are not included in the package."
-              />
-              <Checkbox
-                checked={terms.sharing}
-                onChange={(e) => setTerms((t) => ({ ...t, sharing: e.target.checked }))}
-                label="The package is based on two people sharing a room and is subject to availability."
-              />
+              <Label>Please confirm</Label>
+              <div className="flex flex-col gap-4 border-t border-border pt-6">
+                <Checkbox
+                  checked={terms.deposit}
+                  onChange={(e) => setTerms((t) => ({ ...t, deposit: e.target.checked }))}
+                  label={`The ${trip.deposit} deposit is non-refundable.`}
+                />
+                <Checkbox
+                  checked={terms.flights}
+                  onChange={(e) => setTerms((t) => ({ ...t, flights: e.target.checked }))}
+                  label="Flights to Zanzibar are not included in the package."
+                />
+                <Checkbox
+                  checked={terms.sharing}
+                  onChange={(e) => setTerms((t) => ({ ...t, sharing: e.target.checked }))}
+                  label="The package is based on two people sharing a room and is subject to availability."
+                />
+              </div>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Button type="button" variant="ghost" onClick={() => setStep(1)}>
+                <Button type="button" variant="ghost" size="lg" onClick={() => setStep(1)}>
                   Back
                 </Button>
                 <Button type="submit" size="lg" disabled={!allTerms}>
@@ -215,34 +219,36 @@ export function BookingForm() {
 
           {step === 3 ? (
             <form onSubmit={onDeposit} className="flex flex-col gap-6">
-              <h3 className="text-lg">Pay your {trip.deposit} deposit</h3>
-              {details.country === "NG" ? (
-                <p className="rounded-sm bg-sand p-4 text-base">
-                  Paying from Nigeria? Contact {trip.organisers} for the current exchange rate
-                  before making payment. We will send you the details after you submit.
-                </p>
-              ) : (
-                <p className="rounded-sm bg-sand p-4 text-base">
-                  Secure online checkout in GBP. {/* TODO: payment processor TBC */}
-                  <span className="text-muted"> (Checkout integration coming soon.)</span>
-                </p>
-              )}
+              <Label>Pay your {trip.deposit} deposit</Label>
+              <div className="border-t border-border pt-6">
+                {details.country === "NG" ? (
+                  <p className="max-w-prose text-base">
+                    Paying from Nigeria? Contact {trip.organisers} for the current exchange rate
+                    before making payment. We will send you the details after you submit.
+                  </p>
+                ) : (
+                  <p className="max-w-prose text-base">
+                    Secure online checkout in GBP. {/* TODO: payment processor TBC */}
+                    <span className="text-muted"> (Checkout integration coming soon.)</span>
+                  </p>
+                )}
+              </div>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Button type="button" variant="ghost" onClick={() => setStep(2)}>
+                <Button type="button" variant="ghost" size="lg" onClick={() => setStep(2)}>
                   Back
                 </Button>
                 <Button type="submit" size="lg">
                   Pay {trip.deposit} deposit
                 </Button>
               </div>
-              <p className="text-xs text-muted">
+              <p className="text-xs text-faint">
                 We will never ask for passport details in this form. Travel documents are collected
                 later through a secure process.
               </p>
             </form>
           ) : null}
-        </Card>
-      </div>
+        </div>
+      </Grid>
     </Section>
   );
 }

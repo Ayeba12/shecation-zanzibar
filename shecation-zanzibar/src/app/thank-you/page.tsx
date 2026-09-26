@@ -12,8 +12,8 @@ export default function ThankYou() {
   return (
     <main className="flex flex-1 items-center bg-cream py-24">
       <Container size="prose" className="text-center">
-        <p className="font-display text-sm uppercase tracking-[0.12em] text-pink">Thank you</p>
-        <h1 className="mt-3 text-3xl md:text-4xl">Your SHE-CATION 4.0 spot is being secured.</h1>
+        <p className="label text-pink">Thank you</p>
+        <h1 className="display mt-4 text-3xl md:text-5xl">Your SHE-CATION 4.0 spot is being secured.</h1>
         <p className="mt-6 text-lg text-muted">
           We have received your booking details. You will get a confirmation by email and WhatsApp
           with your payment receipt and next steps, including the instalment plan and flight

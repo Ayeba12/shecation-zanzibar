@@ -1,38 +1,59 @@
 import Link from "next/link";
-import { Container } from "@/components/ui/Container";
-import { trip } from "@/lib/content";
+import { Button } from "@/components/ui/Button";
+import { Container, Grid } from "@/components/ui/Container";
+import { Label } from "@/components/ui/Label";
+import { nav, trip } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="bg-navy py-12 text-white">
-      <Container className="grid gap-8 md:grid-cols-3">
-        <div>
-          <p className="font-display text-lg">{trip.brand}</p>
-          <p className="mt-1 text-sm text-white/70">
-            {trip.name} Zanzibar · {trip.dates}
+    <footer className="border-t border-white/10 bg-navy py-16 text-white md:py-24">
+      <Container>
+        <Grid>
+          {/* Small pill links */}
+          <nav aria-label="Footer" className="col-span-4 flex flex-col items-start gap-2 md:col-span-3">
+            {nav.map((item) => (
+              <Button key={item.href} href={item.href} variant="pill-dark" size="xs">
+                {item.label}
+              </Button>
+            ))}
+          </nav>
+
+          {/* Big contact */}
+          <div className="col-span-4 mt-12 md:col-span-7 md:col-start-5 md:mt-0">
+            <Label tone="white">Get in touch</Label>
+            {/* TODO: replace placeholders with confirmed contact details */}
+            <p className="display mt-4 text-xl sm:text-2xl lg:text-3xl">{trip.email}</p>
+            <p className="display mt-2 text-xl sm:text-2xl lg:text-3xl">{trip.whatsapp}</p>
+            <p className="mt-6 text-sm text-white/60">
+              Ask for {trip.organisers}. WhatsApp is the fastest way to reach us.
+            </p>
+          </div>
+        </Grid>
+
+        <Grid className="mt-16 border-t border-white/10 pt-6 md:mt-24">
+          <p className="col-span-4 text-xs text-white/50 md:col-span-3">
+            © {new Date().getFullYear()} {trip.brand}
+            <br />
+            All rights reserved
           </p>
-        </div>
-        <div className="text-sm text-white/80">
-          <p className="font-display text-sm uppercase tracking-[0.12em] text-sky">Contact</p>
-          {/* TODO: replace placeholders with confirmed contact details */}
-          <p className="mt-2">WhatsApp: {trip.whatsapp}</p>
-          <p>Email: {trip.email}</p>
-        </div>
-        <nav aria-label="Legal" className="flex flex-col gap-2 text-sm text-white/80 md:items-end">
-          {/* TODO: link to real Terms / Privacy / Booking Terms pages */}
-          <Link href="#" className="hover:text-white">
-            Terms
-          </Link>
-          <Link href="#" className="hover:text-white">
-            Privacy
-          </Link>
-          <Link href="#" className="hover:text-white">
-            Booking Terms
-          </Link>
-        </nav>
-      </Container>
-      <Container className="mt-10 border-t border-white/10 pt-6 text-xs text-white/50">
-        © {new Date().getFullYear()} {trip.brand}. Photography via Unsplash.
+          <div className="col-span-4 mt-6 flex flex-col gap-1 text-xs text-white/50 md:col-span-4 md:col-start-5 md:mt-0">
+            {/* TODO: link to real Terms / Privacy / Booking Terms pages */}
+            <Link href="#" className="hover:text-white">
+              Terms
+            </Link>
+            <Link href="#" className="hover:text-white">
+              Privacy
+            </Link>
+            <Link href="#" className="hover:text-white">
+              Booking Terms
+            </Link>
+          </div>
+          <p className="col-span-4 mt-6 text-xs text-white/50 md:col-span-3 md:col-start-10 md:mt-0 md:text-right">
+            {trip.name} Zanzibar · {trip.dates}
+            <br />
+            Photography via Unsplash
+          </p>
+        </Grid>
       </Container>
     </footer>
   );

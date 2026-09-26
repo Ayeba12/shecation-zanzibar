@@ -222,8 +222,45 @@ export const socialProof = {
 };
 
 export const nav = [
-  { label: "What's included", href: "#included" },
+  { label: "About", href: "#about" },
+  { label: "Included", href: "#included" },
   { label: "Experiences", href: "#experiences" },
   { label: "Price", href: "#price" },
   { label: "FAQ", href: "#faq" },
+];
+
+/** Big two-line statement band under the hero (editorial). */
+export const statement = {
+  left: "Zanzibar, Tanzania. 9–13 March 2027.",
+  right: "Only £200 to secure your place.",
+};
+
+/** Big numbers for the price section. */
+export const stats = [
+  { value: "5", unit: "days", label: "On the island" },
+  { value: "4", unit: "nights", label: "At Tembo Resort" },
+  { value: "£1,100", label: "Per person, two sharing" },
+];
+
+/** Tags pinned over the hero photograph. */
+export const heroTags = ["Tembo Resort", "Nungwi Beach", "Stone Town", "The Rock"];
+
+/** FAQ grouped for the hairline accordion with left-hand category labels. */
+export const faqGroups = [
+  {
+    label: "Booking",
+    items: faq.filter((f) =>
+      ["How do I secure my place?", "Is the package based on room sharing?", "When should I book my flight?", "What is the cancellation policy?"].includes(f.q),
+    ),
+  },
+  {
+    label: "The trip",
+    items: faq.filter((f) =>
+      ["What is included in the £1,100 package?", "Are flights included?", "What activities are planned?", "Is the Zanzibar visa included?", "Is travel insurance included?", "Are airport transfers included?"].includes(f.q),
+    ),
+  },
+  {
+    label: "Money",
+    items: faq.filter((f) => ["Can I pay in instalments?", "What if I am paying from Nigeria?"].includes(f.q)),
+  },
 ];

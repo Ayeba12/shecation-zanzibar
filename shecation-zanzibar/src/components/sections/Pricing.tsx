@@ -1,67 +1,79 @@
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
-import { Section, SectionHeading } from "@/components/ui/Section";
-import { cta, pricing, trip } from "@/lib/content";
+import { Grid } from "@/components/ui/Container";
+import { Label } from "@/components/ui/Label";
+import { Section } from "@/components/ui/Section";
+import { Stat } from "@/components/ui/Stat";
+import { cta, pricing, stats, trip } from "@/lib/content";
 
 export function Pricing() {
   return (
-    <Section tone="white" id="price">
-      <SectionHeading eyebrow="Price and payment" title={pricing.title} lead={pricing.lead} />
-
-      <div className="mt-12 grid gap-8 lg:grid-cols-5">
-        {/* Price card */}
-        <Card tone="sand" padding="lg" className="flex flex-col lg:col-span-2">
-          <Badge tone="sunshine">Book by {trip.bookingDeadline}</Badge>
-          <p className="mt-6 font-display text-5xl text-pink">{trip.price}</p>
-          <p className="font-display text-base">{trip.priceNote}</p>
-          <p className="mt-6 text-base text-muted">
-            {trip.deposit} {trip.depositNote} deposit to secure your place. Flights not included.
-            Based on two people sharing a room.
-          </p>
-          <div className="mt-auto pt-8">
-            <Button href="#book" size="lg" className="w-full">
-              {pricing.cta}
-            </Button>
+    <Section tone="cream" id="price">
+      {/* Big numbers */}
+      <Grid className="gap-y-10">
+        {stats.map((s) => (
+          <div key={s.label} className="col-span-4 md:col-span-4">
+            <Stat value={s.value} unit={s.unit} label={s.label} />
           </div>
-        </Card>
+        ))}
+      </Grid>
 
-        {/* Payment schedule */}
-        <Card padding="lg" className="lg:col-span-3">
-          <h3 className="text-lg">Payment plan</h3>
-          <table className="mt-6 w-full text-left text-base">
+      {/* Payment plan */}
+      <Grid className="mt-20 md:mt-32">
+        <div className="col-span-4 md:col-span-4">
+          <Label tone="navy" dot>
+            Price and payment
+          </Label>
+          <h2 className="display mt-6 text-3xl sm:text-4xl">{pricing.title}</h2>
+          <p className="mt-6 max-w-sm text-sm text-muted">{pricing.lead}</p>
+          <div className="mt-8">
+            <Badge tone="sunshine">Book by {trip.bookingDeadline}</Badge>
+          </div>
+        </div>
+
+        <div className="col-span-4 mt-12 md:col-span-7 md:col-start-6 md:mt-0">
+          <table className="w-full border-t border-border text-left">
+            <caption className="sr-only">Payment schedule</caption>
             <thead>
-              <tr className="border-b border-border font-display text-sm uppercase tracking-[0.1em] text-muted">
-                <th scope="col" className="py-3 pr-4 font-semibold">
+              <tr>
+                <th scope="col" className="label py-4 pr-4 font-normal text-faint">
                   Stage
                 </th>
-                <th scope="col" className="py-3 pr-4 font-semibold">
+                <th scope="col" className="label py-4 pr-4 font-normal text-faint">
                   Due
                 </th>
-                <th scope="col" className="py-3 text-right font-semibold">
+                <th scope="col" className="label py-4 text-right font-normal text-faint">
                   Amount
                 </th>
               </tr>
             </thead>
             <tbody>
               {pricing.schedule.map((row) => (
-                <tr key={row.stage} className="border-b border-border">
-                  <td className="py-4 pr-4 font-display">{row.stage}</td>
-                  <td className="py-4 pr-4 text-muted">{row.due}</td>
-                  <td className="py-4 text-right font-display">{row.amount}</td>
+                <tr key={row.stage} className="border-t border-border">
+                  <td className="py-5 pr-4 font-display text-lg">{row.stage}</td>
+                  <td className="py-5 pr-4 text-base text-muted">{row.due}</td>
+                  <td className="py-5 text-right font-display text-lg">{row.amount}</td>
                 </tr>
               ))}
-              <tr>
-                <td className="py-4 pr-4 font-display">Total</td>
+              <tr className="border-t border-border">
+                <td className="py-5 pr-4 font-display text-lg">Total</td>
                 <td />
-                <td className="py-4 text-right font-display text-pink">{pricing.total}</td>
+                <td className="py-5 text-right font-display text-2xl text-pink">
+                  {pricing.total}
+                </td>
               </tr>
             </tbody>
           </table>
-          <p className="mt-6 rounded-sm bg-cream p-4 text-base">{pricing.nigeria}</p>
-        </Card>
-      </div>
-      <p className="mt-6 text-sm text-muted">{cta.micro}</p>
+
+          <div className="mt-8 flex flex-col gap-6 border-t border-border pt-6 md:flex-row md:items-center md:justify-between">
+            <p className="max-w-md text-sm text-muted">{pricing.nigeria}</p>
+            <Button href="#book" size="md">
+              {pricing.cta}
+            </Button>
+          </div>
+          <p className="mt-6 text-xs text-faint">{cta.micro}</p>
+        </div>
+      </Grid>
     </Section>
   );
 }

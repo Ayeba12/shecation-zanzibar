@@ -4,8 +4,11 @@ import { Accordion } from "@/components/ui/Accordion";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Container } from "@/components/ui/Container";
+import { Container, Grid } from "@/components/ui/Container";
 import { Checkbox, Field, Input, Select } from "@/components/ui/Field";
+import { ImageTag } from "@/components/ui/ImageTag";
+import { Label } from "@/components/ui/Label";
+import { Stat } from "@/components/ui/Stat";
 
 export const metadata: Metadata = {
   title: "Design System | SHE-CATION 4.0",
@@ -37,6 +40,8 @@ const swatchBg: Record<string, string> = {
 };
 
 const typescale = [
+  { token: "text-8xl", px: 124, lh: 124, cls: "text-8xl", note: "119.2 → 124 · display" },
+  { token: "text-7xl", px: 100, lh: 100, cls: "text-7xl", note: "95.37 → 100 · display" },
   { token: "text-6xl", px: 80, lh: 88, cls: "text-6xl", note: "76.29 → 80" },
   { token: "text-5xl", px: 64, lh: 72, cls: "text-5xl", note: "61.04 → 64" },
   { token: "text-4xl", px: 48, lh: 56, cls: "text-4xl", note: "48.83 → 48" },
@@ -46,16 +51,40 @@ const typescale = [
   { token: "text-lg", px: 20, lh: 28, cls: "text-lg", note: "20.00" },
   { token: "text-base", px: 16, lh: 24, cls: "text-base", note: "16.00 (base)" },
   { token: "text-sm", px: 14, lh: 20, cls: "text-sm", note: "half step" },
-  { token: "text-xs", px: 12, lh: 16, cls: "text-xs", note: "12.80 → 12" },
+  { token: "text-xs", px: 12, lh: 16, cls: "text-xs", note: "12.80 → 12 · labels" },
 ];
 
 const spacing = [4, 8, 12, 16, 24, 32, 48, 64, 96, 128];
 
+const sections = [
+  "principles",
+  "colour",
+  "typography",
+  "grid",
+  "spacing",
+  "radius",
+  "buttons",
+  "labels",
+  "badges",
+  "stats",
+  "lists",
+  "images",
+  "cards",
+  "forms",
+  "accordion",
+];
+
 function Block({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section id={id} className="scroll-mt-24 border-t border-border py-16">
-      <h2 className="text-2xl">{title}</h2>
-      <div className="mt-8">{children}</div>
+      <Grid>
+        <div className="col-span-4 md:col-span-3">
+          <Label tone="navy" dot>
+            {title}
+          </Label>
+        </div>
+        <div className="col-span-4 mt-6 md:col-span-9 md:col-start-4 md:mt-0">{children}</div>
+      </Grid>
     </section>
   );
 }
@@ -64,158 +93,252 @@ export default function DesignSystem() {
   return (
     <main className="flex-1 bg-cream">
       <Container className="py-16">
-        <p className="font-display text-sm uppercase tracking-[0.12em] text-pink">
-          SHE-CATION 4.0 Zanzibar
-        </p>
-        <h1 className="mt-3 text-4xl">Design System</h1>
-        <p className="mt-4 max-w-prose text-lg text-muted">
-          Living reference for colour, type, spacing and components. Grid: 4pt base, 8pt rhythm.
-          Type: Quicksand 600 for display, Spline Sans 400 for body. Scale: 16px × 1.25.
-        </p>
-        <nav aria-label="Sections" className="mt-8 flex flex-wrap gap-2">
-          {["colour", "typography", "spacing", "radius", "buttons", "badges", "cards", "forms", "accordion"].map(
-            (s) => (
-              <a
-                key={s}
-                href={`#${s}`}
-                className="rounded-full bg-white px-4 py-2 font-display text-sm capitalize text-navy shadow-card hover:bg-sand"
-              >
-                {s}
-              </a>
-            ),
-          )}
-        </nav>
+        <Grid>
+          <div className="col-span-4 md:col-span-3">
+            <Label tone="navy" dot>
+              SHE-CATION 4.0 Zanzibar
+            </Label>
+          </div>
+          <div className="col-span-4 mt-6 md:col-span-9 md:col-start-4 md:mt-0">
+            <h1 className="display text-5xl uppercase lg:text-7xl">Design System</h1>
+            <p className="mt-6 max-w-prose text-lg text-muted">
+              Living reference for colour, type, grid and components. Editorial direction inspired
+              by vazianixstudios.com, translated into the SHE-CATION palette. Grid: 4pt base, 8pt
+              rhythm. Type: Quicksand 600 display, Spline Sans 400 body. Scale: 16px × 1.25.
+            </p>
+            <nav aria-label="Sections" className="mt-8 flex flex-wrap gap-2">
+              {sections.map((s) => (
+                <Button key={s} href={`#${s}`} variant="pill" size="xs">
+                  {s}
+                </Button>
+              ))}
+            </nav>
+          </div>
+        </Grid>
 
-        <Block id="colour" title="Colour">
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {colours.map((c) => (
-              <li key={c.token} className="overflow-hidden rounded-lg bg-white shadow-card">
-                <div className={`h-24 ${swatchBg[c.token]} border-b border-border`} />
-                <div className="p-4">
-                  <p className="font-display text-base">{c.name}</p>
-                  <p className="mt-1 font-mono text-sm text-muted">
-                    {c.hex} · <span className="text-navy">--color-{c.token}</span>
+        <div className="mt-16">
+          <Block id="principles" title="Principles">
+            <ol className="grid gap-x-6 gap-y-8 sm:grid-cols-2">
+              {[
+                ["Type leads", "Big, tight Quicksand display type does the talking. Photography sits under it, full-bleed."],
+                ["Asymmetric grid", "12 columns. Micro labels in the left rail, content offset to the right from column 5."],
+                ["Hairlines, not boxes", "Sections and lists are separated by 1px navy/14 rules. Cards are rare."],
+                ["Colour as signal", "Cream canvas, navy type. Pink only for conversion. Yellow for one small highlight."],
+                ["Micro labels", "12px uppercase, 0.12em tracking, for meta, numbers and category rails."],
+                ["Calm motion", "Hover only. Nothing moves unless the user asks it to."],
+              ].map(([t, d], i) => (
+                <li key={t} className="border-t border-border pt-4">
+                  <Label>{String(i + 1).padStart(2, "0")}</Label>
+                  <p className="mt-3 font-display text-lg">{t}</p>
+                  <p className="mt-1 text-sm text-muted">{d}</p>
+                </li>
+              ))}
+            </ol>
+          </Block>
+
+          <Block id="colour" title="Colour">
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {colours.map((c) => (
+                <li key={c.token} className="border-t border-border pt-4">
+                  <div className={`h-24 ${swatchBg[c.token]} border border-border`} />
+                  <p className="mt-4 font-display text-base">{c.name}</p>
+                  <p className="mt-1 font-mono text-xs text-muted">
+                    {c.hex} · --color-{c.token}
                   </p>
                   <p className="mt-2 text-sm text-muted">{c.use}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-sm text-muted">
+              Balance: 50% cream + white · 20% turquoise + sky · 15% pink · 10% navy · 5% yellow.
+            </p>
+          </Block>
+
+          <Block id="typography" title="Typography">
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="border-t border-border pt-4">
+                <Label>Display · Quicksand 600 · leading 0.95</Label>
+                <p className="display mt-4 text-4xl uppercase">Five days. Zanzibar.</p>
+              </div>
+              <div className="border-t border-border pt-4">
+                <Label>Body · Spline Sans 400</Label>
+                <p className="mt-4 text-base">
+                  Trade the routine for turquoise water, white sand, good food and five days with
+                  women who came to breathe.
+                </p>
+              </div>
+            </div>
+            <div className="mt-10 border-t border-border">
+              {typescale.map((t) => (
+                <div
+                  key={t.token}
+                  className="grid items-baseline gap-4 border-b border-border py-4 md:grid-cols-[8rem_1fr_10rem]"
+                >
+                  <p className="font-mono text-xs text-muted">
+                    {t.token}
+                    <br />
+                    {t.px}/{t.lh}
+                  </p>
+                  <p className={`${t.cls} font-display truncate`}>Pause. Reconnect.</p>
+                  <p className="text-xs text-muted md:text-right">{t.note}</p>
                 </div>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-sm text-muted">
-            Balance: 50% cream + white · 20% turquoise + sky · 15% pink · 10% navy · 5% yellow.
-          </p>
-        </Block>
-
-        <Block id="typography" title="Typography">
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card>
-              <p className="text-sm text-muted">Display · Quicksand 600</p>
-              <p className="mt-2 font-display text-3xl">Five Days. Zanzibar.</p>
-            </Card>
-            <Card>
-              <p className="text-sm text-muted">Body · Spline Sans 400</p>
-              <p className="mt-2 text-lg">
-                Trade the routine for turquoise water, white sand, good food and five days with
-                women who came to breathe.
-              </p>
-            </Card>
-          </div>
-          <div className="mt-8 overflow-hidden rounded-lg bg-white shadow-card">
-            {typescale.map((t) => (
-              <div
-                key={t.token}
-                className="grid items-baseline gap-4 border-b border-border px-6 py-4 last:border-0 md:grid-cols-[10rem_1fr_10rem]"
-              >
-                <p className="font-mono text-sm text-muted">
-                  {t.token}
-                  <br />
-                  {t.px}/{t.lh}
-                </p>
-                <p className={`${t.cls} font-display truncate`}>Pause. Reconnect. Zanzibar.</p>
-                <p className="text-sm text-muted md:text-right">{t.note}</p>
-              </div>
-            ))}
-          </div>
-        </Block>
-
-        <Block id="spacing" title="Spacing (4pt / 8pt grid)">
-          <ul className="flex flex-col gap-3">
-            {spacing.map((s) => (
-              <li key={s} className="flex items-center gap-4">
-                <span className="w-16 font-mono text-sm text-muted">{s}px</span>
-                <span className="h-4 rounded-[2px] bg-turquoise" style={{ width: s }} />
-                <span className="font-mono text-sm text-muted">{s / 4}</span>
-              </li>
-            ))}
-          </ul>
-        </Block>
-
-        <Block id="radius" title="Radius">
-          <div className="flex flex-wrap gap-6">
-            {[
-              ["sm", "rounded-sm", "8"],
-              ["md", "rounded-md", "16"],
-              ["lg", "rounded-lg", "24"],
-              ["xl", "rounded-xl", "32"],
-              ["full", "rounded-full", "pill"],
-            ].map(([k, cls, px]) => (
-              <div key={k} className="flex flex-col items-center gap-2">
-                <div className={`size-24 bg-sand border-2 border-pink ${cls}`} />
-                <p className="font-mono text-sm text-muted">
-                  {cls} · {px}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Block>
-
-        <Block id="buttons" title="Buttons">
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-wrap items-center gap-4">
-              <Button>Secure Your Spot</Button>
-              <Button variant="secondary">Explore Zanzibar</Button>
-              <Button variant="outline">See the itinerary</Button>
-              <Button variant="ghost">Back</Button>
-              <Button disabled>Disabled</Button>
+              ))}
             </div>
-            <div className="flex flex-wrap items-center gap-4">
-              <Button size="sm">Small · 40</Button>
-              <Button size="md">Medium · 48</Button>
-              <Button size="lg">Large · 56</Button>
+          </Block>
+
+          <Block id="grid" title="Grid">
+            <p className="text-sm text-muted">
+              4 columns on mobile, 12 from 768px. Gutters 16 / 24px. Left rail = cols 1–3, content
+              starts at col 5 (or col 4 for headlines).
+            </p>
+            <div className="mt-6 grid grid-cols-4 gap-x-4 md:grid-cols-12 md:gap-x-6">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-16 bg-sky/40 text-center label pt-6 text-navy ${i >= 4 ? "hidden md:block" : ""}`}
+                >
+                  {i + 1}
+                </div>
+              ))}
             </div>
-          </div>
-        </Block>
+          </Block>
 
-        <Block id="badges" title="Badges">
-          <div className="flex flex-wrap gap-3">
-            <Badge tone="sunshine">9-13 March 2027</Badge>
-            <Badge tone="turquoise">Zanzibar</Badge>
-            <Badge tone="pink">Limited places</Badge>
-            <Badge tone="navy">Included</Badge>
-            <Badge tone="sand">Optional</Badge>
-          </div>
-        </Block>
+          <Block id="spacing" title="Spacing (4 / 8pt)">
+            <ul className="flex flex-col gap-3">
+              {spacing.map((s) => (
+                <li key={s} className="flex items-center gap-4">
+                  <span className="w-16 font-mono text-xs text-muted">{s}px</span>
+                  <span className="h-3 bg-turquoise" style={{ width: s }} />
+                  <span className="font-mono text-xs text-muted">{s / 4}</span>
+                </li>
+              ))}
+            </ul>
+          </Block>
 
-        <Block id="cards" title="Cards">
-          <div className="grid gap-6 md:grid-cols-3">
-            <Card>
-              <h3 className="text-lg">White card</h3>
-              <p className="mt-2 text-base text-muted">Default surface on cream backgrounds.</p>
-            </Card>
-            <Card tone="sand">
-              <h3 className="text-lg">Sand card</h3>
-              <p className="mt-2 text-base text-muted">Pricing, testimonials, alternating blocks.</p>
-            </Card>
-            <Card tone="cream">
-              <h3 className="text-lg">Cream card</h3>
-              <p className="mt-2 text-base text-muted">Use on white sections.</p>
-            </Card>
-          </div>
-        </Block>
+          <Block id="radius" title="Radius">
+            <div className="flex flex-wrap gap-6">
+              {[
+                ["none", "rounded-none", "photos"],
+                ["sm", "rounded-sm", "8"],
+                ["md", "rounded-md", "16"],
+                ["lg", "rounded-lg", "24"],
+                ["full", "rounded-full", "pills"],
+              ].map(([k, cls, px]) => (
+                <div key={k} className="flex flex-col items-center gap-2">
+                  <div className={`size-20 border border-navy bg-sand ${cls}`} />
+                  <p className="font-mono text-xs text-muted">
+                    {cls} · {px}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Block>
 
-        <Block id="forms" title="Forms">
-          <Card className="max-w-prose">
-            <div className="flex flex-col gap-6">
+          <Block id="buttons" title="Buttons">
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-wrap items-center gap-3">
+                <Button>Secure Your Spot</Button>
+                <Button variant="secondary">Explore Zanzibar</Button>
+                <Button variant="outline">See the itinerary</Button>
+                <Button variant="pill">Nav pill</Button>
+                <Button variant="ghost">Back</Button>
+                <Button disabled>Disabled</Button>
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <Button size="xs">XS · 32</Button>
+                <Button size="sm">SM · 40</Button>
+                <Button size="md">MD · 48</Button>
+                <Button size="lg">LG · 56</Button>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 bg-navy p-6">
+                <Button variant="pill-dark" size="xs">
+                  About
+                </Button>
+                <Button variant="pill-dark" size="xs">
+                  Included
+                </Button>
+                <Button size="xs">Secure Your Spot</Button>
+              </div>
+            </div>
+          </Block>
+
+          <Block id="labels" title="Micro labels">
+            <div className="flex flex-col gap-3">
+              <Label tone="navy" dot>
+                Navy with dot
+              </Label>
+              <Label>Muted (default)</Label>
+              <Label tone="turquoise">Turquoise</Label>
+              <Label tone="pink" dot>
+                Pink · Not included
+              </Label>
+              <div className="bg-navy p-4">
+                <Label tone="white" dot>
+                  White on navy
+                </Label>
+              </div>
+            </div>
+          </Block>
+
+          <Block id="badges" title="Badges">
+            <div className="flex flex-wrap gap-3">
+              <Badge tone="sunshine">Book by 31 October 2026</Badge>
+              <Badge tone="turquoise">Zanzibar</Badge>
+              <Badge tone="pink">Limited places</Badge>
+              <Badge tone="navy">Included</Badge>
+              <Badge tone="sand">Optional</Badge>
+            </div>
+          </Block>
+
+          <Block id="stats" title="Stats">
+            <div className="grid gap-8 sm:grid-cols-3">
+              <Stat value="5" unit="days" label="On the island" />
+              <Stat value="4" unit="nights" label="At Tembo Resort" />
+              <Stat value="£1,100" label="Per person, two sharing" />
+            </div>
+          </Block>
+
+          <Block id="lists" title="Numbered lists">
+            <ol className="grid gap-x-6 gap-y-8 sm:grid-cols-2">
+              {["4 nights / 5 days at Tembo Resort", "Breakfast, lunch and dinner", "Private airport transfers", "Visa fees included"].map(
+                (item, i) => (
+                  <li key={item} className="border-t border-border pt-4">
+                    <Label>{String(i + 1).padStart(2, "0")}</Label>
+                    <p className="mt-4 text-base">{item}</p>
+                  </li>
+                ),
+              )}
+            </ol>
+          </Block>
+
+          <Block id="images" title="Image tags">
+            <div className="relative aspect-[16/9] overflow-hidden bg-sky">
+              <ImageTag style={{ left: "10%", top: "30%" }}>Tembo Resort</ImageTag>
+              <ImageTag style={{ left: "55%", top: "60%" }}>Nungwi Beach</ImageTag>
+              <div className="absolute inset-x-0 bottom-0 flex justify-between p-4">
+                <Label tone="navy">Zanzibar, Tanzania</Label>
+                <Label tone="navy">5 days / 4 nights</Label>
+              </div>
+            </div>
+          </Block>
+
+          <Block id="cards" title="Cards (rare)">
+            <div className="grid gap-6 md:grid-cols-2">
+              <Card tone="sand">
+                <h3 className="text-lg">Sand card</h3>
+                <p className="mt-2 text-base text-muted">
+                  Reserved for pricing highlights or testimonials when a surface is needed.
+                </p>
+              </Card>
+              <Card>
+                <h3 className="text-lg">White card</h3>
+                <p className="mt-2 text-base text-muted">Use sparingly on cream backgrounds.</p>
+              </Card>
+            </div>
+          </Block>
+
+          <Block id="forms" title="Forms">
+            <div className="flex max-w-prose flex-col gap-8">
               <Field label="Full name" htmlFor="ds-name">
                 <Input id="ds-name" placeholder="Your name" />
               </Field>
@@ -230,19 +353,19 @@ export default function DesignSystem() {
               </Field>
               <Checkbox label="I understand the package is based on two people sharing a room." />
             </div>
-          </Card>
-        </Block>
+          </Block>
 
-        <Block id="accordion" title="Accordion">
-          <div className="max-w-prose">
-            <Accordion
-              items={[
-                { q: "Are flights included?", a: "No. Flights to Zanzibar are not included." },
-                { q: "Is the visa included?", a: "Yes. Visa fees are included in the package." },
-              ]}
-            />
-          </div>
-        </Block>
+          <Block id="accordion" title="Accordion">
+            <div className="max-w-prose">
+              <Accordion
+                items={[
+                  { q: "Are flights included?", a: "No. Flights to Zanzibar are not included." },
+                  { q: "Is the visa included?", a: "Yes. Visa fees are included in the package." },
+                ]}
+              />
+            </div>
+          </Block>
+        </div>
       </Container>
     </main>
   );

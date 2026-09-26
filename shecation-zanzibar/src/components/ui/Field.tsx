@@ -1,7 +1,8 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
+/* Editorial underline inputs: no box, hairline bottom border, navy on focus. */
 const control =
-  "h-12 w-full rounded-sm border border-border bg-white px-4 text-base text-navy placeholder:text-navy/40 focus:border-turquoise focus:outline-none focus:ring-4 focus:ring-turquoise/25";
+  "h-12 w-full rounded-none border-0 border-b border-navy/25 bg-transparent px-0 text-base text-navy placeholder:text-faint focus:border-navy focus:outline-none";
 
 type FieldProps = {
   label: string;
@@ -12,12 +13,12 @@ type FieldProps = {
 
 export function Field({ label, hint, children, htmlFor }: FieldProps) {
   return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor={htmlFor} className="font-display text-sm text-navy">
+    <div className="flex flex-col gap-1">
+      <label htmlFor={htmlFor} className="label text-faint">
         {label}
       </label>
       {children}
-      {hint ? <p className="text-xs text-muted">{hint}</p> : null}
+      {hint ? <p className="mt-1 text-xs text-muted">{hint}</p> : null}
     </div>
   );
 }
@@ -32,9 +33,21 @@ export function Select({
   ...rest
 }: ComponentPropsWithoutRef<"select">) {
   return (
-    <select className={`${control} appearance-none ${className}`} {...rest}>
-      {children}
-    </select>
+    <div className="relative">
+      <select className={`${control} appearance-none pr-8 ${className}`} {...rest}>
+        {children}
+      </select>
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-navy"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+      >
+        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    </div>
   );
 }
 
@@ -47,7 +60,7 @@ export function Checkbox({
     <label className={`flex items-start gap-3 text-base text-navy ${className}`}>
       <input
         type="checkbox"
-        className="mt-1 size-5 shrink-0 rounded-[4px] border-border accent-pink"
+        className="mt-1 size-5 shrink-0 rounded-[4px] border-navy/30 accent-pink"
         {...rest}
       />
       <span>{label}</span>

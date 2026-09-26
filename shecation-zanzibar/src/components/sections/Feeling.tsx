@@ -1,40 +1,36 @@
 import Image from "next/image";
-import { Section } from "@/components/ui/Section";
+import { Container, Grid } from "@/components/ui/Container";
+import { Label } from "@/components/ui/Label";
 import { feeling } from "@/lib/content";
 
+/** Big offset statement followed by a full-bleed cinematic photograph. */
 export function Feeling() {
   return (
-    <Section tone="navy" id="feeling">
-      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
-            <Image
-              src="/images/women-water.jpg"
-              alt="Two young women laughing in the sea"
-              fill
-              sizes="(min-width: 1024px) 25vw, 50vw"
-              className="object-cover"
-            />
+    <section className="bg-cream text-navy" id="feeling">
+      <Container className="py-16 md:py-24 lg:py-32">
+        <Grid>
+          <div className="col-span-4 md:col-span-7 md:col-start-5">
+            <h2 className="display text-3xl sm:text-4xl lg:text-5xl">{feeling.title}</h2>
+            <p className="mt-8 max-w-prose text-base md:text-lg">{feeling.body1}</p>
+            <p className="mt-4 max-w-prose text-sm text-muted">{feeling.body2}</p>
           </div>
-          <div className="relative mt-8 aspect-[3/4] overflow-hidden rounded-lg">
-            <Image
-              src="/images/hammock.jpg"
-              alt="A hammock strung between two palm trees on a beach"
-              fill
-              sizes="(min-width: 1024px) 25vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-        <div>
-          <p className="font-display text-sm uppercase tracking-[0.12em] text-sky">
+        </Grid>
+      </Container>
+
+      <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
+        <Image
+          src="/images/dhow-sunset.jpg"
+          alt="Silhouette of a dhow sailboat at sunset off the Zanzibar coast"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 grid place-items-center">
+          <Label tone="white" className="text-white">
             The SHE-CATION feeling
-          </p>
-          <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl">{feeling.title}</h2>
-          <p className="mt-6 text-lg text-white/85">{feeling.body1}</p>
-          <p className="mt-4 text-base text-white/75">{feeling.body2}</p>
+          </Label>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
