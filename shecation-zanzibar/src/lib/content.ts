@@ -312,6 +312,13 @@ export const communityCards = [
     orientation: "landscape",
   },
   {
+    title: "Meet Dinma and Bokun",
+    meta: "Your hosts · SHE-Reconnects",
+    image: "/images/shecation-3/hosts-pool.jpg",
+    alt: "Dinma and Bokun, the SHE-Reconnects organisers, by the pool",
+    orientation: "portrait",
+  },
+  {
     title: "Pyjama night",
     meta: "SHE-CATION 3.0 · Evening in",
     image: "/images/shecation-3/pyjama-night-lobby.jpg",
@@ -375,3 +382,16 @@ export const communityCards = [
     orientation: "portrait",
   },
 ] as const;
+
+/** Your hosts block. Photos: public/images/shecation-3/hosts-dinner.jpg (landscape) and hosts-pool.jpg (portrait). */
+export const hosts = {
+  title: "Meet Dinma and Bokun.",
+  lead:
+    "The women behind SHE-Reconnects. They plan every detail, answer every question and travel with you, so all you have to do is show up.",
+  body:
+    "From the first WhatsApp message to the last night in Zanzibar, Dinma and Bokun are your point of contact. Ask them anything about the trip, the payment plan or paying from Nigeria.",
+  caption: "Dinma & Bokun · SHE-Reconnects organisers",
+  imageWide: "/images/shecation-3/hosts-dinner.jpg",
+  imageTall: "/images/shecation-3/hosts-pool.jpg",
+  alt: "Dinma and Bokun, the SHE-Reconnects organisers, smiling together",
+};

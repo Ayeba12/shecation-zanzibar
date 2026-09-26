@@ -5,6 +5,7 @@ import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
+import { Hosts } from "@/components/sections/Hosts";
 import { Included } from "@/components/sections/Included";
 import { KeyFigures } from "@/components/sections/KeyFigures";
 import { Moments } from "@/components/sections/Moments";
@@ -26,6 +27,7 @@ export default function Home() {
         <Moments />
         <Feeling />
         <WhoFor />
+        <Hosts />
         <Pricing />
         <SocialProof />
         <Faq />
