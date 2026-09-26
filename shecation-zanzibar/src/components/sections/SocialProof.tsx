@@ -1,59 +1,49 @@
 import Image from "next/image";
-import { Grid } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { Label } from "@/components/ui/Label";
 import { Section } from "@/components/ui/Section";
-import { socialProof } from "@/lib/content";
+import { communityCards, socialProof } from "@/lib/content";
 
-const pair = [
-  {
-    src: "/images/women-beach.jpg",
-    alt: "Two women enjoying a sunny day at the beach",
-    label: "SHE-CATION 3.0",
-  },
-  {
-    src: "/images/women-rocks.jpg",
-    alt: "Two women standing on rocks by the ocean",
-    label: "The community",
-  },
-];
-
-/** Two large side-by-side photographs with tiny labels, plus a testimonial slot. */
+/** Press-style card grid (NGLM): heading left, "see all" pill right, three cards. */
 export function SocialProof() {
   return (
     <Section tone="cream" id="community">
-      <Grid>
-        <div className="col-span-4 md:col-span-7 md:col-start-5">
-          <h2 className="display text-3xl sm:text-4xl lg:text-5xl">{socialProof.title}</h2>
-          <p className="mt-6 max-w-prose text-base text-muted">{socialProof.lead}</p>
-        </div>
-      </Grid>
-
-      {/* TODO: replace placeholder with real testimonials when supplied by client */}
-      <Grid className="mt-12 md:mt-16">
-        <div className="col-span-4 md:col-span-3">
-          <Label>Testimonials</Label>
-        </div>
-        <p className="col-span-4 mt-4 max-w-prose text-sm text-faint md:col-span-6 md:col-start-5 md:mt-0">
-          {socialProof.placeholder}
-        </p>
-      </Grid>
-
-      <div className="mt-16 grid gap-4 md:mt-24 md:grid-cols-2 md:gap-6">
-        {pair.map((img) => (
-          <figure key={img.src}>
-            <Label className="mb-4">{img.label}</Label>
-            <div className="relative aspect-[4/5] overflow-hidden">
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </figure>
-        ))}
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <h2 className="display max-w-2xl text-3xl uppercase sm:text-4xl lg:text-5xl">
+          From the SHE-CATION community
+        </h2>
+        {/* TODO: link to a real stories/press page when it exists */}
+        <Button href="#" variant="pill" size="sm">
+          See all stories
+        </Button>
       </div>
+
+      <ul className="mt-12 grid gap-8 sm:grid-cols-3 md:mt-16">
+        {communityCards.map((card) => (
+          <li key={card.title}>
+            <div className="relative aspect-[4/3] overflow-hidden bg-navy">
+              {"image" in card && card.image ? (
+                <Image
+                  src={card.image}
+                  alt={card.alt ?? ""}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              ) : (
+                <div className="grid h-full place-items-center text-white">
+                  <p className="display text-7xl lg:text-8xl">{card.block}</p>
+                </div>
+              )}
+            </div>
+            <p className="mt-4 font-display text-base">{card.title}</p>
+            <Label className="mt-1">{card.meta}</Label>
+          </li>
+        ))}
+      </ul>
+
+      {/* TODO: replace with real testimonials when supplied by client. Do not fabricate reviews. */}
+      <p className="mt-12 max-w-prose text-sm text-faint">{socialProof.placeholder}</p>
     </Section>
   );
 }

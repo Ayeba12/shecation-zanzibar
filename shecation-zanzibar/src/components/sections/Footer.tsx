@@ -6,10 +6,10 @@ import { nav, trip } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-navy py-16 text-white md:py-24">
+    <footer className="overflow-hidden border-t border-white/10 bg-navy pt-16 text-white md:pt-24">
       <Container>
         <Grid>
-          {/* Small pill links */}
+          {/* Small pill links (Vaziani) */}
           <nav aria-label="Footer" className="col-span-4 flex flex-col items-start gap-2 md:col-span-3">
             {nav.map((item) => (
               <Button key={item.href} href={item.href} variant="pill-dark" size="xs">
@@ -18,7 +18,7 @@ export function Footer() {
             ))}
           </nav>
 
-          {/* Big contact */}
+          {/* Big contact (Vaziani / NGLM) */}
           <div className="col-span-4 mt-12 md:col-span-7 md:col-start-5 md:mt-0">
             <Label tone="white">Get in touch</Label>
             {/* TODO: replace placeholders with confirmed contact details */}
@@ -54,6 +54,14 @@ export function Footer() {
             Photography via Unsplash
           </p>
         </Grid>
+
+        {/* Giant wordmark (NGLM) */}
+        <p
+          aria-hidden="true"
+          className="display mt-12 -mb-[0.12em] select-none whitespace-nowrap text-[13.5vw] uppercase leading-none tracking-[-0.04em] md:mt-16"
+        >
+          {trip.name.split(" ")[0]}
+        </p>
       </Container>
     </footer>
   );

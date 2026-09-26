@@ -60,6 +60,7 @@ const sections = [
   "principles",
   "colour",
   "typography",
+  "chapters",
   "grid",
   "spacing",
   "radius",
@@ -68,7 +69,9 @@ const sections = [
   "badges",
   "stats",
   "lists",
+  "cardrow",
   "images",
+  "wordmark",
   "cards",
   "forms",
   "accordion",
@@ -102,8 +105,9 @@ export default function DesignSystem() {
           <div className="col-span-4 mt-6 md:col-span-9 md:col-start-4 md:mt-0">
             <h1 className="display text-5xl uppercase lg:text-7xl">Design System</h1>
             <p className="mt-6 max-w-prose text-lg text-muted">
-              Living reference for colour, type, grid and components. Editorial direction inspired
-              by vazianixstudios.com, translated into the SHE-CATION palette. Grid: 4pt base, 8pt
+              Living reference for colour, type, grid and components. Editorial direction blends
+              vazianixstudios.com (asymmetric grid, hairlines, pill nav) with nglm.com (centred
+              chapters, key figures, staggered card row, giant wordmark), in the SHE-CATION palette. Grid: 4pt base, 8pt
               rhythm. Type: Quicksand 600 display, Spline Sans 400 body. Scale: 16px × 1.25.
             </p>
             <nav aria-label="Sections" className="mt-8 flex flex-wrap gap-2">
@@ -125,6 +129,7 @@ export default function DesignSystem() {
                 ["Hairlines, not boxes", "Sections and lists are separated by 1px navy/14 rules. Cards are rare."],
                 ["Colour as signal", "Cream canvas, navy type. Pink only for conversion. Yellow for one small highlight."],
                 ["Micro labels", "12px uppercase, 0.12em tracking, for meta, numbers and category rails."],
+                ["Two rhythms", "Centred chapters (label + uppercase headline) alternate with left-rail editorial rows."],
                 ["Calm motion", "Hover only. Nothing moves unless the user asks it to."],
               ].map(([t, d], i) => (
                 <li key={t} className="border-t border-border pt-4">
@@ -183,6 +188,22 @@ export default function DesignSystem() {
                   <p className="text-xs text-muted md:text-right">{t.note}</p>
                 </div>
               ))}
+            </div>
+          </Block>
+
+          <Block id="chapters" title="Chapter headings">
+            <p className="text-sm text-muted">
+              Centred label with dot, then an uppercase display headline. Used for Key facts,
+              Experiences and other &ldquo;chapter&rdquo; openers. Left-aligned rows use the same
+              label in the left rail instead.
+            </p>
+            <div className="mt-8 border-t border-border pt-12 text-center">
+              <Label tone="navy" dot className="justify-center">
+                Your Zanzibar moments
+              </Label>
+              <p className="display mx-auto mt-4 max-w-2xl text-3xl uppercase sm:text-4xl">
+                This is the kind of trip you remember in scenes.
+              </p>
             </div>
           </Block>
 
@@ -296,6 +317,15 @@ export default function DesignSystem() {
               <Stat value="4" unit="nights" label="At Tembo Resort" />
               <Stat value="£1,100" label="Per person, two sharing" />
             </div>
+            <p className="mt-10 text-sm text-muted">Centred key figure (chapter variant):</p>
+            <div className="mt-6 text-center">
+              <p className="display text-6xl lg:text-8xl">
+                6<span className="ml-2 align-top text-lg uppercase tracking-[0.08em]">moments</span>
+              </p>
+              <p className="mx-auto mt-4 max-w-xs text-sm text-muted">
+                Curated Zanzibar experiences, transfers included
+              </p>
+            </div>
           </Block>
 
           <Block id="lists" title="Numbered lists">
@@ -309,6 +339,37 @@ export default function DesignSystem() {
                 ),
               )}
             </ol>
+          </Block>
+
+          <Block id="cardrow" title="Card row">
+            <p className="text-sm text-muted">
+              Horizontally scrolling portrait cards, staggered on desktop, bleeding to the page
+              edges. Name left, type label right, copy below.
+            </p>
+            <ul className="mt-8 flex gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {["Transparent Kayak", "The Rock Restaurant", "Stone Town"].map((name, i) => (
+                <li key={name} className={`w-56 shrink-0 ${i % 2 ? "md:mt-10" : ""}`}>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <p className="font-display text-base">{name}</p>
+                    <Label>Sea</Label>
+                  </div>
+                  <div className="mt-3 aspect-[4/5] bg-sky/40" />
+                  <p className="mt-3 text-sm text-muted">Clear water beneath you.</p>
+                </li>
+              ))}
+            </ul>
+          </Block>
+
+          <Block id="wordmark" title="Giant wordmark">
+            <p className="text-sm text-muted">
+              Display type at 12–16vw, leading 1, tracking -0.04em. Used once in the dark About
+              section and once at the very bottom of the footer.
+            </p>
+            <div className="mt-8 overflow-hidden bg-navy px-6 pt-10 text-white">
+              <p className="display -mb-[0.12em] whitespace-nowrap text-[10vw] uppercase leading-none tracking-[-0.04em]">
+                SHE-CATION
+              </p>
+            </div>
           </Block>
 
           <Block id="images" title="Image tags">

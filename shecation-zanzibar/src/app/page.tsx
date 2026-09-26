@@ -6,6 +6,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { Included } from "@/components/sections/Included";
+import { KeyFigures } from "@/components/sections/KeyFigures";
 import { Moments } from "@/components/sections/Moments";
 import { Pricing } from "@/components/sections/Pricing";
 import { Promise } from "@/components/sections/Promise";
@@ -21,10 +22,11 @@ export default function Home() {
       <main className="flex-1 pb-20 md:pb-0">
         <Hero />
         <Statement />
+        <KeyFigures />
         <Promise />
         <Included />
-        <Feeling />
         <Moments />
+        <Feeling />
         <WhoFor />
         <Pricing />
         <SocialProof />

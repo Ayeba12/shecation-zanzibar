@@ -33,6 +33,9 @@ export const cta = {
 export const hero = {
   eyebrow: `${trip.dates}  ·  Zanzibar`,
   title: "Five Days. Zanzibar. Your Girls. Your Reset.",
+  /** Split for the headline with the photo set into it. */
+  titleA: "Five days. Zanzibar.",
+  titleB: "Your girls. Your reset.",
   intro:
     "SHE-CATION 4.0 is taking the SHE-Reconnects experience to Zanzibar for five beautiful days of rest, laughter, adventure and sisterhood.",
   facts: `${trip.dates} | ${trip.duration} | ${trip.price} ${trip.priceNote}`,
@@ -81,36 +84,42 @@ export const moments = {
   items: [
     {
       name: "Transparent Kayak",
+      type: "Sea",
       copy: 'Clear water beneath you, camera-ready views around you, and one of those "we are really here" moments.',
       image: "/images/kayak.jpg",
       alt: "Woman paddling a kayak on clear turquoise water",
     },
     {
       name: "The Rock Restaurant",
+      type: "Food",
       copy: "Lunch in one of Zanzibar's most recognisable settings, surrounded by sea and shared with your SHE-CATION sisters.",
       image: "/images/the-rock.jpg",
       alt: "The Rock Restaurant standing on a small rock island in the ocean",
     },
     {
       name: "Stone Town",
+      type: "Culture",
       copy: "Step into Zanzibar's historic heart, with its streets, culture, architecture and stories.",
       image: "/images/stone-town-alley.jpg",
       alt: "Narrow Stone Town alley with historic buildings",
     },
     {
       name: "Salaam Cove",
+      type: "Coast",
       copy: "A beautiful stop designed to add another layer of calm, scenery and experience to the trip.",
       image: "/images/clear-water.jpg",
       alt: "Clear turquoise water beside a tropical island",
     },
     {
       name: "Prison Island",
+      type: "Island",
       copy: "An island excursion that adds history, sea views and a different side of Zanzibar to your itinerary.",
       image: "/images/boat-trip.jpg",
       alt: "View of the ocean from a boat heading to an island",
     },
     {
       name: "Nungwi Beach",
+      type: "Beach",
       copy: "White sand, turquoise water and time to enjoy the coast at one of Zanzibar's best-known beach areas.",
       image: "/images/nungwi-beach.jpg",
       alt: "Aerial view of Nungwi beach with white sand and turquoise water",
@@ -262,5 +271,40 @@ export const faqGroups = [
   {
     label: "Money",
     items: faq.filter((f) => ["Can I pay in instalments?", "What if I am paying from Nigeria?"].includes(f.q)),
+  },
+];
+
+/** Quote row under the hero headline (editorial attribution left, quote centre, CTA right). */
+export const quote = {
+  text: "Pause. Reconnect. Experience Zanzibar together.",
+  by: trip.brand,
+  role: "The community behind SHE-CATION",
+};
+
+/** Centred key facts block. */
+export const keyFigures = [
+  { value: "5", unit: "days", caption: "4 nights at Tembo Resort, all meals included" },
+  { value: "6", unit: "moments", caption: "Curated Zanzibar experiences, transfers included" },
+  { value: "£200", caption: "Deposit to secure your place, balance in instalments" },
+];
+
+/** Press-style community cards. TODO: replace with real stories and photos from the client. */
+export const communityCards = [
+  {
+    title: "SHE-CATION 3.0: the highlights",
+    meta: "Community · Photos to come",
+    image: "/images/women-beach.jpg",
+    alt: "Two women enjoying a sunny day at the beach",
+  },
+  {
+    title: "SHE-CATION 4.0 goes to Zanzibar",
+    meta: `Announcement · ${trip.dates}`,
+    block: "4.0",
+  },
+  {
+    title: "Meet the women behind SHE-Reconnects",
+    meta: "Organisers · Dinma & Bokun",
+    image: "/images/woman-dress.jpg",
+    alt: "Woman in a bright dress standing by the sea",
   },
 ];

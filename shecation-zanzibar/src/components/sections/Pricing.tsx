@@ -3,23 +3,13 @@ import { Button } from "@/components/ui/Button";
 import { Grid } from "@/components/ui/Container";
 import { Label } from "@/components/ui/Label";
 import { Section } from "@/components/ui/Section";
-import { Stat } from "@/components/ui/Stat";
-import { cta, pricing, stats, trip } from "@/lib/content";
+import { cta, pricing, trip } from "@/lib/content";
 
 export function Pricing() {
   return (
     <Section tone="cream" id="price">
-      {/* Big numbers */}
-      <Grid className="gap-y-10">
-        {stats.map((s) => (
-          <div key={s.label} className="col-span-4 md:col-span-4">
-            <Stat value={s.value} unit={s.unit} label={s.label} />
-          </div>
-        ))}
-      </Grid>
-
       {/* Payment plan */}
-      <Grid className="mt-20 md:mt-32">
+      <Grid>
         <div className="col-span-4 md:col-span-4">
           <Label tone="navy" dot>
             Price and payment
