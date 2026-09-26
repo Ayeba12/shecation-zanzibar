@@ -14,7 +14,7 @@ All photos in this folder are from Unsplash (https://unsplash.com/license) and a
 | stone-town-alley.jpg | @nichiyoshi (https://unsplash.com/@nichiyoshi) | https://unsplash.com/photos/1678042955980-c173f0460d0a |
 | stone-town-market.jpg | @aronmarinelli (https://unsplash.com/@aronmarinelli) | https://unsplash.com/photos/1695643875095-f5620748605d |
 | the-rock.jpg | @yikaisun_0831 (https://unsplash.com/@yikaisun_0831) | https://unsplash.com/photos/1733306300778-4e44fb3ff9bd |
-| kayak.jpg | Hugh Whyte (https://unsplash.com/@hughwhyte) | https://unsplash.com/photos/XoGf_ujoAog |
+| kayak-hugh-whyte.jpg | Hugh Whyte (https://unsplash.com/@hughwhyte) | https://unsplash.com/photos/XoGf_ujoAog |
 | clear-water.jpg | @humaam (https://unsplash.com/@humaam) | https://unsplash.com/photos/1579622754173-e2a9aad270e3 |
 | dhow-sunset.jpg | @good_citizen (https://unsplash.com/@good_citizen) | https://unsplash.com/photos/1575992042651-e35f5a391252 |
 | dhow-sunset-2.jpg | @cavespider (https://unsplash.com/@cavespider) | https://unsplash.com/photos/1627899316397-3556313abd3d |

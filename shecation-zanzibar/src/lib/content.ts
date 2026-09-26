@@ -86,7 +86,7 @@ export const moments = {
       name: "Transparent Kayak",
       type: "Sea",
       copy: 'Clear water beneath you, camera-ready views around you, and one of those "we are really here" moments.',
-      image: "/images/kayak.jpg",
+      image: "/images/kayak-hugh-whyte.jpg",
       alt: "Woman paddling a kayak on clear turquoise water",
     },
     {
