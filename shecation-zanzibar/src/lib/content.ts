@@ -233,11 +233,11 @@ export const socialProof = {
 };
 
 export const nav = [
-  { label: "About", href: "#about" },
-  { label: "Included", href: "#included" },
-  { label: "Experiences", href: "#experiences" },
-  { label: "Price", href: "#price" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About", href: "/#about" },
+  { label: "Included", href: "/#included" },
+  { label: "Experiences", href: "/#experiences" },
+  { label: "Price", href: "/#price" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 /** Big two-line statement band under the hero (editorial). */

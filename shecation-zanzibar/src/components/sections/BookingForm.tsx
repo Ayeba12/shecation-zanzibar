@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
@@ -171,10 +172,9 @@ export function BookingForm() {
                   label={
                     <>
                       I agree to be contacted by {trip.brand} about my booking and accept the{" "}
-                      {/* TODO: link real privacy policy */}
-                      <a href="#" className="underline">
+                      <Link href="/privacy" className="underline" target="_blank" rel="noopener">
                         privacy policy
-                      </a>
+                      </Link>
                       .
                     </>
                   }

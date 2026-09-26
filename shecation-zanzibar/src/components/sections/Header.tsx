@@ -37,7 +37,7 @@ export function Header() {
           ))}
         </nav>
 
-        <Button href="#book" size="xs" className="md:h-10 md:px-5">
+        <Button href="/#book" size="xs" className="md:h-10 md:px-5">
           {cta.primary}
         </Button>
       </Container>
