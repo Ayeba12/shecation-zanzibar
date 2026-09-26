@@ -36,7 +36,7 @@ export default function StoriesPage() {
             <Label tone="navy" dot>
               {stories.eyebrow}
             </Label>
-            <h1 className="display relative z-10 -mb-[0.26em] mt-6 text-[16vw] uppercase leading-[0.9] tracking-[-0.04em] md:whitespace-nowrap md:text-[12.5vw]">
+            <h1 className="display mt-6 mb-8 text-[16vw] uppercase leading-[0.9] tracking-[-0.04em] md:mb-12 md:whitespace-nowrap md:text-[12.5vw]">
               {stories.title}
             </h1>
           </Container>
