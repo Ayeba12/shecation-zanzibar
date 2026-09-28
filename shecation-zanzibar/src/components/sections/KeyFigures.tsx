@@ -13,10 +13,10 @@ export function KeyFigures() {
         </Label>
         <h2 className="display mt-4 text-4xl uppercase sm:text-5xl lg:text-6xl">Key facts</h2>
 
-        <dl className="mx-auto mt-16 grid max-w-5xl gap-12 sm:grid-cols-3 md:mt-24">
+        <dl className="mx-auto mt-16 grid max-w-7xl gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-24 lg:grid-cols-4">
           {keyFigures.map((f) => (
             <div key={f.caption}>
-              <dt className="display text-6xl lg:text-8xl">
+              <dt className="display text-5xl sm:text-6xl">
                 {f.value}
                 {f.unit ? (
                   <span className="ml-2 align-top text-lg uppercase tracking-[0.08em] lg:text-xl">

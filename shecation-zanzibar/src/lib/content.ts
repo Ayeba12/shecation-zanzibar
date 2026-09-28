@@ -31,7 +31,7 @@ export const cta = {
   primaryLong: "Secure Your Spot - £200 non-refundable deposit",
   secondary: "Pay £200 Deposit",
   micro:
-    "Flights are not included. Package is based on two people sharing a room. Subject to availability.",
+    "The £1,100 package price does not include flights to Zanzibar. Package is based on two people sharing a room. Subject to availability.",
 };
 
 export const hero = {
@@ -78,7 +78,7 @@ export const included = {
     "Travel insurance included",
     "Dedicated SHE-Reconnects support throughout the experience",
   ],
-  notIncluded: "Not included: Flights to Zanzibar.",
+  notIncluded: "Not included in the £1,100 package price: your flights to Zanzibar.",
 };
 
 export const moments = {
@@ -155,7 +155,7 @@ export const whoFor = {
 export const pricing = {
   title: `Your SHE-CATION 4.0 package: ${trip.price} ${trip.priceNote}`,
   lead:
-    "Secure your place with a £200 non-refundable deposit. The package is subject to availability and is based on two people sharing a room.",
+    "Secure your place with a £200 non-refundable deposit. The £1,100 price does not include flights to Zanzibar. The package is subject to availability and is based on two people sharing a room.",
   // TODO: recommended revised schedule, publish only after client approval
   schedule: [
     { stage: "Deposit", due: "On booking, by 31 Oct 2026", amount: "£200" },
@@ -176,7 +176,7 @@ export const faq = [
   },
   {
     q: "Are flights included?",
-    a: "No. Flights to Zanzibar are not included in the £1,100 package.",
+    a: "No. The £1,100 package price covers your stay, meals, transfers, experiences, visa fees and insurance, but not your flights to Zanzibar. You book your own flights, and we send arrival and departure guidance so you land with the group.",
   },
   {
     q: "How do I secure my place?",
@@ -305,6 +305,7 @@ export const quote = {
 export const keyFigures = [
   { value: "5", unit: "days", caption: "4 nights at Tembo Resort, all meals included" },
   { value: "6", unit: "moments", caption: "Curated Zanzibar experiences, transfers included" },
+  { value: "£1,100", caption: "Total package price per person. Flights to Zanzibar are not included in this price." },
   { value: "£200", caption: "Deposit to secure your place, balance in instalments" },
 ];
 

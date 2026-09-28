@@ -239,7 +239,7 @@ export function BookingForm() {
                 <Checkbox
                   checked={terms.flights}
                   onChange={(e) => setTerms((t) => ({ ...t, flights: e.target.checked }))}
-                  label="Flights to Zanzibar are not included in the package."
+                  label="Flights to Zanzibar are not included in the £1,100 package price. I will book my own flights."
                 />
                 <Checkbox
                   checked={terms.sharing}
