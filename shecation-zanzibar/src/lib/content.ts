@@ -78,7 +78,7 @@ export const included = {
     "Travel insurance included",
     "Dedicated SHE-Reconnects support throughout the experience",
   ],
-  notIncluded: "Not included in the £1,100 package price: your flights to Zanzibar.",
+  notIncluded: "Flights to Zanzibar are not included. Your £1,100 covers everything listed above.",
 };
 
 export const moments = {
