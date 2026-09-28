@@ -19,8 +19,8 @@ export function WhoFor() {
           <h2 className="display mt-6 text-3xl sm:text-4xl">{whoFor.title}</h2>
           <div className="relative mt-10 hidden aspect-[3/4] overflow-hidden md:block md:max-w-sm">
             <Image
-              src="/images/shecation-3/staircase-2.jpg"
-              alt="SHE-CATION 3.0 guests in white and gold on a marble staircase"
+              src="/images/shecation-3/laughter-on-the-water.jpg"
+              alt="Three SHE-CATION 3.0 guests in blue and white stripes laughing on a sailing boat"
               fill
               sizes="(min-width: 768px) 30vw, 100vw"
               className="object-cover"
