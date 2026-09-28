@@ -258,6 +258,22 @@ export const stats = [
 /** Tags pinned over the hero photograph. */
 export const heroTags = ["Tembo Resort", "Nungwi Beach", "Stone Town", "The Rock"];
 
+/** Zanzibar photographs that scroll slowly behind the hero copy (decorative, hidden from screen readers). */
+export const heroMarquee = [
+  "/images/the-rock.jpg",
+  "/images/women-water.jpg",
+  "/images/dhow-sunset.jpg",
+  "/images/stone-town-alley.jpg",
+  "/images/kayak-hugh-whyte.jpg",
+  "/images/beach-picnic.jpg",
+  "/images/clear-water.jpg",
+  "/images/hammock.jpg",
+  "/images/stone-town-market.jpg",
+  "/images/women-beach.jpg",
+  "/images/boat-trip.jpg",
+  "/images/nungwi-beach.jpg",
+];
+
 /** FAQ grouped for the hairline accordion with left-hand category labels. */
 export const faqGroups = [
   {
