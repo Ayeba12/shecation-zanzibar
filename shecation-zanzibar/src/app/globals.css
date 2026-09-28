@@ -66,6 +66,7 @@
   --radius-xl: 2rem; /* 32 */
 
   /* ---- Layout ---- */
+  --breakpoint-wide: 87.5rem; /* 1400 — roomy desktop: hero corner frame at full column width */
   --container-content: 100rem; /* 1600 — edge-to-edge editorial canvas */
   --container-prose: 40rem; /* 640 */
 
@@ -130,23 +131,6 @@ p {
   line-height: var(--text-xs--line-height);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-/* Self-contrasting text for copy that sits over moving photographs.
-   `difference` blending inverts the colour against whatever is behind it:
-   over the cream page these read as navy / muted / faint, over a dark
-   photo they turn light, over a bright one they turn dark. */
-@utility contrast-text {
-  mix-blend-mode: difference;
-  color: #e7d2b7; /* cream minus navy */
-}
-@utility contrast-text-muted {
-  mix-blend-mode: difference;
-  color: #948675; /* cream minus navy at 64% */
-}
-@utility contrast-text-faint {
-  mix-blend-mode: difference;
-  color: #665c51; /* cream minus navy at 44% */
 }
 
 /* Display headline: tight leading for the big editorial type */

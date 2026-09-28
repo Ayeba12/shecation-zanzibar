@@ -48,7 +48,7 @@ export function Hero() {
             hold={5.5}
             media="(min-width: 1280px)"
             sizes="(min-width: 1280px) 16vw, 0px"
-            className="hidden aspect-[4/3] w-full self-start xl:col-span-2 xl:col-start-11 xl:row-start-1 xl:block"
+            className="hidden aspect-[4/3] self-start justify-self-end xl:col-span-3 xl:col-start-10 xl:row-start-1 xl:block xl:w-[86%] wide:w-full"
           />
 
           <div className="col-span-4 mt-10 md:col-span-5 md:col-start-7 md:mt-16">
