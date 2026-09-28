@@ -55,35 +55,39 @@ function HeroMarquee() {
 /**
  * Hero (editorial): micro labels in the left rail, headline offset to the
  * right, intro + CTA below. A marquee of Zanzibar photo cards passes behind
- * the copy; every piece of text sits on a cream box so it always contrasts.
+ * the copy; the text uses difference blending so it contrasts with whatever
+ * card is behind it (navy over cream, light over dark photos).
  * Then a full-bleed photograph with pinned tags.
  */
 export function Hero() {
   return (
     <section className="bg-cream text-navy" id="top">
-      <div className="relative isolate">
+      {/* bg-cream lives on this isolated layer so the blended text inverts against it (beige -> navy) */}
+      <div className="relative isolate bg-cream">
         <HeroMarquee />
         <Container className="relative pt-8 pb-12 md:pt-16 md:pb-16 lg:pt-20">
           <Grid>
             {/* Left rail: tiny meta */}
             <div className="col-span-4 mb-8 flex flex-col items-start gap-2 md:col-span-3 md:mb-0">
-              <Label tone="navy" dot className="bg-cream px-2 py-1">
+              <Label tone="inherit" dot className="contrast-text">
                 {trip.name} · {trip.dates}
               </Label>
-              <Label className="bg-cream px-2 py-1">{trip.brand} presents</Label>
+              <Label tone="inherit" className="contrast-text-faint">
+                {trip.brand} presents
+              </Label>
             </div>
 
-            {/* Headline, offset to the right; each line carries its own cream box */}
+            {/* Headline, offset to the right; the text inverts against the cards behind it */}
             <div className="col-span-4 md:col-span-9 md:col-start-4">
-              <h1 className="display text-5xl uppercase leading-[1.08] sm:text-6xl lg:text-7xl xl:text-8xl">
-                <span className="box-decoration-clone bg-cream px-3 py-1 sm:px-4">{hero.title}</span>
+              <h1 className="display contrast-text text-5xl uppercase sm:text-6xl lg:text-7xl xl:text-8xl">
+                {hero.title}
               </h1>
             </div>
 
             <div className="col-span-4 mt-10 md:col-span-5 md:col-start-7 md:mt-16">
-              <div className="bg-cream p-5 md:p-6">
-                <p className="text-base text-navy md:text-lg">{hero.intro}</p>
-                <p className="mt-4 text-sm text-muted">{hero.body}</p>
+              <div>
+                <p className="contrast-text text-base md:text-lg">{hero.intro}</p>
+                <p className="contrast-text-muted mt-4 text-sm">{hero.body}</p>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
                   <Button href="#book" size="md">
                     {cta.primary}
@@ -92,7 +96,7 @@ export function Hero() {
                     What&apos;s included
                   </Button>
                 </div>
-                <p className="mt-4 text-xs text-faint">{cta.micro}</p>
+                <p className="contrast-text-faint mt-4 text-xs">{cta.micro}</p>
               </div>
             </div>
           </Grid>
