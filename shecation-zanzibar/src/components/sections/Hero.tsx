@@ -55,8 +55,9 @@ function HeroMarquee() {
 /**
  * Hero (editorial): micro labels in the left rail, headline offset to the
  * right, intro + CTA below. A marquee of Zanzibar photo cards passes behind
- * the copy; the text uses difference blending so it contrasts with whatever
- * card is behind it (navy over cream, light over dark photos).
+ * the copy. The big headline uses difference blending (navy over cream, inverted
+ * over photos); the small copy and labels sit on frosted cream panels because
+ * small text over a bright photo is unreadable with blending alone.
  * Then a full-bleed photograph with pinned tags.
  */
 export function Hero() {
@@ -69,12 +70,10 @@ export function Hero() {
           <Grid>
             {/* Left rail: tiny meta */}
             <div className="col-span-4 mb-8 flex flex-col items-start gap-2 md:col-span-3 md:mb-0">
-              <Label tone="inherit" dot className="contrast-text">
+              <Label tone="navy" dot className="bg-cream/85 px-2 py-1 backdrop-blur-sm">
                 {trip.name} · {trip.dates}
               </Label>
-              <Label tone="inherit" className="contrast-text-faint">
-                {trip.brand} presents
-              </Label>
+              <Label className="bg-cream/85 px-2 py-1 backdrop-blur-sm">{trip.brand} presents</Label>
             </div>
 
             {/* Headline, offset to the right; the text inverts against the cards behind it */}
@@ -85,9 +84,10 @@ export function Hero() {
             </div>
 
             <div className="col-span-4 mt-10 md:col-span-5 md:col-start-7 md:mt-16">
-              <div>
-                <p className="contrast-text text-base md:text-lg">{hero.intro}</p>
-                <p className="contrast-text-muted mt-4 text-sm">{hero.body}</p>
+              {/* Frosted panel: the cards still pass behind it, the small copy stays navy on cream */}
+              <div className="bg-cream/85 p-5 backdrop-blur-md md:p-6">
+                <p className="text-base text-navy md:text-lg">{hero.intro}</p>
+                <p className="mt-4 text-sm text-muted">{hero.body}</p>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
                   <Button href="#book" size="md">
                     {cta.primary}
@@ -96,7 +96,7 @@ export function Hero() {
                     What&apos;s included
                   </Button>
                 </div>
-                <p className="contrast-text-faint mt-4 text-xs">{cta.micro}</p>
+                <p className="mt-4 text-xs text-faint">{cta.micro}</p>
               </div>
             </div>
           </Grid>
