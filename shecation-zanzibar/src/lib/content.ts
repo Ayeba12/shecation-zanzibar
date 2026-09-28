@@ -258,21 +258,21 @@ export const stats = [
 /** Tags pinned over the hero photograph. */
 export const heroTags = ["Tembo Resort", "Nungwi Beach", "Stone Town", "The Rock"];
 
-/** Zanzibar photographs that scroll slowly behind the hero copy (decorative, hidden from screen readers). */
-export const heroMarquee = [
-  "/images/the-rock.jpg",
-  "/images/women-water.jpg",
-  "/images/dhow-sunset.jpg",
-  "/images/stone-town-alley.jpg",
-  "/images/kayak-hugh-whyte.jpg",
-  "/images/beach-picnic.jpg",
-  "/images/clear-water.jpg",
-  "/images/hammock.jpg",
-  "/images/stone-town-market.jpg",
-  "/images/women-beach.jpg",
-  "/images/boat-trip.jpg",
-  "/images/nungwi-beach.jpg",
-];
+/** Desktop-only Zanzibar photo frames in the hero; each frame crossfades through its photos (GSAP). */
+export const heroPhotos = {
+  rail: [
+    { src: "/images/stone-town-alley.jpg", alt: "A narrow alley in Stone Town with carved wooden doors", place: "Stone Town" },
+    { src: "/images/the-rock.jpg", alt: "The Rock restaurant standing on a coral outcrop in the sea", place: "The Rock" },
+    { src: "/images/women-water.jpg", alt: "Women wading in clear turquoise water", place: "Indian Ocean" },
+    { src: "/images/pool-palm.jpg", alt: "A resort pool beneath palm trees", place: "Tembo Resort" },
+  ],
+  corner: [
+    { src: "/images/nungwi-beach.jpg", alt: "White sand and turquoise water at Nungwi Beach", place: "Nungwi Beach" },
+    { src: "/images/dhow-sunset.jpg", alt: "A dhow sailing at sunset off Zanzibar", place: "Dhow at sunset" },
+    { src: "/images/clear-water.jpg", alt: "A boat floating on clear shallow water", place: "Clear water" },
+    { src: "/images/beach-pier.jpg", alt: "A wooden pier stretching over turquoise sea", place: "Nungwi" },
+  ],
+};
 
 /** FAQ grouped for the hairline accordion with left-hand category labels. */
 export const faqGroups = [
