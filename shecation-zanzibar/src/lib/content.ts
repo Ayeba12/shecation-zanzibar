@@ -510,12 +510,12 @@ export const touches = {
   ],
 };
 
-/** Video testimonial from a SHE-CATION 3.0 guest. TODO: add the guest's name if she is happy to be credited. */
+/** Video testimonial from Mosun, a SHE-CATION 3.0 guest. */
 export const videoTestimonial = {
   src: "/video/testimonial.mp4",
   poster: "/images/shecation-3/testimonial-poster.jpg",
-  label: "Video testimonial from a SHE-CATION 3.0 guest",
-  caption: "Video testimonial · SHE-CATION 3.0",
+  label: "Video testimonial from Mosun, a SHE-CATION 3.0 guest",
+  caption: "Mosun · SHE-CATION 3.0 · Video testimonial",
 };
 
 /**
@@ -589,7 +589,7 @@ export const stories = {
   ],
   filmsLabel: "On film",
   filmsIntro:
-    "Photographs tell you what SHE-CATION 3.0 looked like. The intro film shows you where SHE-CATION 4.0 is going, and a guest tells you what it felt like.",
+    "Photographs tell you what SHE-CATION 3.0 looked like. The intro film shows you where SHE-CATION 4.0 is going, and Mosun tells you what it felt like.",
   films: [
     {
       kind: "film",
@@ -604,8 +604,8 @@ export const stories = {
       src: videoTestimonial.src,
       poster: videoTestimonial.poster,
       label: videoTestimonial.label,
-      title: "A guest's story",
-      description: "One SHE-CATION 3.0 guest on what the trip meant to her, in her own words.",
+      title: "Mosun's story",
+      description: "Mosun, a SHE-CATION 3.0 guest, on what the trip meant to her, in her own words.",
     },
   ],
   saidLabel: "What they said",
