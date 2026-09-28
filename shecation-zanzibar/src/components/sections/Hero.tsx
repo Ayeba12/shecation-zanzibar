@@ -27,7 +27,6 @@ export function Hero() {
             <Label tone="navy" dot>
               {trip.name} · {trip.dates}
             </Label>
-            <Label>{trip.brand} presents</Label>
             <Crossfade
               photos={heroPhotos.rail}
               sizes="(min-width: 768px) 25vw, 0px"
@@ -37,6 +36,7 @@ export function Hero() {
 
           {/* Headline, offset to the right like an editorial spread */}
           <div className="col-span-4 md:col-span-9 md:col-start-4 md:row-start-1">
+            <Label className="mb-4 md:mb-6">{trip.brand} presents</Label>
             <h1 className="display text-5xl uppercase sm:text-6xl lg:text-7xl xl:text-8xl">
               {hero.title}
             </h1>
