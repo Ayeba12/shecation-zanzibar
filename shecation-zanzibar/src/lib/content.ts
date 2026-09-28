@@ -232,7 +232,7 @@ export const finalCta = {
 
 export const socialProof = {
   title: "Women who have been on a SHE-CATION know the feeling.",
-  lead: "Moments from SHE-CATION 3.0 in Crete, shared by the women who were there.",
+  lead: "Moments from SHE-CATION 3.0 in Crete, Greece, shared by the women who were there.",
 };
 
 export const nav = [
@@ -489,7 +489,7 @@ export const testimonials = [
   },
   {
     quote:
-      "To My roonies thank you for being such beautiful roomies. The laughter we had in that room is enough to heal all the guests that will check in to that room for the rest of this year 😁",
+      "To My roomies thank you for being such beautiful roomies. The laughter we had in that room is enough to heal all the guests that will check in to that room for the rest of this year 😁",
     name: "Uwa",
   },
 ];
