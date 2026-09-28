@@ -44,6 +44,7 @@ export function BookingForm() {
   const [details, setDetails] = useState<Details>(emptyDetails);
   const [terms, setTerms] = useState({ deposit: false, flights: false, sharing: false });
   const [submitting, setSubmitting] = useState(false);
+  const [emailed, setEmailed] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const update = <K extends keyof Details>(key: K, value: Details[K]) =>
@@ -77,11 +78,16 @@ export function BookingForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; errors?: string[] };
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        errors?: string[];
+        guestEmail?: boolean;
+      };
       if (!res.ok || !data.ok) {
         setError(data.errors?.join(" ") ?? "Something went wrong. Please try again.");
         return;
       }
+      setEmailed(Boolean(data.guestEmail));
       setStep(3);
     } catch {
       setError("We could not reach the server. Please check your connection and try again.");
@@ -286,6 +292,13 @@ export function BookingForm() {
                 </h3>
               </div>
               <PaymentDetails country={details.country || "GB"} name={details.name} />
+              {emailed ? (
+                <p className="text-sm text-muted">
+                  We have also emailed these details to{" "}
+                  <strong className="font-display text-navy">{details.email}</strong>. If it has not
+                  arrived in a few minutes, check your spam folder.
+                </p>
+              ) : null}
               <p className="text-xs text-faint">
                 We will never ask for passport details in this form. Travel documents are collected
                 later through a secure process.

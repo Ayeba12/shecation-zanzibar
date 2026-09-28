@@ -16,6 +16,8 @@ export const trip = {
   deposit: "£200",
   depositNote: "non-refundable",
   bookingDeadline: "31 October 2026", // TODO: client approval
+  /** End of the deposit window, UK time (GMT by then). Drives the countdown in the pricing section. */
+  depositDeadline: "2026-10-31T23:59:59Z",
   whatsapp: "+44 7587 542609",
   email: "shereconnects@gmail.com",
   /** WhatsApp numbers with wa.me digits. */

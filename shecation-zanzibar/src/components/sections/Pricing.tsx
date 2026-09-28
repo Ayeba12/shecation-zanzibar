@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Grid } from "@/components/ui/Container";
+import { Countdown } from "@/components/ui/Countdown";
 import { Label } from "@/components/ui/Label";
 import { Section } from "@/components/ui/Section";
 import { cta, pricing, trip } from "@/lib/content";
@@ -18,6 +19,17 @@ export function Pricing() {
           <p className="mt-6 max-w-sm text-sm text-muted">{pricing.lead}</p>
           <div className="mt-8">
             <Badge tone="sunshine">Book by {trip.bookingDeadline}</Badge>
+          </div>
+
+          {/* Live countdown to the end of the deposit window */}
+          <div className="mt-10">
+            <Label>Deposit deadline</Label>
+            <Countdown
+              deadline={trip.depositDeadline}
+              closedMessage={`The deposit window closed on ${trip.bookingDeadline}. Message ${trip.organisers} to check availability.`}
+              className="mt-4"
+            />
+            <p className="mt-3 text-xs text-faint">Until midnight on {trip.bookingDeadline}, UK time.</p>
           </div>
         </div>
 

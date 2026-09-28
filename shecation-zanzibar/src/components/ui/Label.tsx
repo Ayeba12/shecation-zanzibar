@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 
 type Props = ComponentPropsWithoutRef<"p"> & {
-  tone?: "muted" | "navy" | "white" | "turquoise" | "pink" | "inherit";
+  tone?: "muted" | "navy" | "white" | "turquoise" | "pink";
   /** Prefix with a small dot marker. */
   dot?: boolean;
 };
@@ -12,8 +12,6 @@ const tones = {
   white: "text-white/70",
   turquoise: "text-turquoise",
   pink: "text-pink",
-  /** No colour class: set it with a utility such as `contrast-text` in className. */
-  inherit: "",
 };
 
 /** Micro uppercase meta label (12px, 0.12em tracking). */

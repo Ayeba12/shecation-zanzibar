@@ -71,3 +71,11 @@ error and the form shows a message with the WhatsApp numbers as a fallback.
 The sheet row starts with `Deposit = Pending`. When proof arrives in the group, change it to
 `Paid` by hand and note the date in a new column if useful. The sheet is the single record of who
 has booked and who has paid.
+
+## Guest confirmation email
+
+Each booking also sends the guest an email from the same Resend sender with the bank details,
+her payment reference (her full name), the WhatsApp group link and the instalment plan. The
+wording lives in `src/lib/guestEmail.ts`; bank details and the group link come from `payment` in
+`src/lib/content.ts`. Replies go to the team inbox. If this email fails the booking still succeeds;
+the API response carries `guestEmail: false` and `guestEmailError`.
