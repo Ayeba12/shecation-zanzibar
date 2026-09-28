@@ -134,7 +134,7 @@ export const moments = {
 export const feeling = {
   title: "Come for Zanzibar. Leave with more than photos.",
   aside:
-    "A glimpse of what a SHE-CATION feels like: the energy, the laughter and the sisterhood. This is what you are booking.",
+    "Your first look at SHE-CATION 4.0 in Zanzibar: the water, the streets of Stone Town and the days ahead. This is what you are booking.",
   body1:
     "SHE-CATION has always been about what happens when women step away from the noise and make room for joy, laughter and connection. If you were at SHE-CATION 3.0, you already know the energy. If this is your first one, Zanzibar is a beautiful place to start.",
   body2:
@@ -546,7 +546,7 @@ export const payment = {
 };
 
 /**
- * /stories page: every SHE-CATION 3.0 photograph, both films and all the testimonials.
+ * /stories page: every SHE-CATION 3.0 photograph, the 4.0 intro film, the video testimonial and all the testimonials.
  * SHE-CATION 3.0 was in Greece (never caption these as Zanzibar).
  */
 export const stories = {
@@ -587,15 +587,15 @@ export const stories = {
   ],
   filmsLabel: "On film",
   filmsIntro:
-    "Photographs tell you what it looked like. These two films tell you what it felt like: the energy, the laughter and the sisterhood.",
+    "Photographs tell you what SHE-CATION 3.0 looked like. The intro film shows you where SHE-CATION 4.0 is going, and a guest tells you what it felt like.",
   films: [
     {
       kind: "film",
       src: "/video/shecation.mp4",
-      poster: "/images/shecation-3/boat-blue-day.jpg",
-      label: "SHE-CATION film: women enjoying the trip together",
-      title: "The SHE-CATION film",
-      description: "A minute of SHE-CATION 3.0, from the boat to the white night.",
+      poster: "/images/stone-town-waterfront.jpg",
+      label: "SHE-CATION 4.0 intro film: a first look at Zanzibar",
+      title: "The SHE-CATION 4.0 intro",
+      description: "Your first look at where we are going next: Zanzibar, 9-13 March 2027.",
     },
     {
       kind: "testimonial",

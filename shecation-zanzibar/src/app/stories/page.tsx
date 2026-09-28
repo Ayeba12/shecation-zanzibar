@@ -14,7 +14,7 @@ import { cta, finalCta, stories, testimonials, trip } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Stories from SHE-CATION 3.0 | SHE-CATION 4.0 Zanzibar",
   description:
-    "Every photograph, film and testimonial from SHE-CATION 3.0, shared by the women who were there. SHE-CATION 4.0 goes to Zanzibar, 9-13 March 2027.",
+    "Every photograph and testimonial from SHE-CATION 3.0, shared by the women who were there, plus the SHE-CATION 4.0 intro film. Zanzibar, 9-13 March 2027.",
 };
 
 const slug = (name: string) => `story-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;

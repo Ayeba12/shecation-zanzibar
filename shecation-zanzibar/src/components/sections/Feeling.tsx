@@ -55,12 +55,12 @@ export function Feeling() {
           <div className="col-span-4 order-1 md:order-2 md:col-span-4 md:col-start-5">
             <VideoBlock
               src="/video/shecation.mp4"
-              poster="/images/shecation-3/boat-blue-day.jpg"
-              label="SHE-CATION film: women enjoying the trip together"
+              poster="/images/stone-town-waterfront.jpg"
+              label="SHE-CATION 4.0 intro film: a first look at Zanzibar"
               className="aspect-[4/5] w-full md:aspect-[9/16]"
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 p-4">
-                <Label tone="white">SHE-CATION on film</Label>
+                <Label tone="white">SHE-CATION 4.0 · The intro</Label>
               </div>
             </VideoBlock>
           </div>
