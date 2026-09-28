@@ -45,7 +45,7 @@ export function Promise() {
 
         {/* Middle: wordmark */}
         <div className="py-20 text-center md:py-28">
-          <p className="display text-[16vw] uppercase leading-none tracking-[-0.04em] md:text-[12vw]">
+          <p data-wordmark className="display text-[16vw] uppercase leading-none tracking-[-0.04em] md:text-[12vw]">
             {trip.name.split(" ")[0]}
           </p>
           <Label tone="white" className="mt-6 justify-center">
@@ -56,7 +56,7 @@ export function Promise() {
         {/* Bottom row: intro + CTA */}
         <Grid className="items-end">
           <div className="col-span-4 md:col-span-5">
-            <h2 className="text-xl md:text-2xl">{promise.title}</h2>
+            <h2 data-reveal className="text-xl md:text-2xl">{promise.title}</h2>
             <p className="mt-4 max-w-md text-sm text-white/80">{promise.lead}</p>
             <div className="mt-6 flex gap-2">
               <Button href="#experiences" variant="pill-dark" size="sm">

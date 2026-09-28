@@ -10,7 +10,7 @@ export function Faq() {
     <Section tone="cream" id="faq">
       <Grid>
         <div className="col-span-4 md:col-span-7 md:col-start-5">
-          <h2 className="display text-3xl sm:text-4xl lg:text-5xl">
+          <h2 data-reveal className="display text-3xl sm:text-4xl lg:text-5xl">
             Everything you want to know before you book.
           </h2>
         </div>

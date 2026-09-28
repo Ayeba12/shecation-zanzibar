@@ -16,7 +16,7 @@ export function Moments() {
         <Label tone="navy" dot className="justify-center">
           Your Zanzibar moments
         </Label>
-        <h2 className="display mx-auto mt-4 max-w-4xl text-4xl uppercase sm:text-5xl lg:text-6xl">
+        <h2 data-reveal className="display mx-auto mt-4 max-w-4xl text-4xl uppercase sm:text-5xl lg:text-6xl">
           {moments.title}
         </h2>
       </div>

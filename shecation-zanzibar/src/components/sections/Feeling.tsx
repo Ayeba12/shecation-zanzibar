@@ -31,7 +31,7 @@ export function Feeling() {
     <section className="bg-navy text-white" id="feeling">
       <Container className="py-12 md:py-16 lg:py-20">
         {/* Two big statements */}
-        <p className="display max-w-4xl text-3xl uppercase sm:text-4xl lg:text-6xl">
+        <p data-reveal className="display max-w-4xl text-3xl uppercase sm:text-4xl lg:text-6xl">
           {statement.left.split(". ").map((line, i, arr) => (
             <span key={line} className="block">
               {line}
@@ -39,7 +39,7 @@ export function Feeling() {
             </span>
           ))}
         </p>
-        <p className="display ml-auto mt-6 max-w-4xl text-right text-3xl uppercase sm:text-4xl lg:text-6xl">
+        <p data-reveal className="display ml-auto mt-6 max-w-4xl text-right text-3xl uppercase sm:text-4xl lg:text-6xl">
           {statement.right}
         </p>
 
@@ -52,7 +52,7 @@ export function Feeling() {
           </div>
 
           {/* Centre: portrait film */}
-          <div className="col-span-4 order-1 md:order-2 md:col-span-4 md:col-start-5">
+          <div data-reveal className="col-span-4 order-1 md:order-2 md:col-span-4 md:col-start-5">
             <VideoBlock
               src="/video/shecation.mp4"
               poster="/images/stone-town-waterfront.jpg"

@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "outline" | "ghost" | "pill" | "pill-da
 type Size = "xs" | "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-body uppercase tracking-[0.08em] transition-colors duration-200 select-none disabled:opacity-40 disabled:pointer-events-none whitespace-nowrap";
+  "inline-flex items-center justify-center gap-2 rounded-full font-body uppercase tracking-[0.08em] transition-[color,background-color,border-color,transform] duration-200 active:scale-[0.97] motion-reduce:active:scale-100 select-none disabled:opacity-40 disabled:pointer-events-none whitespace-nowrap";
 
 const variants: Record<Variant, string> = {
   // Brand guide: white text on SHE-CATION Pink, Pink Hover on hover/pressed

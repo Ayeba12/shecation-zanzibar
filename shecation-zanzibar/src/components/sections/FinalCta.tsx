@@ -9,7 +9,7 @@ export function FinalCta() {
     <Section tone="navy" id="final">
       <Grid>
         <div className="col-span-4 md:col-span-12">
-          <h2 className="display text-4xl uppercase sm:text-5xl lg:text-7xl xl:text-8xl">
+          <h2 data-reveal className="display text-4xl uppercase sm:text-5xl lg:text-7xl xl:text-8xl">
             {finalCta.title}
           </h2>
         </div>

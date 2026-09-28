@@ -33,14 +33,22 @@ export default function StoriesPage() {
         {/* Title over the hero photo */}
         <section className="pt-8 md:pt-12">
           <Container>
-            <Label tone="navy" dot className="md:justify-center">
+            <Label tone="navy" dot className="md:justify-center" data-hero="eyebrow">
               {stories.eyebrow}
             </Label>
             <h1 className="display mt-6 mb-8 text-[16vw] uppercase leading-[0.9] tracking-[-0.04em] md:mb-12 md:text-center md:whitespace-nowrap md:text-[12.5vw]">
-              {stories.title}
+              <span className="-my-[0.06em] block overflow-hidden py-[0.06em]">
+                <span data-hero="line" className="block">
+                  {stories.title}
+                </span>
+              </span>
             </h1>
           </Container>
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-navy sm:aspect-[4/3] md:aspect-[21/9]">
+          <div
+            data-hero="photo"
+            data-parallax
+            className="relative aspect-[4/5] w-full overflow-hidden bg-navy sm:aspect-[4/3] md:aspect-[21/9]"
+          >
             <Image
               src={stories.hero.src}
               alt={stories.hero.alt}
@@ -68,7 +76,7 @@ export default function StoriesPage() {
 
         {/* Photo grid: label and title above each photo, centred (NGLM talent cards) */}
         <Container className="pb-16 md:pb-24 lg:pb-32">
-          <ul className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6 md:gap-y-14">
+          <ul data-reveal-group className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6 md:gap-y-14">
             {stories.photos.map((photo, i) => (
               <li key={photo.src} className="flex flex-col">
                 <Label className="justify-center">{photo.tag}</Label>
@@ -125,7 +133,7 @@ export default function StoriesPage() {
               </div>
               <div className="col-span-4 mt-10 md:col-span-3 md:col-start-10 md:mt-0">
                 <Label>Watch</Label>
-                <ol className="mt-6 flex flex-col gap-8 border-l border-navy/20 pl-6">
+                <ol data-reveal-group className="mt-6 flex flex-col gap-8 border-l border-navy/20 pl-6">
                   {stories.films.map((film, i) => (
                     <li key={film.title}>
                       <Label className="mb-2">{String(i + 1).padStart(2, "0")}</Label>
@@ -164,7 +172,7 @@ export default function StoriesPage() {
                 </div>
                 <figcaption className="mt-3 max-w-xs text-sm text-muted">{stories.saidPhoto.caption}</figcaption>
               </figure>
-              <ul className="col-span-4 mt-10 md:col-span-7 md:col-start-6 md:mt-0">
+              <ul data-reveal-group className="col-span-4 mt-10 md:col-span-7 md:col-start-6 md:mt-0">
                 {testimonials.map((t) => (
                   <li key={t.name}>
                     <Link
@@ -211,7 +219,7 @@ export default function StoriesPage() {
           />
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/40 to-navy/40" />
           <Container className="relative flex min-h-[60svh] flex-col items-center justify-center py-24 text-center md:py-32">
-            <h2 className="display max-w-4xl text-3xl uppercase sm:text-5xl lg:text-6xl">{finalCta.title}</h2>
+            <h2 data-reveal className="display max-w-4xl text-3xl uppercase sm:text-5xl lg:text-6xl">{finalCta.title}</h2>
             <Label tone="white" className="mt-6 justify-center">
               {trip.dates} · {trip.price} {trip.priceNote}
             </Label>

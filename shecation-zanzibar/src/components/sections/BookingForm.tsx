@@ -103,13 +103,13 @@ export function BookingForm() {
           <Label tone="navy" dot>
             Secure your spot
           </Label>
-          <h2 className="display mt-6 text-3xl sm:text-4xl">Reserve your place on SHE-CATION 4.0.</h2>
+          <h2 data-reveal className="display mt-6 text-3xl sm:text-4xl">Reserve your place on SHE-CATION 4.0.</h2>
           <p className="mt-6 max-w-sm text-sm text-muted">
             Three quick steps. Your place is confirmed once your {trip.deposit} deposit is received,
             subject to availability.
           </p>
 
-          <ol className="mt-10">
+          <ol data-reveal-group className="mt-10">
             {steps.map((label, i) => {
               const n = (i + 1) as Step;
               const state = n < step ? "done" : n === step ? "current" : "todo";

@@ -24,37 +24,53 @@ export function Hero() {
         <Grid>
           {/* Left rail: tiny meta, then (desktop) a portrait frame of Zanzibar that crossfades */}
           <div className="col-span-4 mb-8 flex flex-col gap-3 md:col-span-3 md:row-span-2 md:mb-0">
-            <Label tone="navy" dot>
+            <Label tone="navy" dot data-hero="eyebrow">
               {trip.name} · {trip.dates}
             </Label>
-            <Crossfade
-              photos={heroPhotos.rail}
-              sizes="(min-width: 768px) 25vw, 0px"
-              className="mt-8 hidden aspect-[3/4] w-full md:block lg:mt-12"
-            />
+            <div data-hero="art" className="mt-8 hidden md:block lg:mt-12">
+              <Crossfade photos={heroPhotos.rail} sizes="(min-width: 768px) 25vw, 0px" className="aspect-[3/4] w-full" />
+            </div>
           </div>
 
           {/* Headline, offset to the right like an editorial spread */}
           <div className="col-span-4 md:col-span-9 md:col-start-4 md:row-start-1">
-            <Label className="mb-4 md:mb-6">{trip.brand} presents</Label>
+            <Label className="mb-4 md:mb-6" data-hero="eyebrow">
+              {trip.brand} presents
+            </Label>
             <h1 className="display text-5xl uppercase sm:text-6xl lg:text-7xl xl:text-8xl">
-              {hero.title}
+              {/* One masked line per sentence so the headline can rise into view line by line */}
+              {hero.title.split(/(?<=\.)\s+/).map((line) => (
+                <span key={line} className="-my-[0.04em] block overflow-hidden py-[0.04em]">
+                  <span data-hero="line" className="block">
+                    {line}
+                  </span>
+                </span>
+              ))}
             </h1>
           </div>
 
           {/* Top-right corner (wide screens only): a small landscape frame beside the first lines */}
-          <Crossfade
-            photos={heroPhotos.corner}
-            hold={5.5}
-            media="(min-width: 1280px)"
-            sizes="(min-width: 1280px) 16vw, 0px"
-            className="hidden aspect-[4/3] self-start justify-self-end xl:col-span-3 xl:col-start-10 xl:row-start-1 xl:block xl:w-[86%] wide:w-full"
-          />
+          <div
+            data-hero="art"
+            className="hidden self-start justify-self-end xl:col-span-3 xl:col-start-10 xl:row-start-1 xl:block xl:w-[86%] wide:w-full"
+          >
+            <Crossfade
+              photos={heroPhotos.corner}
+              hold={5.5}
+              media="(min-width: 1280px)"
+              sizes="(min-width: 1280px) 16vw, 0px"
+              className="aspect-[4/3] w-full"
+            />
+          </div>
 
           <div className="col-span-4 mt-10 md:col-span-5 md:col-start-7 md:mt-16">
-            <p className="text-base text-navy md:text-lg">{hero.intro}</p>
-            <p className="mt-4 text-sm text-muted">{hero.body}</p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <p data-hero="copy" className="text-base text-navy md:text-lg">
+              {hero.intro}
+            </p>
+            <p data-hero="copy" className="mt-4 text-sm text-muted">
+              {hero.body}
+            </p>
+            <div data-hero="cta" className="mt-8 flex flex-wrap items-center gap-3">
               <Button href="#book" size="md">
                 {cta.primary}
               </Button>
@@ -62,13 +78,19 @@ export function Hero() {
                 What&apos;s included
               </Button>
             </div>
-            <p className="mt-4 text-xs text-faint">{cta.micro}</p>
+            <p data-hero="copy" className="mt-4 text-xs text-faint">
+              {cta.micro}
+            </p>
           </div>
         </Grid>
       </Container>
 
       {/* Full-bleed hero photograph with pinned tags */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[16/10] lg:aspect-[21/9]">
+      <div
+        data-hero="photo"
+        data-parallax
+        className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[16/10] lg:aspect-[21/9]"
+      >
         <Image
           src="/images/hero-beach.jpg"
           alt="Wooden boats on turquoise water beside a white sand beach in Zanzibar"

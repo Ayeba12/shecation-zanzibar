@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { MarqueePause } from "./MarqueePause";
 
 type Props<T> = {
   items: T[];
@@ -15,8 +16,9 @@ type Props<T> = {
 /**
  * Continuous horizontal marquee (NGLM talent row).
  * Renders the items twice for a seamless loop; the copy is aria-hidden.
- * Pauses on hover. Under prefers-reduced-motion it stands still and
- * becomes a normal hand-scrollable strip.
+ * Pauses on hover and has a visible pause control (WCAG 2.2.2: anything that
+ * moves for more than five seconds needs one). Under prefers-reduced-motion it
+ * stands still and becomes a normal hand-scrollable strip.
  */
 export function Marquee<T>({
   items,
@@ -29,25 +31,28 @@ export function Marquee<T>({
 }: Props<T>) {
   const duration = `${Math.round(items.length * secondsPerItem)}s`;
   return (
-    <div
-      className={`group overflow-hidden motion-reduce:overflow-x-auto motion-reduce:[scrollbar-width:none] ${className}`}
-    >
-      <ul
-        aria-label={label}
-        style={{ animationDuration: duration }}
-        className={`flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none ${trackClassName}`}
-      >
-        {items.map((item, i) => (
-          <li key={itemKey(item)} className="shrink-0">
-            {render(item, i, false)}
-          </li>
-        ))}
-        {items.map((item, i) => (
-          <li key={`${itemKey(item)}-copy`} aria-hidden="true" className="shrink-0">
-            {render(item, i, true)}
-          </li>
-        ))}
-      </ul>
+    <div data-marquee className={className}>
+      <div className="group overflow-hidden motion-reduce:overflow-x-auto motion-reduce:[scrollbar-width:none]">
+        <ul
+          aria-label={label}
+          style={{ animationDuration: duration }}
+          className={`marquee-track flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none ${trackClassName}`}
+        >
+          {items.map((item, i) => (
+            <li key={itemKey(item)} className="shrink-0">
+              {render(item, i, false)}
+            </li>
+          ))}
+          {items.map((item, i) => (
+            <li key={`${itemKey(item)}-copy`} aria-hidden="true" className="shrink-0">
+              {render(item, i, true)}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="flex justify-end px-4 pt-2 md:px-6 lg:px-8 motion-reduce:hidden">
+        <MarqueePause />
+      </div>
     </div>
   );
 }

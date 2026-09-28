@@ -15,7 +15,7 @@ export function Pricing() {
           <Label tone="navy" dot>
             Price and payment
           </Label>
-          <h2 className="display mt-6 text-3xl sm:text-4xl">{pricing.title}</h2>
+          <h2 data-reveal className="display mt-6 text-3xl sm:text-4xl">{pricing.title}</h2>
           <p className="mt-6 max-w-sm text-sm text-muted">{pricing.lead}</p>
           <div className="mt-8">
             <Badge tone="sunshine">Book by {trip.bookingDeadline}</Badge>

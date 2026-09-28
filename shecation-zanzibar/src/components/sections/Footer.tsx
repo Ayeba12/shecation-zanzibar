@@ -75,6 +75,7 @@ export function Footer() {
         {/* Giant wordmark (NGLM) */}
         <p
           aria-hidden="true"
+          data-wordmark
           className="display mt-12 -mb-[0.12em] select-none whitespace-nowrap text-[13.5vw] uppercase leading-none tracking-[-0.04em] md:mt-16"
         >
           {trip.name.split(" ")[0]}

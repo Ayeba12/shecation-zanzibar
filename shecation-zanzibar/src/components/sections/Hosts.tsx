@@ -121,10 +121,10 @@ export function Hosts() {
           <Label tone="navy" dot>
             {touches.label}
           </Label>
-          <h2 className="mt-4 max-w-[12ch] text-xl md:text-2xl">{touches.lead}</h2>
+          <h2 data-reveal className="mt-4 max-w-[12ch] text-xl md:text-2xl">{touches.lead}</h2>
         </div>
 
-        <ol className="col-span-4 mt-8 md:col-span-5 md:col-start-4 md:mt-0">
+        <ol data-reveal-group className="col-span-4 mt-8 md:col-span-5 md:col-start-4 md:mt-0">
           {touches.items.map((item, i) => (
             <li key={item} className="border-t border-border py-4 first:border-t-0 first:pt-0 md:py-5">
               <Label>{String(i + 1).padStart(2, "0")}</Label>

@@ -17,7 +17,7 @@ export function SocialProof() {
     <Section tone="cream" id="community">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
-          <h2 className="display max-w-2xl text-3xl uppercase sm:text-4xl lg:text-5xl">
+          <h2 data-reveal className="display max-w-2xl text-3xl uppercase sm:text-4xl lg:text-5xl">
             From the SHE-CATION community
           </h2>
           <p className="mt-4 max-w-prose text-base text-muted">{socialProof.lead}</p>

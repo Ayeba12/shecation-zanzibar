@@ -16,8 +16,8 @@ export function WhoFor() {
           <Label tone="navy" dot>
             Who this is for
           </Label>
-          <h2 className="display mt-6 text-3xl sm:text-4xl">{whoFor.title}</h2>
-          <div className="relative mt-10 hidden aspect-[3/4] overflow-hidden md:block md:max-w-sm">
+          <h2 data-reveal className="display mt-6 text-3xl sm:text-4xl">{whoFor.title}</h2>
+          <div data-parallax className="relative mt-10 hidden aspect-[3/4] overflow-hidden md:block md:max-w-sm">
             <Image
               src="/images/shecation-3/laughter-on-the-water.jpg"
               alt="Three SHE-CATION 3.0 guests in blue and white stripes laughing on a sailing boat"
@@ -28,7 +28,7 @@ export function WhoFor() {
           </div>
         </div>
 
-        <ol className="col-span-4 mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 md:col-span-8 md:col-start-5 md:mt-0">
+        <ol data-reveal-group className="col-span-4 mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 md:col-span-8 md:col-start-5 md:mt-0">
           {whoFor.items.map((item, i) => (
             <li key={item} className="border-t border-navy/15 pt-4 first:border-t-0 first:pt-0 sm:[&:nth-child(2)]:border-t-0 sm:[&:nth-child(2)]:pt-0">
               <Label>{String(i + 1).padStart(2, "0")}</Label>

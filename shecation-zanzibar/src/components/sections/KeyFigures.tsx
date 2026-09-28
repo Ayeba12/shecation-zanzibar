@@ -11,13 +11,13 @@ export function KeyFigures() {
         <Label tone="navy" dot className="justify-center">
           {trip.name} Zanzibar
         </Label>
-        <h2 className="display mt-4 text-4xl uppercase sm:text-5xl lg:text-6xl">Key facts</h2>
+        <h2 data-reveal className="display mt-4 text-4xl uppercase sm:text-5xl lg:text-6xl">Key facts</h2>
 
-        <dl className="mx-auto mt-16 grid max-w-7xl gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-24 lg:grid-cols-4">
+        <dl data-reveal-group className="mx-auto mt-16 grid max-w-7xl gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-24 lg:grid-cols-4">
           {keyFigures.map((f) => (
             <div key={f.caption}>
               <dt className="display text-5xl sm:text-6xl">
-                {f.value}
+                <span data-countup>{f.value}</span>
                 {f.unit ? (
                   <span className="ml-2 align-top text-lg uppercase tracking-[0.08em] lg:text-xl">
                     {f.unit}
@@ -30,7 +30,7 @@ export function KeyFigures() {
         </dl>
       </Container>
 
-      <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
+      <div data-parallax className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
         <Image
           src="/images/shecation-3/the-toast.jpg"
           alt="SHE-CATION 3.0 guests in matching printed trousers raising a toast on a sunny terrace"

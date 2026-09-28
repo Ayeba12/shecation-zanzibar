@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Quicksand, Spline_Sans } from "next/font/google";
 import "./globals.css";
+import { Motion } from "@/components/motion/Motion";
 
 const quicksand = Quicksand({
   variable: "--font-quicksand",
@@ -62,7 +63,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${quicksand.variable} ${splineSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Motion />
+      </body>
     </html>
   );
 }
