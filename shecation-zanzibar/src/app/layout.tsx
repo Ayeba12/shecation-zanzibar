@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Quicksand, Spline_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { Motion } from "@/components/motion/Motion";
 
 const quicksand = Quicksand({
   variable: "--font-quicksand",
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         {children}
+        <Motion />
         <Analytics />
       </body>
     </html>
