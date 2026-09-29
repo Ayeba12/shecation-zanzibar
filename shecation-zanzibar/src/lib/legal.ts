@@ -105,7 +105,7 @@ export const termsSections: PolicySection[] = [
 
 export const bookingTermsMeta = {
   title: "Booking Terms",
-  lastUpdated: "26 September 2026",
+  lastUpdated: "29 September 2026",
   intro:
     "The terms of your place on SHE-CATION 4.0 Zanzibar: what you are booking, how you pay, and what happens if plans change.",
   notice:
