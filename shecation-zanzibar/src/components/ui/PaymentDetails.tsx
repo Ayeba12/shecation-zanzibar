@@ -42,7 +42,7 @@ export function PaymentDetails({
   return (
     <div className="flex flex-col gap-8">
       <ol className="flex flex-col gap-3">
-        {payment.instructions.map((step, i) => (
+        {(showNg ? payment.ngInstructions : payment.instructions).map((step, i) => (
           <li key={step} className="grid grid-cols-[2rem_1fr] items-baseline gap-2 text-base">
             <span className="label text-faint">{String(i + 1).padStart(2, "0")}</span>
             <span>{step}</span>
@@ -54,14 +54,10 @@ export function PaymentDetails({
         <div>
           <Label>{payment.ng.label}</Label>
           <p className="mt-3 max-w-prose text-base">{payment.ng.note}</p>
-          {payment.ng.accountNumber ? (
-            <dl className="mt-4 border-t border-border">
-              <Row k="Account name" v={payment.ng.accountName} />
-              <Row k="Bank" v={payment.ng.bank} />
-              <Row k="Account number" v={payment.ng.accountNumber} />
-              <Row k="Reference" v={reference} />
-            </dl>
-          ) : null}
+          <dl className="mt-4 border-t border-border">
+            <Row k="Amount" v={`${trip.deposit} deposit`} />
+            <Row k="Reference" v={reference} />
+          </dl>
         </div>
       ) : (
         <div>

@@ -17,11 +17,10 @@ export function buildGuestEmail(record: BookingRecord) {
   const reference = record.name.trim();
   const ng = record.country === "NG";
 
-  const bankRows: [string, string][] = ng && payment.ng.accountNumber
+  // Guests paying from Nigeria arrange the payment with the organisers, so they get no account rows.
+  const bankRows: [string, string][] = ng
     ? [
-        ["Account name", payment.ng.accountName],
-        ["Bank", payment.ng.bank],
-        ["Account number", payment.ng.accountNumber],
+        ["Amount", `${trip.deposit} deposit`],
         ["Reference", reference],
       ]
     : [
@@ -33,6 +32,7 @@ export function buildGuestEmail(record: BookingRecord) {
         ["Reference", reference],
       ];
   const bankNote = ng ? payment.ng.note : payment.uk.note;
+  const steps = ng ? payment.ngInstructions : payment.instructions;
   const phones = trip.phones.map((p) => `${p.label} ${p.number}`).join(" · ");
 
   const subject = `Your ${trip.name} place: how to pay the ${trip.deposit} deposit`;
@@ -42,14 +42,26 @@ export function buildGuestEmail(record: BookingRecord) {
     ``,
     `Thank you for reserving your place on ${trip.name} Zanzibar (${trip.dates}). Here is everything you need to pay your ${trip.deposit} deposit.`,
     ``,
-    `1. Pay the ${trip.deposit} deposit by bank transfer${ng ? "" : ` (${payment.uk.label})`}:`,
-    ...bankRows.map(([k, v]) => `   ${k}: ${v}`),
-    `   ${bankNote}`,
-    ``,
-    `2. Join the WhatsApp group and post your proof of payment there:`,
-    `   ${payment.whatsappGroup}`,
-    ``,
-    `3. ${trip.organisers} will confirm your place in the group.`,
+    ...(ng
+      ? [
+          `1. ${steps[0]}`,
+          `   ${payment.whatsappGroup}`,
+          ``,
+          `2. ${steps[1]}`,
+          ...bankRows.map(([k, v]) => `   ${k}: ${v}`),
+          ``,
+          `3. ${steps[2]}`,
+        ]
+      : [
+          `1. ${steps[0]}`,
+          ...bankRows.map(([k, v]) => `   ${k}: ${v}`),
+          `   ${bankNote}`,
+          ``,
+          `2. ${steps[1]}`,
+          `   ${payment.whatsappGroup}`,
+          ``,
+          `3. ${steps[2]}`,
+        ]),
     ``,
     `Payment plan (${pricing.total} per person, flights not included):`,
     ...pricing.schedule.map((r) => `   ${r.stage}: ${r.amount}, due ${r.due}`),
@@ -68,6 +80,10 @@ export function buildGuestEmail(record: BookingRecord) {
   const step = (n: string, body: string) =>
     `<tr><td style="padding:0 16px 20px 0;vertical-align:top;color:#9ca3af;font-size:12px;letter-spacing:.12em">${n}</td><td style="padding:0 0 20px;vertical-align:top">${body}</td></tr>`;
 
+  const bankTable = `
+      <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:12px;width:100%;background:#ffffff;border:1px solid #f0e4d6;border-radius:12px;padding:8px 16px;font-size:16px">${bankRows.map(([k, v]) => row(k, v)).join("")}</table>`;
+  const groupButton = `<a href="${payment.whatsappGroup}" style="display:inline-block;margin-top:12px;background:#d52e68;color:#fff;text-decoration:none;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:14px 24px;border-radius:999px">Join the WhatsApp group</a>`;
+
   const html = `<!doctype html><html><body style="margin:0;background:#fff8f4;font-family:Helvetica,Arial,sans-serif;color:#18263d">
 <div style="max-width:600px;margin:0 auto;padding:32px 20px">
   <p style="margin:0 0 24px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#d52e68">${esc(trip.brand)} · ${esc(trip.name)} · ${esc(trip.dates)}</p>
@@ -75,12 +91,11 @@ export function buildGuestEmail(record: BookingRecord) {
   <p style="margin:0 0 28px;font-size:16px;line-height:1.5">Thank you for reserving your place on ${esc(trip.name)} Zanzibar. Here is everything you need to pay your ${esc(trip.deposit)} deposit, so you do not need to screenshot anything.</p>
 
   <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;font-size:16px;line-height:1.5">
-    ${step("01", `<strong>Pay the ${esc(trip.deposit)} deposit by bank transfer.</strong>
-      <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:12px;width:100%;background:#ffffff;border:1px solid #f0e4d6;border-radius:12px;padding:8px 16px;font-size:16px">${bankRows.map(([k, v]) => row(k, v)).join("")}</table>
+    ${step("01", ng ? `<strong>${esc(steps[0])}</strong><br>${groupButton}` : `<strong>${esc(steps[0])}</strong>${bankTable}
       <p style="margin:10px 0 0;font-size:14px;color:#6b7280">${esc(bankNote)}</p>`)}
-    ${step("02", `<strong>Join the WhatsApp group and post your proof of payment there.</strong><br>
-      <a href="${payment.whatsappGroup}" style="display:inline-block;margin-top:12px;background:#d52e68;color:#fff;text-decoration:none;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:14px 24px;border-radius:999px">Join the WhatsApp group</a>`)}
-    ${step("03", `<strong>${esc(trip.organisers)} will confirm your place in the group.</strong>`)}
+    ${step("02", ng ? `<strong>${esc(steps[1])}</strong>${bankTable}
+      <p style="margin:10px 0 0;font-size:14px;color:#6b7280">${esc(bankNote)}</p>` : `<strong>${esc(steps[1])}</strong><br>${groupButton}`)}
+    ${step("03", `<strong>${esc(steps[2])}</strong>`)}
   </table>
 
   <h2 style="margin:12px 0 8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6b7280">Payment plan · ${esc(pricing.total)} per person</h2>

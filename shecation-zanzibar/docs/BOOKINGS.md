@@ -58,8 +58,9 @@ These are content, not secrets. Edit `payment` in `src/lib/content.ts`:
 
 - `whatsappGroup`: the group invite link (WhatsApp group > Invite via link).
 - `uk`: account name, bank, sort code, account number.
-- `ng`: optional naira account. Leave `accountNumber` empty to show only the "contact the
-  organisers for the rate" note.
+- `ng` and `ngInstructions`: there is no Nigerian bank account. Guests who choose Nigeria see no
+  account details; they are told to message the organisers in the group for the exchange rate and
+  how to pay. The same wording goes out in their confirmation email.
 
 ## Local development
 

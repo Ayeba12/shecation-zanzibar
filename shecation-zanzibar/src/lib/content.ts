@@ -533,17 +533,20 @@ export const payment = {
     accountNumber: "28693333",
     note: "The account name will show as Mumsaloud Initiative CIC. Use your full name as the reference so we can match your payment.",
   },
+  /** There is no Nigerian bank account: guests paying from Nigeria arrange it with the organisers. */
   ng: {
-    label: "Nigeria (NGN)",
-    accountName: "",
-    bank: "",
-    accountNumber: "",
-    note: `Contact ${trip.organisers} in the group for the current exchange rate before you pay.`,
+    label: "Paying from Nigeria",
+    note: `Message ${trip.organisers} in the WhatsApp group before you pay. They will confirm the current exchange rate and how to pay your deposit from Nigeria.`,
   },
   instructions: [
     "Pay the £200 deposit by bank transfer using your full name as the reference.",
     "Join the WhatsApp group and post your proof of payment there.",
     "Dinma or Bokun will confirm your place in the group.",
+  ],
+  ngInstructions: [
+    "Join the WhatsApp group and tell Dinma or Bokun you are paying from Nigeria.",
+    "They will confirm the current exchange rate and how to pay your £200 deposit.",
+    "Post your proof of payment in the group and they will confirm your place.",
   ],
 };
 
