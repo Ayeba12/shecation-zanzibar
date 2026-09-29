@@ -265,7 +265,6 @@ export const heroPhotos = {
   rail: [
     { src: "/images/stone-town-alley.jpg", alt: "A narrow alley in Stone Town with carved wooden doors", place: "Stone Town" },
     { src: "/images/the-rock.jpg", alt: "The Rock restaurant standing on a coral outcrop in the sea", place: "The Rock" },
-    { src: "/images/women-water.jpg", alt: "Women wading in clear turquoise water", place: "Indian Ocean" },
     { src: "/images/pool-palm.jpg", alt: "A resort pool beneath palm trees", place: "Tembo Resort" },
   ],
   corner: [
