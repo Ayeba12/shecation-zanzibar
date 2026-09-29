@@ -11,7 +11,7 @@ export const privacyMeta = {
   title: "Privacy Policy",
   lastUpdated: "26 September 2026",
   controller: "SHE-Reconnects", // TODO: legal entity name
-  address: "[Insert registered address]", // TODO
+  address: "226 Sandy Lane, Droylsden, Manchester, England, M43 7JX",
   email: "shereconnects@gmail.com",
 };
 
