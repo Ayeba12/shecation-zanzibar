@@ -3,14 +3,14 @@
  * Written for the booking journey in the website brief (booking form, deposit,
  * instalments, later travel details, WhatsApp/email follow-up, analytics).
  *
- * TODO before launch: confirm legal entity name, registered address, contact
- * email, payment processor and analytics tools, and have a legal adviser review.
+ * Organiser name, registered address and contact email were confirmed by the
+ * client (29 Sept 2026). Still worth a read by a legal adviser before launch.
  */
 
 export const privacyMeta = {
   title: "Privacy Policy",
-  lastUpdated: "26 September 2026",
-  controller: "SHE-Reconnects", // TODO: legal entity name
+  lastUpdated: "29 September 2026",
+  controller: "SHE-Reconnects", // confirmed by the client as the organiser name
   address: "226 Sandy Lane, Droylsden, Manchester, England, M43 7JX",
   email: "shereconnects@gmail.com",
 };
